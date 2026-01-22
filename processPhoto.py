@@ -9,7 +9,9 @@ df = pd.DataFrame(datos)
 
 # 2. Agrupar fotos por ubicación exacta
 # Esto crea una lista de nombres de archivos para cada coordenada
-df_agrupado = df.groupby(['lat', 'lon']).agg({
+df['lat']=df['lat'].round(4)
+df['lon']=df['lon'].round(4)
+df_agrupado = df.groupby(['lat', 'lon' ]).agg({
     'archivo': lambda x: list(x),
     'fecha': 'min'  # Tomamos la fecha de la primera foto del grupo
 }).reset_index()

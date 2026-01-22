@@ -18,11 +18,7 @@ df['fecha_dt'] = pd.to_datetime(df['fecha'], format='%Y:%m:%d %H:%M:%S', errors=
 # df = df.sort_values(by='fecha_dt')
 
 # 1. Crear el mapa centrado en el promedio de tus coordenadas
-mapa = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=4,max_zoom=19
-                #   ,
-                #   tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-                #   attr='Esri World Imagery'
-                  )
+mapa = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=4,max_zoom=19)
 
 folium.TileLayer(
     tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -42,17 +38,20 @@ folium.TileLayer(
     max_zoom=19
 ).add_to(mapa)
 
+#para mostrar las rutas
+folium.TileLayer(
+    tiles='https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
+    attr='Esri',
+    name='Solo Carreteras',
+    overlay=True,  # Esto permite que se vea lo que hay debajo
+    control=True,
+    max_zoom=19
+).add_to(mapa)
+
 # coordenadas_recorrido = df[['lat', 'lon']].values.tolist()
 # 2. Crear un cluster para los marcadores
-marker_cluster = MarkerCluster().add_to(mapa)
+marker_cluster = MarkerCluster(name="Fotos").add_to(mapa)
 
-# folium.PolyLine(
-#     locations=coordenadas_recorrido,
-#     color="#FF5733",  # Color naranja/rojizo
-#     weight=4,        # Grosor de la línea
-#     opacity=0.8,
-#     tooltip="Trayecto del viaje"
-# ).add_to(mapa)
 
 # 3. Agregar cada foto al mapa
 for index, row in df.iterrows():
@@ -95,7 +94,9 @@ for index, row in df.iterrows():
     ).add_to(marker_cluster)    
     
     # ).add_to(marker_cluster)
+    
 
 # Guardar el mapa en un archivo HTML
-mapa.save("C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\mi_mapa_fotos.html")
-print("Mapa generado como 'mi_mapa_fotos.html'. Ábrelo en tu navegador.")
+folium.LayerControl().add_to(mapa)
+mapa.save("C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\index.html")
+print("Mapa generado como 'index.html'. Ábrelo en tu navegador.")
