@@ -1,5 +1,6 @@
 import folium
 from folium.plugins import MarkerCluster
+from branca.element import Element
 import pandas as pd
 import simplejson as json
 import base64
@@ -8,8 +9,10 @@ import os
 
 with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\fotosFinal.json', 'r') as f:
     datos = json.load(f)
-
 df = pd.DataFrame(datos)
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\estacionesServicio.json', 'r') as est:
+    estDatos = json.load(est)
+dfEstacionesServicio = pd.DataFrame(estDatos)
 
 #arreglar la parte cronologica de las fotos
 df['fecha_dt'] = pd.to_datetime(df['fecha'], format='%Y:%m:%d %H:%M:%S', errors='coerce')
@@ -47,6 +50,42 @@ folium.TileLayer(
     control=True,
     max_zoom=19
 ).add_to(mapa)
+
+layerGasolineras = folium.FeatureGroup(name='Estaciones de Servicio')
+
+for index, fila in dfEstacionesServicio.iterrows():
+    # Creamos un texto para el popup que incluya las funciones
+    # Unimos la lista de funciones con saltos de línea HTML <br>
+    servicios = "<br>".join([f"• {f}" for f in fila['funciones']])
+
+    contenido_popup = f"""
+    <strong>{fila['nombre']}</strong><br>
+    <strong>Servicios:</strong><br>
+    {servicios}
+    """
+    
+    folium.Marker(
+        location=[fila['lat'], fila['lon']],
+        popup=folium.Popup(contenido_popup, max_width=200),
+        tooltip=fila['nombre'],
+        icon=folium.Icon(color='orange',icon='gas-pump', prefix='fa')
+        
+    ).add_to(layerGasolineras)
+
+layerGasolineras.add_to(mapa)
+
+
+
+
+
+# Capa de Lugares y Puntos de Interés
+# folium.TileLayer(
+#     tiles='https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+#     attr='CartoDB',
+#     name='Etiquetas Detalladas',
+#     overlay=True,
+#     control=True
+# ).add_to(mapa)
 
 # coordenadas_recorrido = df[['lat', 'lon']].values.tolist()
 # 2. Crear un cluster para los marcadores
@@ -95,6 +134,42 @@ for index, row in df.iterrows():
     
     # ).add_to(marker_cluster)
     
+mapId = mapa.get_name()
+layerGasolineriaId = layerGasolineras.get_name()
+#script para mostrar o no estaciones de servicio
+script_zoom = Element(f"""
+    <script>
+        var checkExist = setInterval(function() {{
+           // Verificamos si tanto el objeto del mapa como la capa ya existen
+           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined') {{
+              var mapa_objeto = {mapId};
+              var capa_objeto = {layerGasolineriaId};
+              function actualizar() {{                  
+                  var z = mapa_objeto.getZoom();                    
+                  if (z < 16) {{                  
+                      if (mapa_objeto.hasLayer(capa_objeto)) {{
+                          mapa_objeto.removeLayer(capa_objeto);
+                      }}
+                  }} else {{
+                      if (!mapa_objeto.hasLayer(capa_objeto)) {{
+                          mapa_objeto.addLayer(capa_objeto);
+                      }}
+                  }}
+              }}
+
+              mapa_objeto.on('zoomend', actualizar);
+              actualizar(); // Ejecución inicial
+              
+              clearInterval(checkExist); // Detenemos el buscador una vez que ya configuramos todo
+           }}
+        }}, 100); // Revisar cada 100ms
+    </script>
+""")
+mapa.get_root().html.add_child(script_zoom)
+
+mapa.get_root().header.add_child(
+    folium.Element('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">')
+)
 
 # Guardar el mapa en un archivo HTML
 folium.LayerControl().add_to(mapa)
