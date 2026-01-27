@@ -1,5 +1,6 @@
 import folium
 from folium.plugins import MarkerCluster
+from folium.plugins import BeautifyIcon
 from branca.element import Element
 import pandas as pd
 import simplejson as json
@@ -10,19 +11,24 @@ import os
 with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\fotosFinal.json', 'r') as f:
     datos = json.load(f)
 df = pd.DataFrame(datos)
+#en este archivo cargaba las estaciones de servicio pero ahora no solo seran estaciones de servicio
+#proximamente cambiaré el nombre del archivo
 with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\estacionesServicio.json', 'r') as est:
     estDatos = json.load(est)
 dfEstacionesServicio = pd.DataFrame(estDatos)
+#cargo las configuraciones de iconos para los itemos que no son fotos
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\estilosConfig.json', 'r') as estiloConfigRead:
+    estiloConfigDatos = json.load(estiloConfigRead)
+
 
 #arreglar la parte cronologica de las fotos
 df['fecha_dt'] = pd.to_datetime(df['fecha'], format='%Y:%m:%d %H:%M:%S', errors='coerce')
 
-# 3. Ordenar cronológicamente
-# df = df.sort_values(by='fecha_dt')
-
-# 1. Crear el mapa centrado en el promedio de tus coordenadas
+#creo el mapa centrado en el promedio de tus coordenadas (mean) y lo pongo como zoom_star=4
+#para que se vea todo el mapa de argentina
 mapa = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=4,max_zoom=19)
 
+# Capa de mapa satelital
 folium.TileLayer(
     tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     attr='Esri',
@@ -31,7 +37,7 @@ folium.TileLayer(
     max_native_zoom=17 # Este es el zoom real que tiene Esri. Al pasar de aquí, Folium 'pixela' la imagen en lugar de cambiar de mapa
 ).add_to(mapa)
 
-# 2. Capa de Etiquetas (Nombres de ciudades y rutas)
+# Capa de Etiquetas (Nombres de ciudades y número de rutas)
 folium.TileLayer(
     tiles='https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
     attr='Esri',
@@ -51,7 +57,7 @@ folium.TileLayer(
     max_zoom=19
 ).add_to(mapa)
 
-layerGasolineras = folium.FeatureGroup(name='Estaciones de Servicio')
+layerGasolineras = folium.FeatureGroup(name='referencias útiles')
 
 for index, fila in dfEstacionesServicio.iterrows():
     # Creamos un texto para el popup que incluya las funciones
@@ -64,31 +70,29 @@ for index, fila in dfEstacionesServicio.iterrows():
     {servicios}
     """
     
+    estilo = estiloConfigDatos.get(fila['tipo'], estiloConfigDatos['default'])
+    #genero icon especifico de folium
+    iconEstilo = BeautifyIcon(
+        icon=estilo['icon'],
+        icon_shape='circle',      # Forma circular
+        border_color='white',     # EL BORDE BLANCO
+        background_color=estilo['color'], # El fondo con tu color del JSON
+        text_color='white',       # Color del icono
+        border_width=3,           # Grosor del borde
+        inner_icon_style='margin-top:0;'
+    )
     folium.Marker(
         location=[fila['lat'], fila['lon']],
         popup=folium.Popup(contenido_popup, max_width=200),
         tooltip=fila['nombre'],
-        icon=folium.Icon(color='orange',icon='gas-pump', prefix='fa')
-        
+        icon=iconEstilo
+        # icon=folium.Icon(  color=estilo['color'],icon=estilo['icon'], prefix='fa')        
     ).add_to(layerGasolineras)
 
 layerGasolineras.add_to(mapa)
 
-
-
-
-
-# Capa de Lugares y Puntos de Interés
-# folium.TileLayer(
-#     tiles='https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
-#     attr='CartoDB',
-#     name='Etiquetas Detalladas',
-#     overlay=True,
-#     control=True
-# ).add_to(mapa)
-
-# coordenadas_recorrido = df[['lat', 'lon']].values.tolist()
 # 2. Crear un cluster para los marcadores
+
 marker_cluster = MarkerCluster(name="Fotos").add_to(mapa)
 
 
@@ -146,7 +150,7 @@ script_zoom = Element(f"""
               var capa_objeto = {layerGasolineriaId};
               function actualizar() {{                  
                   var z = mapa_objeto.getZoom();                    
-                  if (z < 16) {{                  
+                  if (z < 14) {{                  
                       if (mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_objeto);
                       }}
