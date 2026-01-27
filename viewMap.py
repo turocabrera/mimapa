@@ -20,6 +20,11 @@ dfEstacionesServicio = pd.DataFrame(estDatos)
 with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\estilosConfig.json', 'r') as estiloConfigRead:
     estiloConfigDatos = json.load(estiloConfigRead)
 
+#cargo provincias visitadas. salta jujuy y neuquen
+capaProvincias = folium.FeatureGroup(name="Límites Provinciales")
+folium.GeoJson('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\provincias.json',name='provincias',style_function=lambda x: {'fillColor': '#3186cc','color': 'blue','weight': 2,'fillOpacity': 0.4}).add_to(capaProvincias)
+
+
 
 #arreglar la parte cronologica de las fotos
 df['fecha_dt'] = pd.to_datetime(df['fecha'], format='%Y:%m:%d %H:%M:%S', errors='coerce')
@@ -56,6 +61,10 @@ folium.TileLayer(
     control=True,
     max_zoom=19
 ).add_to(mapa)
+
+#cargo capa de provincias
+capaProvincias.add_to(mapa)
+
 
 layerGasolineras = folium.FeatureGroup(name='referencias útiles')
 
@@ -140,22 +149,26 @@ for index, row in df.iterrows():
     
 mapId = mapa.get_name()
 layerGasolineriaId = layerGasolineras.get_name()
+layerProvinciaId = capaProvincias.get_name()
 #script para mostrar o no estaciones de servicio
 script_zoom = Element(f"""
     <script>
         var checkExist = setInterval(function() {{
            // Verificamos si tanto el objeto del mapa como la capa ya existen
-           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined') {{
+           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined') {{
               var mapa_objeto = {mapId};
               var capa_objeto = {layerGasolineriaId};
+              var capa_provincias = {layerProvinciaId};
               function actualizar() {{                  
                   var z = mapa_objeto.getZoom();                    
-                  if (z < 14) {{                  
+                  if (z < 10) {{                  
                       if (mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_objeto);
+                          mapa_objeto.addLayer(capa_provincias);
                       }}
                   }} else {{
                       if (!mapa_objeto.hasLayer(capa_objeto)) {{
+                          mapa_objeto.removeLayer(capa_provincias);
                           mapa_objeto.addLayer(capa_objeto);
                       }}
                   }}
