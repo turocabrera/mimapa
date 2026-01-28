@@ -1,7 +1,0 @@
-{
-    "gas-fuel":  {"color": "blue", "icon": "gas-pump"},
-    "restaurant": {"color": "red",    "icon": "cutlery"},
-    "museo":      {"color": "orange",   "icon": "university"},
-    "cafeteria": {"color": "cadetblue", "icon": "coffee"},
-    "default":    {"color": "gray",   "icon": "info-circle"}
-}
