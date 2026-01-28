@@ -1,6 +1,11 @@
 import folium
+
 from folium.plugins import MarkerCluster
+#componente para poner mas lindos los iconos
 from folium.plugins import BeautifyIcon
+#componente de busqueda
+from folium.plugins import Search
+#para poder escribir codigos javascript
 from branca.element import Element
 import pandas as pd
 import simplejson as json
@@ -31,7 +36,9 @@ df['fecha_dt'] = pd.to_datetime(df['fecha'], format='%Y:%m:%d %H:%M:%S', errors=
 
 #creo el mapa centrado en el promedio de tus coordenadas (mean) y lo pongo como zoom_star=4
 #para que se vea todo el mapa de argentina
-mapa = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=4,max_zoom=19)
+# pongo el control_zoom=False, para poder moverlo luego y que quede el search por un lado y el zoom por otro lado
+mapa = folium.Map(location=[df['lat'].mean(), df['lon'].mean()], zoom_start=4,max_zoom=19,zoom_control=True,control_scale=True)
+
 
 # Capa de mapa satelital
 folium.TileLayer(
@@ -101,7 +108,6 @@ for index, fila in dfEstacionesServicio.iterrows():
 layerGasolineras.add_to(mapa)
 
 # 2. Crear un cluster para los marcadores
-
 marker_cluster = MarkerCluster(name="Fotos").add_to(mapa)
 
 
@@ -146,7 +152,47 @@ for index, row in df.iterrows():
     ).add_to(marker_cluster)    
     
     # ).add_to(marker_cluster)
-    
+
+#agregar buscador
+estDatosGeojson = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [punto['lon'], punto['lat']] 
+            },
+            "properties": {
+                "nombre": punto['nombre'],
+                "tipo": punto['tipo'],
+                "funciones": ", ".join(punto['funciones']) # Convertimos la lista a texto para el buscador
+            }
+        } for punto in estDatos
+    ]
+}
+
+origenBusquedaEstDatos = folium.GeoJson(
+    estDatosGeojson,
+    name="capaInvisibleParaBusquedas",
+    # tooltip=folium.GeoJsonTooltip(fields=['nombre', 'tipo']),
+    style_function=lambda x: {'fillOpacity': 0, 'opacity': 0, 'weight': 0},
+    marker=folium.CircleMarker(radius=1, color='transparent'), 
+    control=False
+).add_to(mapa)
+
+# Configurar el Buscador
+servicios_search = Search(
+    layer=origenBusquedaEstDatos,
+    geom_type='Point',
+    placeholder='Buscar lugar...',
+    collapsed=False,
+    search_label='nombre', # El campo del JSON por el que querés buscar
+    weight=3,
+    zoom=19
+).add_to(mapa)
+
+
 mapId = mapa.get_name()
 layerGasolineriaId = layerGasolineras.get_name()
 layerProvinciaId = capaProvincias.get_name()
@@ -155,21 +201,21 @@ script_zoom = Element(f"""
     <script>
         var checkExist = setInterval(function() {{
            // Verificamos si tanto el objeto del mapa como la capa ya existen
-           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined') {{
+           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined'  ) {{
               var mapa_objeto = {mapId};
               var capa_objeto = {layerGasolineriaId};
-              var capa_provincias = {layerProvinciaId};
+              var capa_provincias = {layerProvinciaId};              
               function actualizar() {{                  
-                  var z = mapa_objeto.getZoom();                    
+                  var z = mapa_objeto.getZoom();                                      
                   if (z < 10) {{                  
                       if (mapa_objeto.hasLayer(capa_objeto)) {{
-                          mapa_objeto.removeLayer(capa_objeto);
+                          mapa_objeto.removeLayer(capa_objeto);                          
                           mapa_objeto.addLayer(capa_provincias);
                       }}
                   }} else {{
                       if (!mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_provincias);
-                          mapa_objeto.addLayer(capa_objeto);
+                          mapa_objeto.addLayer(capa_objeto);                          
                       }}
                   }}
               }}
@@ -182,7 +228,76 @@ script_zoom = Element(f"""
         }}, 100); // Revisar cada 100ms
     </script>
 """)
+
+search_id = servicios_search.get_name()
+script_forzar_zoom_search = Element(f"""
+<script>
+    var monitorBuscador = setInterval(function() {{
+        var inputBusqueda = document.querySelector('.search-input');
+        if (inputBusqueda && typeof {mapId} !== 'undefined') {{
+            
+            var mapa = {mapId};
+
+            function forzarVuelo() {{
+                // Le damos un mini respiro para que Folium encuentre el punto
+                setTimeout(function() {{
+                    // Buscamos el círculo azul que Folium dibuja al encontrar algo
+                    var circuloSeleccion = document.querySelector('.leaflet-marker-icon, .leaflet-control-search-location');
+                    
+                    // Si Folium encontró algo, el mapa tendrá una capa nueva temporal
+                    mapa.eachLayer(function(l) {{
+                        if (l.options && l.options.fillColor === '#2196f3') {{ // Color por defecto del buscador
+                            mapa.flyTo(l.getLatLng(), 19, {{animate: true, duration: 2}});
+                        }}
+                    }});
+                }}, 300);
+            }}
+
+            // Escuchar el Enter en el teclado
+            inputBusqueda.addEventListener('keyup', function(e) {{
+                if (e.key === 'Enter') {{
+                    console.log("Enter detectado, forzando vuelo...");
+                    forzarVuelo();
+                }}
+            }});
+
+            // Escuchar el click en la lista de sugerencias
+            document.addEventListener('click', function(e) {{
+                if (e.target.classList.contains('search-tip')) {{
+                    console.log("Sugerencia clickeada, forzando vuelo...");
+                    forzarVuelo();
+                }}
+            }});
+
+            clearInterval(monitorBuscador);
+        }}
+    }}, 500);
+</script>
+""")
+
+
+estiloCssBuscador = """
+<style>
+.leaflet-control-search {
+    position: fixed !important;
+    top: 10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1000 !important;
+    margin: 0 !important;
+}
+/* Movemos los botones de zoom originales a la derecha para que no molesten */
+.leaflet-top.leaflet-left {
+    top: 10px !important; /* Los baja un poco */
+    left:10px !important;
+}
+</style>
+"""
+
+
+mapa.get_root().header.add_child(folium.Element(estiloCssBuscador))
 mapa.get_root().html.add_child(script_zoom)
+mapa.get_root().html.add_child(script_forzar_zoom_search)
 
 mapa.get_root().header.add_child(
     folium.Element('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">')
