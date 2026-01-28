@@ -63,5 +63,17 @@
 		"cafe con leche",
 		"chololatada"
 	]
+},
+{
+	"nombre": "Terrazas del Lago", 
+	"lat": -25.284415, 
+	"lon": -65.407754,
+	"tipo":"restaurant",
+	"funciones":[		
+		"pejerrey a la romana"
+	]
 }
+
+
+
 ]
