@@ -1,0 +1,79 @@
+[
+{"nombre": "YPF ACA Zapala", 
+	"lat": -38.88954, 
+	"lon": -70.03778,
+	"tipo":"gas-fuel",
+	"funciones":[
+		"agua Mate",
+		"full",
+		"souvenirs"
+	]
+},
+{
+	"nombre": "YPF Alumine", 
+	"lat": -39.24140, 
+	"lon": -70.91440,
+	"tipo":"gas-fuel",
+	"funciones":[		
+		"souvenirs"
+	]
+},
+{
+	"nombre": "YPF Petropehuenia-eess", 
+	"lat": -38.87986, 
+	"lon": -71.18614,
+	"tipo":"gas-fuel",
+	"funciones":[				
+	]
+},
+{
+	"nombre": "YPF Ruta 22 Neuquen", 
+	"lat": -38.95731, 
+	"lon": -68.15199,
+	"tipo":"gas-fuel",
+	"funciones":[		
+		"agua Mate"
+	]
+},
+{
+	"nombre": "La familia", 
+	"lat": -38.87983, 
+	"lon": -71.17774,
+	"tipo":"restaurant",
+	"funciones":[		
+		"empanadas de trucha"
+	]
+},
+{
+	"nombre": "Parador del lago", 
+	"lat": -38.88461, 
+	"lon": -71.17505,
+	"tipo":"restaurant",
+	"funciones":[		
+		"empanadas de trucha",
+		"trucha a la manteca negra"
+	]
+},
+{
+	"nombre": "Sentido Bar cafe", 
+	"lat": -39.241795, 
+	"lon": -70.914718,
+	"tipo":"cafeteria",
+	"funciones":[		
+		"cafe con leche",
+		"chololatada"
+	]
+},
+{
+	"nombre": "Terrazas del Lago", 
+	"lat": -25.284415, 
+	"lon": -65.407754,
+	"tipo":"restaurant",
+	"funciones":[		
+		"pejerrey a la romana"
+	]
+}
+
+
+
+]
