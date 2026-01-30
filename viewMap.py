@@ -13,21 +13,24 @@ import base64
 from io import BytesIO
 import os
 
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\fotosFinal.json', 'r') as f:
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\fotosFinal.json', 'r') as f:
     datos = json.load(f)
 df = pd.DataFrame(datos)
 #en este archivo cargaba las estaciones de servicio pero ahora no solo seran estaciones de servicio
 #proximamente cambiaré el nombre del archivo
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\estacionesServicio.json', 'r') as est:
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\estacionesServicio.json', 'r') as est:
     estDatos = json.load(est)
 dfEstacionesServicio = pd.DataFrame(estDatos)
 #cargo las configuraciones de iconos para los itemos que no son fotos
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\estilosConfig.json', 'r') as estiloConfigRead:
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\estilosConfig.json', 'r') as estiloConfigRead:
     estiloConfigDatos = json.load(estiloConfigRead)
 
 #cargo provincias visitadas. salta jujuy y neuquen
 capaProvincias = folium.FeatureGroup(name="Límites Provinciales")
-folium.GeoJson('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\provincias.json',name='provincias',style_function=lambda x: {'fillColor': '#3186cc','color': 'blue','weight': 2,'fillOpacity': 0.4}).add_to(capaProvincias)
+folium.GeoJson('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\provincias.json',name='provincias',style_function=lambda x: {'fillColor': '#3186cc','color': 'blue','weight': 2,'fillOpacity': 0.4}).add_to(capaProvincias)
+
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\rutas.json', 'r') as rutas:
+    rutaDatos = json.load(rutas)
 
 
 
@@ -74,6 +77,8 @@ capaProvincias.add_to(mapa)
 
 
 layerGasolineras = folium.FeatureGroup(name='referencias útiles')
+
+layerRutas = folium.FeatureGroup(name='rutas recorridas')
 
 for index, fila in dfEstacionesServicio.iterrows():
     # Creamos un texto para el popup que incluya las funciones
@@ -181,6 +186,20 @@ origenBusquedaEstDatos = folium.GeoJson(
     control=False
 ).add_to(mapa)
 
+folium.GeoJson(
+    rutaDatos,
+    name='Rutas de Viaje',
+    style_function=lambda feature: {
+        'fillColor': feature['properties']['color'],
+        'color': feature['properties']['color'],
+        'weight': 2,
+        'opacity': 0.6,
+    },
+    tooltip=folium.GeoJsonTooltip(fields=['nombre', 'fecha'], aliases=['Ruta:', 'Fecha:'])
+).add_to(layerRutas)
+
+layerRutas.add_to(mapa)
+
 # Configurar el Buscador
 servicios_search = Search(
     layer=origenBusquedaEstDatos,
@@ -196,26 +215,30 @@ servicios_search = Search(
 mapId = mapa.get_name()
 layerGasolineriaId = layerGasolineras.get_name()
 layerProvinciaId = capaProvincias.get_name()
+layerRutasId = layerRutas.get_name()
 #script para mostrar o no estaciones de servicio
 script_zoom = Element(f"""
     <script>
         var checkExist = setInterval(function() {{
            // Verificamos si tanto el objeto del mapa como la capa ya existen
-           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined'  ) {{
+           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined' && typeof {layerRutasId} !== 'undefined' ) {{
               var mapa_objeto = {mapId};
               var capa_objeto = {layerGasolineriaId};
               var capa_provincias = {layerProvinciaId};              
+              var capa_rutas = {layerRutasId};
               function actualizar() {{                  
                   var z = mapa_objeto.getZoom();                                      
                   if (z < 10) {{                  
                       if (mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_objeto);                          
+                          mapa_objeto.removeLayer(capa_rutas);                          
                           mapa_objeto.addLayer(capa_provincias);
                       }}
                   }} else {{
                       if (!mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_provincias);
                           mapa_objeto.addLayer(capa_objeto);                          
+                          mapa_objeto.addLayer(capa_rutas);                          
                       }}
                   }}
               }}
