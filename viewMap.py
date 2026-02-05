@@ -228,7 +228,7 @@ script_zoom = Element(f"""
               var capa_rutas = {layerRutasId};
               function actualizar() {{                  
                   var z = mapa_objeto.getZoom();                                      
-                  if (z < 10) {{                  
+                  if (z < 8) {{                  
                       if (mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_objeto);                          
                           mapa_objeto.removeLayer(capa_rutas);                          
