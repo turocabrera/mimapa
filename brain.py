@@ -94,5 +94,5 @@ def procesar_carpeta(directorio):
 
 # Ejemplo de ejecución
 resultados = procesar_carpeta('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\img\\villaPehuenia\\')
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\viajes.json', 'w') as f:
+with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\viajes.json', 'w') as f:
     json.dump(resultados, f, indent=4)

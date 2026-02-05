@@ -195,7 +195,7 @@ folium.GeoJson(
         'weight': feature['properties']['grosor'],
         'opacity': 0.6,
     },
-    tooltip=folium.GeoJsonTooltip(fields=['nombre', 'fecha'], aliases=['Ruta:', 'Fecha:'])
+    tooltip=folium.GeoJsonTooltip(fields=['nombre', 'fecha','distancia'], aliases=['Ruta:', 'Fecha:','Distancia:'])
 ).add_to(layerRutas)
 
 layerRutas.add_to(mapa)
