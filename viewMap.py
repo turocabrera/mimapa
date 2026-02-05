@@ -192,7 +192,7 @@ folium.GeoJson(
     style_function=lambda feature: {
         'fillColor': feature['properties']['color'],
         'color': feature['properties']['color'],
-        'weight': 2,
+        'weight': feature['properties']['grosor'],
         'opacity': 0.6,
     },
     tooltip=folium.GeoJsonTooltip(fields=['nombre', 'fecha'], aliases=['Ruta:', 'Fecha:'])

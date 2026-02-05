@@ -6,6 +6,8 @@
 			"properties": {
 				"nombre": "Neuquen-Pehuenia 2025",
 				"fecha": "2025-01-15",
+				"distancia": "294km",
+				"grosor":"3",
 				"color": "red"
 			},
 			"geometry": {
@@ -6165,9 +6167,11 @@
 		{
 			"type": "Feature",
 			"properties": {
-				"nombre": "Neuquen-San Martin de los Andes 2025",
+				"nombre": "Neuquen-San Martin de los Andes 2026",
 				"fecha": "2026-02-20",
-				"color": "blue"
+				"distancia": "420km",
+				"grosor":"3",
+				"color": "green"
 			},
 			"geometry": {
 				"type": "LineString",
