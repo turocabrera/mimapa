@@ -24,7 +24,8 @@ def obtener_id_carpeta(nombre_carpeta):
     items = resultados.get('files', [])
     return items[0]['id'] if items else None
 
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\fotosFinal.json', 'r') as f:
+# with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\fotosFinal.json', 'r') as f:
+with open('data/fotosFinal.json', 'r') as f:
     datos = json.load(f)
 df = pd.DataFrame(datos)
 #en este archivo cargaba las estaciones de servicio pero ahora no solo seran estaciones de servicio
@@ -62,7 +63,8 @@ folderId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
 if folderId:
     results = service.files().list(
         q=f"'{folderId}' in parents and trashed = false",
-        fields="files(id, name, webContentLink)"
+        pageSize=1000,
+        fields="files(id, name, webContentLink)"        
     ).execute()
     
     items = results.get('files', [])
@@ -72,6 +74,7 @@ if folderId:
         file_id = item['id']
         # Usamos el formato thumbnail que es el más compatible
         link = f"https://drive.google.com/thumbnail?sz=w500&id={item['id']}" 
+        # print("Archivo:",item['name'], item['id'])
         # f"{file_id}"
         fotos_drive[item['name']] = link
 
