@@ -67,13 +67,20 @@ if folderId:
     
     items = results.get('files', [])
 
-    fotos_drive = {}
+    fotos_drive = {}    
     for item in items:
-        # Este formato de URL es el que Folium puede renderizar como imagen directa
-        link_directo = f"https://drive.google.com/uc?export=download&id={item['id']}"
-        # Esta versión es inestable por eso mejor usar la siguiente
-        # link_directo = f"https://lh3.googleusercontent.com/u/0/d/{item['id']}"
-        fotos_drive[item['name']] = link_directo    
+        file_id = item['id']
+        # Usamos el formato thumbnail que es el más compatible
+        link = f"https://drive.google.com/thumbnail?sz=w500&id={item['id']}" 
+        # f"{file_id}"
+        fotos_drive[item['name']] = link
+
+    # for item in items:
+    #     # Este formato de URL es el que Folium puede renderizar como imagen directa
+    #     link_directo = f"https://drive.google.com/uc?export=download&id={item['id']}"
+    #     # Esta versión es inestable por eso mejor usar la siguiente
+    #     # link_directo = f"https://lh3.googleusercontent.com/u/0/d/{item['id']}"
+    #     fotos_drive[item['name']] = link_directo    
     # for item in items:
     #     # Aquí puedes usar el 'webContentLink' para mostrar la imagen en el popup del mapa
     #     print(f"Procesando miniatura: {item['name']} (ID: {item['id']})")
@@ -224,7 +231,8 @@ for index, row in df.iterrows():
         
         if url_drive:
             # El src ahora es el link directo de Drive
-            html_fotos += f'<img src="{url_drive}" width="150" style="margin-bottom:5px; border-radius:5px;"><br>'
+            # html_fotos += f'<img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="margin-bottom:5px; border-radius:5px;"><br>'
+            html_fotos += f'<img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="border-radius:5px;" >'
         else:
             # Si no está en el diccionario de la carpeta de Drive
             html_fotos += f'<p style="color:red; font-size:10px;">No en Drive: {nombre_thumb}</p>'
@@ -239,6 +247,9 @@ for index, row in df.iterrows():
     iframe = folium.IFrame(html_final, width=220, height=250)
     popup = folium.Popup(iframe, max_width=250)
     
+    # popup = folium.Popup(html_final, max_width=220)
+    
+
     folium.Marker(
         location=[row['lat'], row['lon']],
         popup=popup,
