@@ -12,6 +12,17 @@ import simplejson as json
 import base64
 from io import BytesIO
 import os
+import apiConnectGoogle as apiConnectGoogle
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+
+
+
+def obtener_id_carpeta(nombre_carpeta):
+    query = f"name = '{nombre_carpeta}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+    resultados = service.files().list(q=query, fields="files(id, name)").execute()
+    items = resultados.get('files', [])
+    return items[0]['id'] if items else None
 
 with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\fotosFinal.json', 'r') as f:
     datos = json.load(f)
@@ -31,6 +42,43 @@ folium.GeoJson('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\d
 
 with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\rutas.json', 'r') as rutas:
     rutaDatos = json.load(rutas)
+
+
+# conectar a googleDrive para buscar las fotos
+SERVICE_ACCOUNT_FILE = 'config/claveServicio.json'
+
+# Definimos los alcances (scopes)
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+
+# Autenticación directa sin navegador
+creds = service_account.Credentials.from_service_account_file(
+        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+service = build('drive', 'v3', credentials=creds)
+
+# service = apiConnectGoogle.obtener_servicio()
+# 1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh este valor lo saco de la url de google-drive en la carpeta
+# folderId = obtener_id_carpeta('thumbnails')
+folderId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
+if folderId:
+    results = service.files().list(
+        q=f"'{folderId}' in parents and trashed = false",
+        fields="files(id, name, webContentLink)"
+    ).execute()
+    
+    items = results.get('files', [])
+
+    fotos_drive = {}
+    for item in items:
+        # Este formato de URL es el que Folium puede renderizar como imagen directa
+        link_directo = f"https://drive.google.com/uc?export=download&id={item['id']}"
+        # Esta versión es inestable por eso mejor usar la siguiente
+        # link_directo = f"https://lh3.googleusercontent.com/u/0/d/{item['id']}"
+        fotos_drive[item['name']] = link_directo    
+    # for item in items:
+    #     # Aquí puedes usar el 'webContentLink' para mostrar la imagen en el popup del mapa
+    #     print(f"Procesando miniatura: {item['name']} (ID: {item['id']})")
+else:
+    print("No se encontró la carpeta 'thumbs'.")
 
 
 
@@ -115,48 +163,89 @@ layerGasolineras.add_to(mapa)
 # 2. Crear un cluster para los marcadores
 marker_cluster = MarkerCluster(name="Fotos").add_to(mapa)
 
+# # Trae las fotos desde Drive
+# df['url_mapa'] = df['nombre_foto'].map(fotos_drive)
 
-# 3. Agregar cada foto al mapa
+# 3. Agregar cada foto al mapa Versión archivo en base 64
+# for index, row in df.iterrows():
+    
+#     lista_fotos = row['archivo']
+
+#     html_fotos = ""
+#     for foto in lista_fotos:
+#         nombre_thumb = os.path.splitext(foto)[0] + ".jpg"
+#         ruta_full_disco = os.path.join("C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\img\\thumbnails", nombre_thumb)
+        
+#         if os.path.exists(ruta_full_disco):
+#             # LEER LA IMAGEN Y CONVERTIRLA A BASE64
+#             with open(ruta_full_disco, "rb") as img_file:
+#                 encoded_string = base64.b64encode(img_file.read()).decode('utf-8')
+            
+#             # El src ahora es el código de la imagen, no una ruta
+#             html_fotos += f'<img src="data:image/jpeg;base64,{encoded_string}" width="150" style="margin-bottom:5px;"><br>'
+#         else:
+#             html_fotos += f'<p style="color:red;">No se halló: {nombre_thumb}</p>'
+
+
+#     #     ruta_thumb = f"img/thumbnails/{nombre_thumb}"
+#     #     # print(ruta_thumb)
+#     #     html_fotos += f'<img src="{ruta_thumb}" width="150" style="margin-bottom:5px;"><br>'
+#     #     # print(html_fotos)
+#     html_final = f"""
+#         <div style="max-height: 300px; overflow-y: auto; text-align: center;">
+#             <h4>Fotos ({len(lista_fotos)})</h4>
+#             {html_fotos}
+#         </div>
+#     """    
+#     # print(html_final)
+#     iframe = folium.IFrame(html_final, width=200, height=200)
+#     popup = folium.Popup(iframe, max_width=200)
+    
+#     folium.Marker(
+#         location=[row['lat'], row['lon']],
+#         popup=popup
+#     ).add_to(marker_cluster)    
+    
+    # ).add_to(marker_cluster)
+
+
+# 3. Agregar cada foto al mapa (Versión Google Drive)
 for index, row in df.iterrows():
     
     lista_fotos = row['archivo']
-
     html_fotos = ""
+    
     for foto in lista_fotos:
+        # Buscamos el nombre del thumb (ej: foto1.jpg)
         nombre_thumb = os.path.splitext(foto)[0] + ".jpg"
-        ruta_full_disco = os.path.join("C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\img\\thumbnails", nombre_thumb)
         
-        if os.path.exists(ruta_full_disco):
-            # LEER LA IMAGEN Y CONVERTIRLA A BASE64
-            with open(ruta_full_disco, "rb") as img_file:
-                encoded_string = base64.b64encode(img_file.read()).decode('utf-8')
-            
-            # El src ahora es el código de la imagen, no una ruta
-            html_fotos += f'<img src="data:image/jpeg;base64,{encoded_string}" width="150" style="margin-bottom:5px;"><br>'
+        # En lugar de buscar en C:\juegos\..., buscamos en nuestro diccionario de Drive
+        url_drive = fotos_drive.get(nombre_thumb)
+        
+        if url_drive:
+            # El src ahora es el link directo de Drive
+            html_fotos += f'<img src="{url_drive}" width="150" style="margin-bottom:5px; border-radius:5px;"><br>'
         else:
-            html_fotos += f'<p style="color:red;">No se halló: {nombre_thumb}</p>'
+            # Si no está en el diccionario de la carpeta de Drive
+            html_fotos += f'<p style="color:red; font-size:10px;">No en Drive: {nombre_thumb}</p>'
 
-
-    #     ruta_thumb = f"img/thumbnails/{nombre_thumb}"
-    #     # print(ruta_thumb)
-    #     html_fotos += f'<img src="{ruta_thumb}" width="150" style="margin-bottom:5px;"><br>'
-    #     # print(html_fotos)
     html_final = f"""
-        <div style="max-height: 300px; overflow-y: auto; text-align: center;">
-            <h4>Fotos ({len(lista_fotos)})</h4>
+        <div style="max-height: 300px; overflow-y: auto; text-align: center; font-family: sans-serif;">
+            <h4 style="margin-bottom:10px;">Fotos ({len(lista_fotos)})</h4>
             {html_fotos}
         </div>
     """    
-    # print(html_final)
-    iframe = folium.IFrame(html_final, width=200, height=200)
-    popup = folium.Popup(iframe, max_width=200)
+    
+    iframe = folium.IFrame(html_final, width=220, height=250)
+    popup = folium.Popup(iframe, max_width=250)
     
     folium.Marker(
         location=[row['lat'], row['lon']],
-        popup=popup
-    ).add_to(marker_cluster)    
-    
-    # ).add_to(marker_cluster)
+        popup=popup,
+        icon=folium.Icon(color='blue', icon='camera') # Agregué un icono de cámara
+    ).add_to(marker_cluster)
+
+
 
 #agregar buscador
 estDatosGeojson = {
