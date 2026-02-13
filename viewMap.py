@@ -24,6 +24,9 @@ def obtener_id_carpeta(nombre_carpeta):
     items = resultados.get('files', [])
     return items[0]['id'] if items else None
 
+#definir letra para el proyecto 
+fuente_apple = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+
 # with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\fotosFinal.json', 'r') as f:
 with open('data/fotosFinal.json', 'r') as f:
     datos = json.load(f)
@@ -74,26 +77,14 @@ if folderId:
         file_id = item['id']
         # Usamos el formato thumbnail que es el más compatible
         link = f"https://drive.google.com/thumbnail?sz=w500&id={item['id']}" 
-        # print("Archivo:",item['name'], item['id'])
-        # f"{file_id}"
-        fotos_drive[item['name']] = link
-
-    # for item in items:
-    #     # Este formato de URL es el que Folium puede renderizar como imagen directa
-    #     link_directo = f"https://drive.google.com/uc?export=download&id={item['id']}"
-    #     # Esta versión es inestable por eso mejor usar la siguiente
-    #     # link_directo = f"https://lh3.googleusercontent.com/u/0/d/{item['id']}"
-    #     fotos_drive[item['name']] = link_directo    
-    # for item in items:
-    #     # Aquí puedes usar el 'webContentLink' para mostrar la imagen en el popup del mapa
-    #     print(f"Procesando miniatura: {item['name']} (ID: {item['id']})")
+        fotos_drive[item['name']] = link    
 else:
     print("No se encontró la carpeta 'thumbs'.")
 
 
 
 #arreglar la parte cronologica de las fotos
-df['fecha_dt'] = pd.to_datetime(df['fecha'], format='%Y:%m:%d %H:%M:%S', errors='coerce')
+df['fecha_dt'] = pd.to_datetime(df['fecha_min'], format='%Y:%m:%d %H:%M:%S', errors='coerce')
 
 #creo el mapa centrado en el promedio de tus coordenadas (mean) y lo pongo como zoom_star=4
 #para que se vea todo el mapa de argentina
@@ -227,7 +218,7 @@ for index, row in df.iterrows():
     
     for foto in lista_fotos:
         # Buscamos el nombre del thumb (ej: foto1.jpg)
-        nombre_thumb = os.path.splitext(foto)[0] + ".jpg"
+        nombre_thumb = os.path.splitext(foto["nombre"])[0] + ".jpg"
         
         # En lugar de buscar en C:\juegos\..., buscamos en nuestro diccionario de Drive
         url_drive = fotos_drive.get(nombre_thumb)
@@ -235,14 +226,28 @@ for index, row in df.iterrows():
         if url_drive:
             # El src ahora es el link directo de Drive
             # html_fotos += f'<img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="margin-bottom:5px; border-radius:5px;"><br>'
-            html_fotos += f'<img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="border-radius:5px;" >'
+            html_fotos += f'''
+            <div style="margin-bottom: 10px;width: 100%; border-radius: 12px;background-color: #fbfbfd; border: 1px solid #e1e1e3;overflow: hidden;color: #86868b">
+                <img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="width: 100%" >
+                <p style="font-size: 10px; margin: 0; color: #666;">{foto["fecha"]}</p>
+            </div>
+            '''
         else:
             # Si no está en el diccionario de la carpeta de Drive
             html_fotos += f'<p style="color:red; font-size:10px;">No en Drive: {nombre_thumb}</p>'
 
     html_final = f"""
-        <div style="max-height: 300px; overflow-y: auto; text-align: center; font-family: sans-serif;">
-            <h4 style="margin-bottom:10px;">Fotos ({len(lista_fotos)})</h4>
+        <div style="max-height: 350px; 
+            overflow-y: auto; 
+            text-align: center; 
+            font-family: {fuente_apple}; 
+            padding: 10px; 
+            background-color: white;">
+            <h4 style="margin: 0 0 12px 0; 
+               color: #1d1d1f; 
+               font-size: 16px; 
+               font-weight: 600; 
+               letter-spacing: -0.5px;">Fotos ({len(lista_fotos)})</h4>
             {html_fotos}
         </div>
     """    
