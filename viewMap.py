@@ -52,7 +52,7 @@ with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\
 SERVICE_ACCOUNT_FILE = 'config/claveServicio.json'
 
 # Definimos los alcances (scopes)
-SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+SCOPES = ['https://www.googleapis.com/auth/drive']
 
 # Autenticación directa sin navegador
 creds = service_account.Credentials.from_service_account_file(
@@ -237,7 +237,7 @@ for index, row in df.iterrows():
             html_fotos += f'<p style="color:red; font-size:10px;">No en Drive: {nombre_thumb}</p>'
 
     html_final = f"""
-        <div style="max-height: 350px; 
+        <div style="max-height: 300px; 
             overflow-y: auto; 
             text-align: center; 
             font-family: {fuente_apple}; 
