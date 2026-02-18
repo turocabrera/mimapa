@@ -87,7 +87,7 @@ def processDirectory(directorioOrigen,directorioDestino,origen,destino):
                        thumbNewDrive=createThumbnails(contenidoBytesImagenDrive)                
                        saveBytesDrive(thumbNewDrive,nombreJpgDrive,directorioDestino)      
                        contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)           
-    print("¡Miniaturas {contadorArchivosProcesados}  creadas con éxito!:")
+    print(f"¡Miniaturas {contadorArchivosProcesados}  creadas con éxito!:")
 
 def getBytesLocal(ruta):
     with open(ruta, 'rb') as f:
@@ -106,13 +106,34 @@ def getBytesDrive(fileId):
         print(f"Error al descargar {fileId}: {e}")
         return None
 
+def getIdFileDrive(nombreArchivo,folderId):    
+    query = f"name = \"{nombreArchivo}\" and '{folderId}' in parents and trashed = false"
+    resultados = service.files().list(q=query, fields="files(id, name)").execute()
+    items = resultados.get('files', [])
+    if not items:
+        return None
+    else:
+        # Tomamos el ID del primer resultado encontrado
+        return items[0]['id']
+        
+def deleteFileDrive(nombreArchivo,folderId):
+    idFileDrive=getIdFileDrive(nombreArchivo,folderId)
+    if idFileDrive is not None:
+        try:
+            service.files().delete(fileId=idFileDrive).execute()
+        except Exception as e:
+            print(f"No se pudo eliminar el archivo previo {nombreArchivo}: {e}")
+
 def saveBytesDrive(contenidoBytes, nombre, folderId):
     try:
+        # eliminar archivo anterior
+        deleteFileDrive(nombre,folderId)
+        
         file_metadata = {
             'name': nombre,
             'parents': [folderId]
         }
-        # Creamos un flujo de bytes para la subida
+        # Creamos un flujo de bytes para la subida        
         media = MediaIoBaseUpload(io.BytesIO(contenidoBytes), 
                                   mimetype='image/jpeg', 
                                   resumable=True)
