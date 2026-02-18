@@ -1,6 +1,7 @@
 import pandas as pd
 import io
 import simplejson as json
+import UtilFramework as utilFramework
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS
 from google.auth.transport.requests import Request
@@ -101,7 +102,8 @@ def getBytesDrive(fileId):
 def procesar_carpeta(directorio,origen):
     lista_puntos = []
     print("Origen:",origen)
-    if origen=="local":
+    contadorArchivosProcesados = 1
+    if origen=="local":                        
             for archivo in os.listdir(directorio):                
                 if archivo.lower().endswith(('.heic', '.jpg', '.jpeg', '.png')):
                     ruta_completa = os.path.join(directorio, archivo)                    
@@ -118,7 +120,7 @@ def procesar_carpeta(directorio,origen):
                         
                         #buscar fecha en otros campos
                         fecha = exif["fecha"]
-                        print("archivo procesado:",archivo)                   
+                        contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)
                         lista_puntos.append({
                             "archivo": archivo,
                             "lat": lat,
@@ -135,6 +137,7 @@ def procesar_carpeta(directorio,origen):
             ).execute()
         # print(results)    
         items = results.get('files', [])        
+        
         for item in items:
                 #  print(item['name'])
                  if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
@@ -156,7 +159,7 @@ def procesar_carpeta(directorio,origen):
                             
                             #buscar fecha en otros campos
                             fecha = exif["fecha"]
-                            print("archivo procesado:",item['name'])                   
+                            contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
                             lista_puntos.append({
                                 "archivo": item['name'],
                                 "lat": lat,
@@ -164,6 +167,7 @@ def procesar_carpeta(directorio,origen):
                                 # "fecha": exif.get("DateTimeOriginal", "Desconocida")
                                 "fecha": fecha
                             })
+    print("Total archivos procesados:",contadorArchivosProcesados)
     return lista_puntos
 
 # Ejemplo de ejecución

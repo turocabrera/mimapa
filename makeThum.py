@@ -2,6 +2,7 @@ import os
 import io
 from PIL import Image
 import apiConnectGoogle as apiConnectGoogle
+import UtilFramework as utilFramework
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
@@ -53,6 +54,7 @@ def createThumbnails(imgBytesOrigen):
 #Recorrer el directorio y cargarlo en un directorio en particular
 def processDirectory(directorioOrigen,directorioDestino,origen,destino):
     # crear directorio destino en caso de que no exista
+    contadorArchivosProcesados=1
     if origen=="local":
         if not os.path.exists(directorioDestino):
             os.makedirs(directorioDestino)            
@@ -63,19 +65,20 @@ def processDirectory(directorioOrigen,directorioDestino,origen,destino):
                 nombre_jpg = os.path.splitext(archivo)[0] + ".jpg"            
                 thumbNew=createThumbnails(contenidoBytesImagen)
                 rutaArchivoThumb = os.path.join(directorioDestino, nombre_jpg)
-                saveBytesLocal(thumbNew,rutaArchivoThumb)                
+                saveBytesLocal(thumbNew,rutaArchivoThumb)     
+                contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)           
     else:
         #leer unidad desde origen Drive
-        print("directorio origen:",directorioOrigen)
+        # print("directorio origen:",directorioOrigen)
         results = service.files().list(
                 q=f"'{directorioOrigen}' in parents and trashed = false",
                 pageSize=1000,
                 fields="files(id, name, webContentLink)"        
             ).execute()
-        print(results)    
+        # print(results)    
         items = results.get('files', [])        
         for item in items:
-                 print(item['name'])
+                #  print(item['name'])
                  if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg')):        
                        fileId = item['id']
                        # Usamos el formato thumbnail que es el más compatible
@@ -83,7 +86,8 @@ def processDirectory(directorioOrigen,directorioDestino,origen,destino):
                        nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
                        thumbNewDrive=createThumbnails(contenidoBytesImagenDrive)                
                        saveBytesDrive(thumbNewDrive,nombreJpgDrive,directorioDestino)      
-    print("¡Miniaturas creadas con éxito!")
+                       contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)           
+    print("¡Miniaturas {contadorArchivosProcesados}  creadas con éxito!:")
 
 def getBytesLocal(ruta):
     with open(ruta, 'rb') as f:
