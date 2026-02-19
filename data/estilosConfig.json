@@ -3,6 +3,7 @@
     "restaurant": {"color": "red",    "icon": "cutlery"},
     "museo":      {"color": "orange",   "icon": "university"},
     "cafeteria": {"color": "cadetblue", "icon": "coffee"},
-    "fish": {"color": "blue", "icon": "fish"},
+    "lake": {"color": "#A4C8E1", "icon": "water"},
+    "bridge": {"color": "wine", "icon": "bridge"},
     "default":    {"color": "gray",   "icon": "info-circle"}
 }

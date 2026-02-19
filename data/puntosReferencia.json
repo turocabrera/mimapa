@@ -80,5 +80,68 @@
 	"detalles":[		
 		"pejerrey a la romana"
 	]
+},
+{"nombre": "Lago Moquehue", 
+	"lat": -38.90253028888281,  
+	"lon": -71.27844412683444,
+	"tipo":"lake",
+	"categoria":"lago",
+	"detalles":[
+		"Trucha Arcoíris", "Trucha Marrón","Trucha Fontinalis",
+		"Perca" , "Pejerrey Patagónico", "Puyen",
+		"Pequeños peces forrajeros"
+	]
+},
+{"nombre": "Lago Lácar", 
+	"lat": -40.16044880772752,  
+	"lon": -71.46541017075144,
+	"tipo":"lake",
+	"categoria":"lago",
+	"detalles":[
+		"Trucha Marrón",
+		"Trucha de Arroyo",
+		"Trucha de Lago o Bocona",
+		"Perca o Trucha Criolla",
+		"Pejerrey Patagónico"
+	]
+},
+{"nombre": "Lago Alumine", 
+	"lat": -38.91727919789365,  
+	"lon": -71.13008768272128,
+	"tipo":"lake",
+	"categoria":"lago",
+	"detalles":[
+		"Trucha Arcoíris",
+		"Trucha Marrón",
+		"Trucha de Arroyo",		
+		"Perca o Trucha Criolla",
+		"Pejerrey Patagónico"
+	]
+},
+{"nombre": "Dique Cabra Corral", 
+	"lat": -25.3016855756963, 
+	"lon": -65.4178815182793,  
+	"tipo":"lake",
+	"categoria":"lago",
+	"detalles":[
+		"Pejerrey",
+		"Tararira",
+		"Bagres",		
+		"Dientudos",
+		"Mojarras"		
+	]
+},
+{"nombre": "Puente Cabra Corral", 
+	"lat": -25.283470755495877, 
+	"lon": -65.39313380896019,  
+	"tipo":"bridge",
+	"categoria":"construcción",
+	"detalles":[
+		"Pejerrey",
+		"Tararira",
+		"Bagres",		
+		"Dientudos",
+		"Mojarras"		
+	]
 }
 ]
