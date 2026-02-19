@@ -32,5 +32,17 @@
 		"Perca o Trucha Criolla",
 		"Pejerrey Patagónico"
 	]
+},
+{"nombre": "Dique Cabra Corral", 
+	"lat": -25.3016855756963, 
+	"lon": -65.4178815182793,  
+	"tipo":"fish",
+	"fauna":[
+		"Pejerrey",
+		"Tararira",
+		"Bagres",		
+		"Dientudos",
+		"Mojarras"		
+	]
 }
 ]

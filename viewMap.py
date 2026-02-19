@@ -180,7 +180,8 @@ for index, fila in dfFauna.iterrows():
     """
     
     estilo = estiloConfigDatos.get(fila['tipo'], estiloConfigDatos['default'])
-    #genero icon especifico de folium
+    #genero icon pez con una rotacion
+    estiloPersonalizado = 'margin-top:0; transform: rotate(270deg);' if estilo['icon'] == 'fish' else 'margin-top:0;'
     iconEstilo = BeautifyIcon(
         icon=estilo['icon'],
         icon_shape='circle',      # Forma circular
@@ -188,7 +189,7 @@ for index, fila in dfFauna.iterrows():
         background_color=estilo['color'], # El fondo con tu color del JSON
         text_color='white',       # Color del icono
         border_width=3,           # Grosor del borde
-        inner_icon_style='margin-top:0;'
+        inner_icon_style=estiloPersonalizado
     )
     folium.Marker(
         location=[fila['lat'], fila['lon']],
