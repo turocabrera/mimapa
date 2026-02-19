@@ -1,0 +1,36 @@
+[
+{"nombre": "Lago Moquehue", 
+	"lat": -38.90253028888281,  
+	"lon": -71.27844412683444,
+	"tipo":"fish",
+	"fauna":[
+		"Trucha Arcoíris", "Trucha Marrón","Trucha Fontinalis",
+		"Perca" , "Pejerrey Patagónico", "Puyen",
+		"Pequeños peces forrajeros"
+	]
+},
+{"nombre": "Lago Lácar", 
+	"lat": -40.16044880772752,  
+	"lon": -71.46541017075144,
+	"tipo":"fish",
+	"fauna":[
+		"Trucha Marrón",
+		"Trucha de Arroyo",
+		"Trucha de Lago o Bocona",
+		"Perca o Trucha Criolla",
+		"Pejerrey Patagónico"
+	]
+},
+{"nombre": "Lago Alumine", 
+	"lat": -38.91727919789365,  
+	"lon": -71.13008768272128,
+	"tipo":"fish",
+	"fauna":[
+		"Trucha Arcoíris",
+		"Trucha Marrón",
+		"Trucha de Arroyo",		
+		"Perca o Trucha Criolla",
+		"Pejerrey Patagónico"
+	]
+}
+]

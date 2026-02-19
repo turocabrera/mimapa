@@ -3,5 +3,6 @@
     "restaurant": {"color": "red",    "icon": "cutlery"},
     "museo":      {"color": "orange",   "icon": "university"},
     "cafeteria": {"color": "cadetblue", "icon": "coffee"},
+    "fish": {"color": "blue", "icon": "fish"},
     "default":    {"color": "gray",   "icon": "info-circle"}
 }

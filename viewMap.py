@@ -33,18 +33,23 @@ with open('data/fotosFinal.json', 'r') as f:
 df = pd.DataFrame(datos)
 #en este archivo cargaba las estaciones de servicio pero ahora no solo seran estaciones de servicio
 #proximamente cambiaré el nombre del archivo
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\estacionesServicio.json', 'r') as est:
+with open('data/estacionesServicio.json', 'r') as est:
     estDatos = json.load(est)
 dfEstacionesServicio = pd.DataFrame(estDatos)
+
+#Cargar Fauna
+with open('data/fauna.json', 'r', encoding='utf-8') as jfauna:
+    estFauna = json.load(jfauna)
+dfFauna = pd.DataFrame(estFauna)
 #cargo las configuraciones de iconos para los itemos que no son fotos
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\estilosConfig.json', 'r') as estiloConfigRead:
+with open('data/estilosConfig.json', 'r') as estiloConfigRead:
     estiloConfigDatos = json.load(estiloConfigRead)
 
 #cargo provincias visitadas. salta jujuy y neuquen
 capaProvincias = folium.FeatureGroup(name="Límites Provinciales")
-folium.GeoJson('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\provincias.json',name='provincias',style_function=lambda x: {'fillColor': '#3186cc','color': 'blue','weight': 2,'fillOpacity': 0.4}).add_to(capaProvincias)
+folium.GeoJson('data/provincias.json',name='provincias',style_function=lambda x: {'fillColor': '#3186cc','color': 'blue','weight': 2,'fillOpacity': 0.4}).add_to(capaProvincias)
 
-with open('C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\data\\rutas.json', 'r') as rutas:
+with open('data/rutas.json', 'r', encoding='utf-8') as rutas:
     rutaDatos = json.load(rutas)
 
 
@@ -126,6 +131,7 @@ capaProvincias.add_to(mapa)
 
 
 layerGasolineras = folium.FeatureGroup(name='referencias útiles')
+layerFauna = folium.FeatureGroup(name='fauna')
 
 layerRutas = folium.FeatureGroup(name='rutas recorridas')
 
@@ -161,54 +167,43 @@ for index, fila in dfEstacionesServicio.iterrows():
 
 layerGasolineras.add_to(mapa)
 
+#Fauna
+for index, fila in dfFauna.iterrows():
+    # Creamos un texto para el popup que incluya las funciones
+    # Unimos la lista de funciones con saltos de línea HTML <br>
+    faunas = "<br>".join([f"• {f}" for f in fila['fauna']])
+
+    contenido_popup = f"""
+    <strong>{fila['nombre']}</strong><br>
+    <strong>Fauna:</strong><br>
+    {faunas}
+    """
+    
+    estilo = estiloConfigDatos.get(fila['tipo'], estiloConfigDatos['default'])
+    #genero icon especifico de folium
+    iconEstilo = BeautifyIcon(
+        icon=estilo['icon'],
+        icon_shape='circle',      # Forma circular
+        border_color='white',     # EL BORDE BLANCO
+        background_color=estilo['color'], # El fondo con tu color del JSON
+        text_color='white',       # Color del icono
+        border_width=3,           # Grosor del borde
+        inner_icon_style='margin-top:0;'
+    )
+    folium.Marker(
+        location=[fila['lat'], fila['lon']],
+        popup=folium.Popup(contenido_popup, max_width=200),
+        tooltip=fila['nombre'],
+        icon=iconEstilo
+        # icon=folium.Icon(  color=estilo['color'],icon=estilo['icon'], prefix='fa')        
+    ).add_to(layerFauna)
+
+layerFauna.add_to(mapa)
+
 # 2. Crear un cluster para los marcadores
 marker_cluster = MarkerCluster(name="Fotos").add_to(mapa)
 
 # # Trae las fotos desde Drive
-# df['url_mapa'] = df['nombre_foto'].map(fotos_drive)
-
-# 3. Agregar cada foto al mapa Versión archivo en base 64
-# for index, row in df.iterrows():
-    
-#     lista_fotos = row['archivo']
-
-#     html_fotos = ""
-#     for foto in lista_fotos:
-#         nombre_thumb = os.path.splitext(foto)[0] + ".jpg"
-#         ruta_full_disco = os.path.join("C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\img\\thumbnails", nombre_thumb)
-        
-#         if os.path.exists(ruta_full_disco):
-#             # LEER LA IMAGEN Y CONVERTIRLA A BASE64
-#             with open(ruta_full_disco, "rb") as img_file:
-#                 encoded_string = base64.b64encode(img_file.read()).decode('utf-8')
-            
-#             # El src ahora es el código de la imagen, no una ruta
-#             html_fotos += f'<img src="data:image/jpeg;base64,{encoded_string}" width="150" style="margin-bottom:5px;"><br>'
-#         else:
-#             html_fotos += f'<p style="color:red;">No se halló: {nombre_thumb}</p>'
-
-
-#     #     ruta_thumb = f"img/thumbnails/{nombre_thumb}"
-#     #     # print(ruta_thumb)
-#     #     html_fotos += f'<img src="{ruta_thumb}" width="150" style="margin-bottom:5px;"><br>'
-#     #     # print(html_fotos)
-#     html_final = f"""
-#         <div style="max-height: 300px; overflow-y: auto; text-align: center;">
-#             <h4>Fotos ({len(lista_fotos)})</h4>
-#             {html_fotos}
-#         </div>
-#     """    
-#     # print(html_final)
-#     iframe = folium.IFrame(html_final, width=200, height=200)
-#     popup = folium.Popup(iframe, max_width=200)
-    
-#     folium.Marker(
-#         location=[row['lat'], row['lon']],
-#         popup=popup
-#     ).add_to(marker_cluster)    
-    
-    # ).add_to(marker_cluster)
-
 
 # 3. Agregar cada foto al mapa (Versión Google Drive)
 for index, row in df.iterrows():
@@ -324,28 +319,32 @@ mapId = mapa.get_name()
 layerGasolineriaId = layerGasolineras.get_name()
 layerProvinciaId = capaProvincias.get_name()
 layerRutasId = layerRutas.get_name()
+layerFaunaId=layerFauna.get_name()
 #script para mostrar o no estaciones de servicio
 script_zoom = Element(f"""
     <script>
         var checkExist = setInterval(function() {{
            // Verificamos si tanto el objeto del mapa como la capa ya existen
-           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined' && typeof {layerRutasId} !== 'undefined' ) {{
+           if (typeof {mapId} !== 'undefined' && typeof {layerGasolineriaId} !== 'undefined' && typeof {layerProvinciaId} !== 'undefined' && typeof {layerRutasId} !== 'undefined' && typeof {layerFaunaId} !== 'undefined' ) {{
               var mapa_objeto = {mapId};
               var capa_objeto = {layerGasolineriaId};
               var capa_provincias = {layerProvinciaId};              
               var capa_rutas = {layerRutasId};
+              var capa_fauna = {layerFaunaId};
               function actualizar() {{                  
                   var z = mapa_objeto.getZoom();                                      
                   if (z < 8) {{                  
                       if (mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_objeto);                          
                           mapa_objeto.removeLayer(capa_rutas);                          
+                          mapa_objeto.removeLayer(capa_fauna);                          
                           mapa_objeto.addLayer(capa_provincias);
                       }}
                   }} else {{
                       if (!mapa_objeto.hasLayer(capa_objeto)) {{
                           mapa_objeto.removeLayer(capa_provincias);
                           mapa_objeto.addLayer(capa_objeto);                          
+                          mapa_objeto.addLayer(capa_fauna);                          
                           mapa_objeto.addLayer(capa_rutas);                          
                       }}
                   }}
