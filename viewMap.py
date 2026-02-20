@@ -273,7 +273,8 @@ servicios_search = Search(
     search_label='search_index',
     # search_label='nombre', # El campo del JSON por el que querés buscar
     weight=3,
-    zoom=17
+    zoom=17,
+    auto_pan=True  # de esta manera se fuerza para mover la pantalla
 ).add_to(mapa)
 
 
@@ -331,16 +332,22 @@ script_forzar_zoom_search = Element(f"""
             function forzarVuelo() {{
                 // Le damos un mini respiro para que Folium encuentre el punto
                 setTimeout(function() {{
+                    var encontrado = false;
                     // Buscamos el círculo azul que Folium dibuja al encontrar algo
                     var circuloSeleccion = document.querySelector('.leaflet-marker-icon, .leaflet-control-search-location');
                     
                     // Si Folium encontró algo, el mapa tendrá una capa nueva temporal
                     mapa.eachLayer(function(l) {{
-                        if (l.options && l.options.fillColor === '#2196f3') {{ // Color por defecto del buscador
-                            mapa.flyTo(l.getLatLng(), 19, {{animate: true, duration: 2}});
+                        if (l instanceof L.CircleMarker && (l.options.fillColor === '#2196f3' || l.options.color === '#2196f3')) {{ // Color por defecto del buscador
+                            mapa.flyTo(l.getLatLng(), 19, {{animate: true, duration: 1.5}});
+                            encontrado=true;
                         }}
                     }});
-                }}, 300);
+                    if (!encontrado) {{
+                        console.log("No se detectó el círculo azul aún, reintentando...");
+                        // Opcional: un reintento si la animación de Leaflet es lenta
+                    }}
+                }}, 400);
             }}
 
             // Escuchar el Enter en el teclado
