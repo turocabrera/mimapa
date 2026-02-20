@@ -37,16 +37,6 @@ with open('data/puntosReferencia.json', 'r', encoding='utf-8') as puntosf:
     datosPuntoF = json.load(puntosf)
 dfPuntosReferencia = pd.DataFrame(datosPuntoF)
 
-#en este archivo cargaba las estaciones de servicio pero ahora no solo seran estaciones de servicio
-#proximamente cambiaré el nombre del archivo
-# with open('data/estacionesServicio.json', 'r') as est:
-#     estDatos = json.load(est)
-# dfEstacionesServicio = pd.DataFrame(estDatos)
-
-#Cargar Fauna
-# with open('data/fauna.json', 'r', encoding='utf-8') as jfauna:
-#     estFauna = json.load(jfauna)
-# dfFauna = pd.DataFrame(estFauna)
 
 #cargo las configuraciones de iconos para los itemos que no son fotos
 with open('data/estilosConfig.json', 'r') as estiloConfigRead:
@@ -136,23 +126,18 @@ folium.TileLayer(
 #cargo capa de provincias
 capaProvincias.add_to(mapa)
 
-
-# layerGasolineras = folium.FeatureGroup(name='referencias útiles')
-# layerFauna = folium.FeatureGroup(name='fauna')
 layerPuntosReferencia = folium.FeatureGroup(name='puntos referencia ')
 layerRutas = folium.FeatureGroup(name='rutas recorridas')
 
-for index, fila in dfPuntosReferencia.iterrows(): #  dfEstacionesServicio.iterrows():
+for index, fila in dfPuntosReferencia.iterrows(): 
     # Creamos un texto para el popup que incluya las funciones
     # Unimos la lista de funciones con saltos de línea HTML <br>
     detalles = "<br>".join([f"• {f}" for f in fila['detalles']])
-
     contenido_popup = f"""
     <strong>{fila['nombre']}</strong><br>
     <strong>Detalles:</strong><br>
     {detalles}
-    """
-    
+    """  
     estilo = estiloConfigDatos.get(fila['tipo'], estiloConfigDatos['default'])
     #genero icon especifico de folium
     iconEstilo = BeautifyIcon(
@@ -167,46 +152,12 @@ for index, fila in dfPuntosReferencia.iterrows(): #  dfEstacionesServicio.iterro
     folium.Marker(
         location=[fila['lat'], fila['lon']],
         popup=folium.Popup(contenido_popup, max_width=200),
-        tooltip=fila['nombre'],
+        tooltip=f"{str(fila['categoria']).capitalize()} {fila['nombre']}",
         icon=iconEstilo
         # icon=folium.Icon(  color=estilo['color'],icon=estilo['icon'], prefix='fa')        
     ).add_to(layerPuntosReferencia)
 
 layerPuntosReferencia.add_to(mapa)
-
-#Fauna
-# for index, fila in dfFauna.iterrows():
-#     # Creamos un texto para el popup que incluya las funciones
-#     # Unimos la lista de funciones con saltos de línea HTML <br>
-#     faunas = "<br>".join([f"• {f}" for f in fila['fauna']])
-
-#     contenido_popup = f"""
-#     <strong>{fila['nombre']}</strong><br>
-#     <strong>Fauna:</strong><br>
-#     {faunas}
-#     """
-    
-#     estilo = estiloConfigDatos.get(fila['tipo'], estiloConfigDatos['default'])
-#     #genero icon pez con una rotacion
-#     estiloPersonalizado = 'margin-top:0; transform: rotate(270deg);' if estilo['icon'] == 'fish' else 'margin-top:0;'
-#     iconEstilo = BeautifyIcon(
-#         icon=estilo['icon'],
-#         icon_shape='circle',      # Forma circular
-#         border_color='white',     # EL BORDE BLANCO
-#         background_color=estilo['color'], # El fondo con tu color del JSON
-#         text_color='white',       # Color del icono
-#         border_width=3,           # Grosor del borde
-#         inner_icon_style=estiloPersonalizado
-#     )
-#     folium.Marker(
-#         location=[fila['lat'], fila['lon']],
-#         popup=folium.Popup(contenido_popup, max_width=200),
-#         tooltip=fila['nombre'],
-#         icon=iconEstilo
-#         # icon=folium.Icon(  color=estilo['color'],icon=estilo['icon'], prefix='fa')        
-#     ).add_to(layerFauna)
-
-# layerFauna.add_to(mapa)
 
 # 2. Crear un cluster para los marcadores
 marker_cluster = MarkerCluster(name="Fotos").add_to(mapa)
@@ -282,7 +233,8 @@ estDatosGeojson = {
             "properties": {
                 "nombre": punto['nombre'],
                 "tipo": punto['tipo'],
-                "detalles": ", ".join(punto['detalles']) # Convertimos la lista a texto para el buscador
+                "detalles": ", ".join(punto['detalles']), # Convertimos la lista a texto para el buscador
+                "search_index": f"{ str(punto['categoria']).capitalize()} - {punto['nombre']} - {' '.join(punto['detalles'])}"
             }
         } for punto in datosPuntoF
     ]
@@ -294,6 +246,7 @@ origenBusquedaEstDatos = folium.GeoJson(
     # tooltip=folium.GeoJsonTooltip(fields=['nombre', 'tipo']),
     style_function=lambda x: {'fillOpacity': 0, 'opacity': 0, 'weight': 0},
     marker=folium.CircleMarker(radius=1, color='transparent'), 
+    
     control=False
 ).add_to(mapa)
 
@@ -317,9 +270,10 @@ servicios_search = Search(
     geom_type='Point',
     placeholder='Buscar lugar...',
     collapsed=False,
-    search_label='nombre', # El campo del JSON por el que querés buscar
+    search_label='search_index',
+    # search_label='nombre', # El campo del JSON por el que querés buscar
     weight=3,
-    zoom=19
+    zoom=17
 ).add_to(mapa)
 
 
