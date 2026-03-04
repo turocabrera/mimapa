@@ -44,5 +44,17 @@
 		"Dientudos",
 		"Mojarras"		
 	]
+},
+{"nombre": "Puente Cabra Corral", 
+	"lat": -25.283470755495877, 
+	"lon": -65.39313380896019,  
+	"tipo":"bridge",
+	"fauna":[
+		"Pejerrey",
+		"Tararira",
+		"Bagres",		
+		"Dientudos",
+		"Mojarras"		
+	]
 }
 ]

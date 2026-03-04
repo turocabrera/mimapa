@@ -137,7 +137,7 @@ def procesar_carpeta(directorio,origen):
             ).execute()
         # print(results)    
         items = results.get('files', [])        
-        
+        print(f"ℹ️ total de archivos a procesar:{len(items)} ")
         for item in items:
                 #  print(item['name'])
                  if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
@@ -146,8 +146,6 @@ def procesar_carpeta(directorio,origen):
                         contenidoBytesImagenDrive=getBytesDrive(fileId)
                         exif = obtener_exif(None,origen,contenidoBytesImagenDrive)
                         nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
-                    #    thumbNewDrive=createThumbnails(contenidoBytesImagenDrive)                
-                    #    saveBytesDrive(thumbNewDrive,nombreJpgDrive,directorioDestino)
                         if exif and "GPSInfo" in exif:
                             gps = exif["GPSInfo"]
                             # Extraer Latitud y Longitud
@@ -163,16 +161,15 @@ def procesar_carpeta(directorio,origen):
                             lista_puntos.append({
                                 "archivo": item['name'],
                                 "lat": lat,
-                                "lon": lon,
-                                # "fecha": exif.get("DateTimeOriginal", "Desconocida")
+                                "lon": lon,                                
                                 "fecha": fecha
                             })
-    print("Total archivos procesados:",contadorArchivosProcesados)
+    print("✅ Total archivos procesados:",contadorArchivosProcesados)
     return lista_puntos
 
 # Ejemplo de ejecución
 resultados = procesar_carpeta(folderOrigenId,'drive')
-# resultados = procesar_carpeta('img/villaPehuenia/','drive')
+
 with open('data/viajes.json', 'w') as f:
     json.dump(resultados, f, indent=4)
 print ("proceso finalizado")

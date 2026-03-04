@@ -158,6 +158,68 @@
 		"Mojarras"		
 	]
 },
+{"nombre": "Axion Energy Piedra del Aguila", 
+	"lat": -40.04251560702648, 
+	"lon": -70.07212724163149,
+	"tipo":"gas-fuel",
+	"categoria":"estación de servicio",
+	"detalles":[
+		"agua Mate",
+		"full",
+		"souvenirs",
+		"sangueches"
+	]
+},
+{"nombre": "Collón Curá", 
+	"lat": -40.43513379499915, 
+	"lon": -70.65113618328449,  
+	"tipo":"bridge",
+	"categoria":"puente",
+	"detalles":[
+				
+	]
+},
+{"nombre": "La Rinconada", 
+	"lat": -39.9958563573205, 
+	"lon": -70.83430789310607,  
+	"tipo":"bridge",
+	"categoria":"puente",
+	"detalles":[
+				
+	]
+},
+
+{"nombre": "Ignacio Gonzalez", 
+	"lat": -40.069990196829835, 
+	"lon": -71.31708188868924,  
+	"tipo":"bridge",
+	"categoria":"puente",
+	"detalles":[
+				
+	]
+},
+{"nombre": "Chimehuin", 
+	"lat": -39.91614380442069, 
+	"lon": -71.07284002612074,  
+	"tipo":"bridge",
+	"categoria":"puente",
+	"detalles":[
+				
+	]
+},
+{"nombre": "YPF Ruta", 
+	"lat": -40.154029839417554, 
+	"lon": -71.34300625759053,
+	"tipo":"gas-fuel",
+	"categoria":"estación de servicio",
+	"detalles":[
+		"agua Mate",
+		"full",
+		"souvenirs",
+		"sangueches"
+	]
+},
+
 {"nombre": "Lolog", 
 	"lat": -40.04211638215152, 
 	"lon": -71.3543363627453,  

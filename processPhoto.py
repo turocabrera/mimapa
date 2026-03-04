@@ -29,4 +29,4 @@ resultado_final = df_agrupado.to_dict(orient='records')
 with open('data/fotosFinal.json', 'w') as f:
     json.dump(resultado_final, f, indent=4, ignore_nan=True)
 
-print(f"Proceso terminado. De {len(df)} fotos, creamos {len(df_agrupado)} puntos en el mapa.")
+print(f"✅ Proceso terminado. De {len(df)} fotos, creamos {len(df_agrupado)} puntos en el mapa.")
