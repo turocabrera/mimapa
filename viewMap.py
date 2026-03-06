@@ -84,6 +84,9 @@ else:
     print("No se encontró la carpeta 'thumbs'.")
 
 
+#centro de mapa
+centroLat = df['lat'].mean()
+centroLon = df['lon'].mean()
 
 #arreglar la parte cronologica de las fotos
 df['fecha_dt'] = pd.to_datetime(df['fecha_min'], format='%Y:%m:%d %H:%M:%S', errors='coerce')
@@ -429,7 +432,7 @@ scriptVuelo = f"""
                 }}, 5000);
                 setTimeout(next, 8000); // Espera 5 segundos antes de ir al siguiente
             }}else{{
-                    map.flyTo(locations[0], 4, {{
+                    map.flyTo([{centroLat}, {centroLon}], 4, {{
                             animate: true,
                             duration: 3
                         }});
