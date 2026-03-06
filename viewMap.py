@@ -392,6 +392,65 @@ estiloCssBuscador = """
 """
 
 
+
+dfTrailer = df.sample(n=10).sort_values(by='fecha_min')
+
+# 2. Creamos la lista de coordenadas para pasarle a JavaScript
+coordsVuelo = dfTrailer[['lat', 'lon']].values.tolist()
+
+# 3. Inyectamos el JavaScript para el movimiento suave (FlyTo)
+# Esto crea un botón "Iniciar Recorrido" que vuela entre los puntos sin abrir el popup
+scriptVuelo = f"""
+<script>
+    function iniciarRecorrido() {{
+        var locations = {json.dumps(coordsVuelo)};
+        var map = {mapa.get_name()};
+        var i = 0;
+
+        function next() {{
+            if (i < locations.length) {{
+                // vuela a la ubicación con un zoom de 17 y duración de 3 segundos
+                map.flyTo(locations[i], 17, {{
+                    animate: true,
+                    duration: 3
+                }});
+                
+                var circulo = L.circle(locations[i], {{
+                    color: '#e74c3c',
+                    fillColor: '#ff0000',
+                    fillOpacity: 0.4,
+                    radius: 100 // radio en metros
+                }}).addTo(map);
+                i++;
+                
+                // 3. Lo borramos después de 3 segundos (mientras termina el vuelo)
+                setTimeout(function() {{
+                    map.removeLayer(circulo);
+                }}, 5000);
+                setTimeout(next, 8000); // Espera 5 segundos antes de ir al siguiente
+            }}else{{
+                    map.flyTo(locations[0], 4, {{
+                            animate: true,
+                            duration: 3
+                        }});
+                }}  
+            
+        }}
+        if(i<locations.length){{
+            next();
+        }}
+        
+    }}
+</script>
+<button onclick="iniciarRecorrido()" style="position:fixed; bottom:20px; right:20px; z-index:1000; padding:10px; background:white; border-radius:5px; cursor:pointer;">
+    🎥 Volar
+</button>
+"""
+
+
+
+
+
 mapa.get_root().header.add_child(folium.Element(estiloCssBuscador))
 mapa.get_root().html.add_child(script_zoom)
 mapa.get_root().html.add_child(script_forzar_zoom_search)
@@ -400,6 +459,8 @@ mapa.get_root().header.add_child(
     folium.Element('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">')
 )
 
+# Añadimos el script al HTML del mapa
+mapa.get_root().html.add_child(folium.Element(scriptVuelo))
 # Guardar el mapa en un archivo HTML
 folium.LayerControl().add_to(mapa)
 mapa.save("C:\\z\\desarrollo\\varios\\python\\practica\\juegos\\fotoMapa\\index.html")
