@@ -15,6 +15,7 @@ import os
 import apiConnectGoogle as apiConnectGoogle
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from datetime import datetime
 
 
 
@@ -180,13 +181,14 @@ for index, row in df.iterrows():
         # En lugar de buscar en C:\juegos\..., buscamos en nuestro diccionario de Drive
         url_drive = fotos_drive.get(nombre_thumb)
         
+        descripcion=f"{foto['viaje']}-{(datetime.strptime(foto['fecha'],"%Y:%m:%d %H:%M:%S")).strftime("%Y-%m-%d")}"
         if url_drive:
             # El src ahora es el link directo de Drive
             # html_fotos += f'<img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="margin-bottom:5px; border-radius:5px;"><br>'
             html_fotos += f'''
             <div style="margin-bottom: 10px;width: 100%; border-radius: 12px;background-color: #fbfbfd; border: 1px solid #e1e1e3;overflow: hidden;color: #86868b">
                 <img src="{url_drive}" referrerpolicy="no-referrer" width="150" style="width: 100%" >
-                <p style="font-size: 10px; margin: 0; color: #666;">{foto["fecha"]}</p>
+                <p style="font-size: 10px; margin: 0; color: #666;">{descripcion}</p>
             </div>
             '''
         else:

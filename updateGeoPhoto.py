@@ -34,6 +34,7 @@ service = build('drive', 'v3', credentials=creds)
 # folderId = obtener_id_carpeta('thumbnails')
 folderDestinoId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
 folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
+                
 
 def updateGpsPush(file_id, latitud, longitud):
     # 1. Descargar la imagen a memoria (RAM)
@@ -117,13 +118,31 @@ def procesarArchivosUpdateGeo(directorio,origen,cadenaBuscar):
         print('local')
     return 0
 
+def leerCarpetaEHijos(directorio,directorioRaiz,cadenaBuscar):
+    results = service.files().list(
+                q=f"'{directorio}' in parents and name contains '{cadenaBuscar}' and trashed = false",
+                pageSize=1000,
+                fields="files(id, name, mimeType,webContentLink)"       
+                # fields="files(*)"       
+                ).execute()    
+    items = results.get('files', [])  
+    for item in items:    
+                if(item['mimeType']=='application/vnd.google-apps.folder'):
+                        #abrir archivos dentro de la carpeta                        
+                        leerCarpetaEHijos(item['id'],item['name'], "")
+                        
+                else:                    
+                    if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):                                                                        
+                                print(f"' Archivo: {directorioRaiz}-{item['name']} ")                                    
+    return 0
 
-resultados = procesarArchivosUpdateGeo(folderOrigenId,'drive','dji_mimo_20260223_135804_20260223135805_1772061938838_photo')
+resultados = leerCarpetaEHijos(folderOrigenId,'','202')
+# resultados = procesarArchivosUpdateGeo(folderOrigenId,'drive','dji_mimo_20260223_135804_20260223135805_1772061938838_photo')
                                     #    'dji_mimo_20260225_110054_20260225110055_1772061932293_photo')
                                     #    'dji_mimo_20260225_114734_20260225114735_1772061931180_photo')
                                     #    'dji_mimo_20260225_180806_20260225180806_1772061930479_photo')
                                     #    'dji_mimo_20260225_183358_20260225183358_1772061930446_photo')
-if resultados==0:
-     print("Actualización correcta")
+# if resultados==0:
+#      print("Actualización correcta")
 
      

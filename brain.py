@@ -99,7 +99,7 @@ def getBytesDrive(fileId):
         print(f"Error al descargar {fileId}: {e}")
         return None
 
-def procesar_carpeta(directorio,origen):
+def procesarCarpeta(directorio,origen):
     lista_puntos = []
     print("Origen:",origen)
     contadorArchivosProcesados = 1
@@ -167,8 +167,82 @@ def procesar_carpeta(directorio,origen):
     print("✅ Total archivos procesados:",contadorArchivosProcesados)
     return lista_puntos
 
+
+def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
+    
+    # print("Origen:",origen)
+    contadorArchivosProcesados = 1
+    if origen=="local":                        
+            for archivo in os.listdir(directorio):                
+                if archivo.lower().endswith(('.heic', '.jpg', '.jpeg', '.png')):
+                    ruta_completa = os.path.join(directorio, archivo)                    
+                    exif = obtener_exif(ruta_completa,origen,None)
+                    
+                    if exif and "GPSInfo" in exif:
+                        gps = exif["GPSInfo"]
+                        # Extraer Latitud y Longitud
+                        lat = convertir_a_grados(gps["GPSLatitude"])
+                        if gps["GPSLatitudeRef"] != "N": lat = -lat
+                        
+                        lon = convertir_a_grados(gps["GPSLongitude"])
+                        if gps["GPSLongitudeRef"] != "E": lon = -lon
+                        
+                        #buscar fecha en otros campos
+                        fecha = exif["fecha"]
+                        contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)
+                        lista_puntos.append({
+                            "archivo": archivo,
+                            "lat": lat,
+                            "lon": lon,
+                            # "fecha": exif.get("DateTimeOriginal", "Desconocida")
+                            "fecha": fecha
+                        })
+    else:
+        #  drive
+        results = service.files().list(
+                q=f"'{directorio}' in parents and trashed = false",
+                pageSize=1000,
+                fields="files(id, name, mimeType, webContentLink)"        
+            ).execute()
+        items = results.get('files', [])        
+        # print(f"ℹ️ total de archivos a procesar:{len(items)} ")
+        for item in items:
+                if(item['mimeType']=='application/vnd.google-apps.folder'):
+                        #abrir archivos dentro de la carpeta                        
+                        procesarCarpetaRecursivo(item['id'],item['name'], "drive")
+                else:
+                #  print(item['name'])
+                        if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
+                                fileId = item['id']
+                                # Usamos el formato thumbnail que es el más compatible
+                                contenidoBytesImagenDrive=getBytesDrive(fileId)
+                                exif = obtener_exif(None,origen,contenidoBytesImagenDrive)
+                                nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
+                                if exif and "GPSInfo" in exif:
+                                    gps = exif["GPSInfo"]
+                                    # Extraer Latitud y Longitud
+                                    lat = convertir_a_grados(gps["GPSLatitude"])
+                                    if gps["GPSLatitudeRef"] != "N": lat = -lat
+                                    
+                                    lon = convertir_a_grados(gps["GPSLongitude"])
+                                    if gps["GPSLongitudeRef"] != "E": lon = -lon
+                                    
+                                    #buscar fecha en otros campos
+                                    fecha = exif["fecha"]
+                                    contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
+                                    lista_puntos.append({
+                                        "archivo": item['name'],
+                                        "lat": lat,
+                                        "lon": lon,   
+                                        "viaje": directorioRaiz,                             
+                                        "fecha": fecha
+                                    })    
+    return lista_puntos
+
 # Ejemplo de ejecución
-resultados = procesar_carpeta(folderOrigenId,'drive')
+# resultados = procesarCarpeta(folderOrigenId,'drive')
+lista_puntos = []
+resultados = procesarCarpetaRecursivo(folderOrigenId,'recursivo', 'drive')
 
 with open('data/viajes.json', 'w') as f:
     json.dump(resultados, f, indent=4)
