@@ -4,12 +4,16 @@
         "lon": -71.642,
         "archivo": [
             {
+                "id": "1LR72y4fhuIJFzPgB0r1gkeL_cO7OgFjh",
                 "nombre": "IMG_7033.HEIC",
-                "fecha": "2026:02:24 15:05:16"
+                "fecha": "2026:02:24 15:05:16",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1-RKbQaECm-LrpfaGZkbAGT3JuaYVFGf8",
                 "nombre": "IMG_7038.HEIC",
-                "fecha": "2026:02:24 14:58:24"
+                "fecha": "2026:02:24 14:58:24",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:24 14:58:24"
@@ -19,8 +23,10 @@
         "lon": -71.642,
         "archivo": [
             {
+                "id": "1zE19FJqaFxyxgSGK8-8GdfHowXs5WCSU",
                 "nombre": "IMG_7035.HEIC",
-                "fecha": "2026:02:24 15:05:05"
+                "fecha": "2026:02:24 15:05:05",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:24 15:05:05"
@@ -30,20 +36,28 @@
         "lon": -71.542,
         "archivo": [
             {
+                "id": "1IIEhcthYnFBr0CUwGez10yeKgp2jTM4v",
                 "nombre": "IMG_7032.HEIC",
-                "fecha": "2026:02:24 13:00:07"
+                "fecha": "2026:02:24 13:00:07",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1XJYaMXl-LO3SLDiToA5pcOdEMWzARpMT",
                 "nombre": "IMG_7026.HEIC",
-                "fecha": "2026:02:24 12:52:15"
+                "fecha": "2026:02:24 12:52:15",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1ptODdikgxt38mRl8XIT-KawPha3BvR4_",
                 "nombre": "IMG_7031.HEIC",
-                "fecha": "2026:02:24 12:56:30"
+                "fecha": "2026:02:24 12:56:30",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "185Hc4Y-b4cyYoDsbwNVtPO6rLc_q6KV0",
                 "nombre": "IMG_7028.HEIC",
-                "fecha": "2026:02:24 12:53:03"
+                "fecha": "2026:02:24 12:53:03",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:24 12:52:15"
@@ -53,12 +67,16 @@
         "lon": -71.433,
         "archivo": [
             {
+                "id": "10Ufz0Q3vTE29RWMohFiHv-PLTJEMgLkM",
                 "nombre": "IMG_7131b.HEIC",
-                "fecha": "2026:02:26 12:50:23"
+                "fecha": "2026:02:26 12:50:23",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1tQsV7L3Px7_Z14qEDZv4Dq7MSmu1U7De",
                 "nombre": "IMG_7142.HEIC",
-                "fecha": "2026:02:26 12:51:28"
+                "fecha": "2026:02:26 12:51:28",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:26 12:50:23"
@@ -68,8 +86,10 @@
         "lon": -71.445,
         "archivo": [
             {
+                "id": "1NTd9GkYDXGIAs-Ed6SbHHLeAxy0irZyo",
                 "nombre": "dji_fly_20260226_135246_623_1772125374315_photo_optimized.JPG",
-                "fecha": "2026:02:26 13:52:46"
+                "fecha": "2026:02:26 13:52:46",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:26 13:52:46"
@@ -79,8 +99,10 @@
         "lon": -71.443,
         "archivo": [
             {
+                "id": "1pEh8xOIubAb33DxRlEkOrtnfyoRYPEOS",
                 "nombre": "IMG_7159.HEIC",
-                "fecha": "2026:02:26 15:33:59"
+                "fecha": "2026:02:26 15:33:59",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:26 15:33:59"
@@ -90,16 +112,22 @@
         "lon": -71.443,
         "archivo": [
             {
+                "id": "1X0lXKZQe3hMy9Gae45vZaEdH8f1rm-fR",
                 "nombre": "dji_fly_20260226_134908_616_1772125382591_photo_optimized.JPG",
-                "fecha": "2026:02:26 13:49:07"
+                "fecha": "2026:02:26 13:49:07",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1eo1F0OKsSMVsIrbfzUyAbBqnb66SRj1Z",
                 "nombre": "IMG_7144.HEIC",
-                "fecha": "2026:02:26 13:18:00"
+                "fecha": "2026:02:26 13:18:00",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1TAQcCrV8fvqacUBtQI9fBCXr4mht7Ghy",
                 "nombre": "IMG_7149.HEIC",
-                "fecha": "2026:02:26 13:31:19"
+                "fecha": "2026:02:26 13:31:19",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:26 13:18:00"
@@ -109,8 +137,10 @@
         "lon": -71.442,
         "archivo": [
             {
+                "id": "1JIJDZ45oyf1JdqkkCvUuc6g8ugPxmJhK",
                 "nombre": "dji_fly_20260226_135024_620_1772125380878_photo_optimized.JPG",
-                "fecha": "2026:02:26 13:50:25"
+                "fecha": "2026:02:26 13:50:25",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:26 13:50:25"
@@ -120,8 +150,10 @@
         "lon": -71.359,
         "archivo": [
             {
+                "id": "1X6oObfyTc0kOu8i-w3NgNSuM02osgGD-",
                 "nombre": "IMG_7020.HEIC",
-                "fecha": "2026:02:23 18:17:56"
+                "fecha": "2026:02:23 18:17:56",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 18:17:56"
@@ -131,8 +163,10 @@
         "lon": -71.358,
         "archivo": [
             {
+                "id": "1lyy3izGW8NRKDMGE5ya9Y6_lI6FmJ2Ng",
                 "nombre": "IMG_7022.HEIC",
-                "fecha": "2026:02:23 18:24:53"
+                "fecha": "2026:02:23 18:24:53",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 18:24:53"
@@ -142,8 +176,10 @@
         "lon": -71.354,
         "archivo": [
             {
+                "id": "1dCZ5bfGzpIfxgf7Ttc_rVvdxedjrTPDd",
                 "nombre": "IMG_7170.HEIC",
-                "fecha": "2026:02:27 14:50:35"
+                "fecha": "2026:02:27 14:50:35",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:27 14:50:35"
@@ -153,16 +189,22 @@
         "lon": -71.398,
         "archivo": [
             {
+                "id": "1yWSq7xXKjEgHmpYh4TvAMn8fMxVIXxNu",
                 "nombre": "dji_fly_20260223_165118_601_1771876337697_photo_optimized.JPG",
-                "fecha": "2026:02:23 16:51:19"
+                "fecha": "2026:02:23 16:51:19",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1y1HMQzLozgLZLKC3owNemSHy9H6MaX-s",
                 "nombre": "dji_fly_20260223_165106_600_1771876338478_photo_optimized.JPG",
-                "fecha": "2026:02:23 16:51:05"
+                "fecha": "2026:02:23 16:51:05",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1tuvC5VTjPAr0J5CcGbiYEwfJl7AVUpb7",
                 "nombre": "IMG_7013.HEIC",
-                "fecha": "2026:02:23 16:34:52"
+                "fecha": "2026:02:23 16:34:52",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 16:34:52"
@@ -172,8 +214,10 @@
         "lon": -71.399,
         "archivo": [
             {
+                "id": "1fxG0IeJFY-mBfs2xKH8E-9Z5ECR8qYqz",
                 "nombre": "IMG_7009.HEIC",
-                "fecha": "2026:02:23 15:57:04"
+                "fecha": "2026:02:23 15:57:04",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 15:57:04"
@@ -183,8 +227,10 @@
         "lon": -71.398,
         "archivo": [
             {
+                "id": "12ntTtsY1Tc1ki3SAMY8WUFvMwdU97SRT",
                 "nombre": "IMG_7010.HEIC",
-                "fecha": "2026:02:23 16:00:38"
+                "fecha": "2026:02:23 16:00:38",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 16:00:38"
@@ -194,12 +240,16 @@
         "lon": -71.401,
         "archivo": [
             {
+                "id": "1I8uo5AJh3Y7LXMso2UwHEQnzPDx-aNOY",
                 "nombre": "dji_fly_20260223_131302_593_1771863432291_photo_optimized.JPG",
-                "fecha": "2026:02:23 13:13:03"
+                "fecha": "2026:02:23 13:13:03",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1OcUfoQy405iYvSdua_XHO8uApcqKUNeX",
                 "nombre": "dji_fly_20260223_131344_595_1771863430431_photo_optimized.JPG",
-                "fecha": "2026:02:23 13:13:44"
+                "fecha": "2026:02:23 13:13:44",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 13:13:03"
@@ -209,16 +259,22 @@
         "lon": -71.4,
         "archivo": [
             {
+                "id": "1aYiNky9v8munmBABj7QnghQER8HWvjH0",
                 "nombre": "dji_mimo_20260223_135804_20260223135805_1772061938838_photo.JPEG",
-                "fecha": "2026:02:23 13:58:05"
+                "fecha": "2026:02:23 13:58:05",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1oOKv1-Onqid7-6yOyuffTqkef9MinaLz",
                 "nombre": "IMG_7007.HEIC",
-                "fecha": "2026:02:23 14:08:00"
+                "fecha": "2026:02:23 14:08:00",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1M_D06HQYJTJtVXfa0fyQb_N6nrJq4T0o",
                 "nombre": "dji_fly_20260223_131612_598_1771863426420_photo_optimized.JPG",
-                "fecha": "2026:02:23 13:16:11"
+                "fecha": "2026:02:23 13:16:11",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 13:16:11"
@@ -228,8 +284,10 @@
         "lon": -71.4,
         "archivo": [
             {
+                "id": "1H_T-VXODSovP-9GFnxoTBvLZtyH1SJPP",
                 "nombre": "IMG_7008.HEIC",
-                "fecha": "2026:02:23 15:33:13"
+                "fecha": "2026:02:23 15:33:13",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:23 15:33:13"
@@ -239,12 +297,16 @@
         "lon": -71.322,
         "archivo": [
             {
+                "id": "1m4mJiD05JUgey0_jOw84HlyQgZiZKXht",
                 "nombre": "dji_fly_20260222_130704_573_1771776763244_photo_optimized.JPG",
-                "fecha": "2026:02:22 13:07:04"
+                "fecha": "2026:02:22 13:07:04",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1KC9G4detybKD5MLkVP5NRA3kGahOUYob",
                 "nombre": "dji_fly_20260222_130704_573_1771776763244_photo_optimized.JPG",
-                "fecha": "2026:02:22 13:07:04"
+                "fecha": "2026:02:22 13:07:04",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 13:07:04"
@@ -254,16 +316,22 @@
         "lon": -71.321,
         "archivo": [
             {
+                "id": "1Zm8DQE4gZWd_2PcdtOed3YmJJUlyChg0",
                 "nombre": "dji_fly_20260222_145154_583_1771782821124_photo_optimized.JPG",
-                "fecha": "2026:02:22 14:51:54"
+                "fecha": "2026:02:22 14:51:54",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1al1J3F3XIlL9Y1V-_i1sFFNQc6uwOVoE",
                 "nombre": "dji_fly_20260222_145212_584_1771782820258_photo_optimized.JPG",
-                "fecha": "2026:02:22 14:52:12"
+                "fecha": "2026:02:22 14:52:12",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1XxHdWEFW2pyia5QtPsgCKaRcTK1JotS8",
                 "nombre": "dji_fly_20260222_145226_585_1771782815428_photo_optimized.JPG",
-                "fecha": "2026:02:22 14:52:26"
+                "fecha": "2026:02:22 14:52:26",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 14:51:54"
@@ -273,12 +341,16 @@
         "lon": -71.32,
         "archivo": [
             {
+                "id": "1pTGckw6AsFrr7kqDrqmuBXMXsBAv9JbR",
                 "nombre": "dji_fly_20260222_144816_580_1771796486440_photo_optimized.JPG",
-                "fecha": "2026:02:22 14:48:15"
+                "fecha": "2026:02:22 14:48:15",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1Ce2SItmxwGIu92-Et_rTIoZnQEHkl6xj",
                 "nombre": "dji_fly_20260222_144712_578_1771796503925_photo_optimized.JPG",
-                "fecha": "2026:02:22 14:47:12"
+                "fecha": "2026:02:22 14:47:12",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 14:47:12"
@@ -288,20 +360,28 @@
         "lon": -71.317,
         "archivo": [
             {
+                "id": "1wU3V88JDipT4MKYjlndvJ_MPpOVKTmTF",
                 "nombre": "IMG_8666.HEIC",
-                "fecha": "2026:02:22 15:59:59"
+                "fecha": "2026:02:22 15:59:59",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1prqt3dt2tdRsqYWUEd6YaRlfgNAD2_jo",
                 "nombre": "IMG_8669.HEIC",
-                "fecha": "2026:02:22 16:00:50"
+                "fecha": "2026:02:22 16:00:50",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1I0ew_zUuvLghFh3iTCXsN9SwNyPS6_4b",
                 "nombre": "IMG_8667b.jpg",
-                "fecha": "2026:02:22 16:00:04"
+                "fecha": "2026:02:22 16:00:04",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1fTQUoPOcEel2Z8WtP0JmEw9hdYhN2VwK",
                 "nombre": "IMG_8668b.jpg",
-                "fecha": "2026:02:22 16:00:28"
+                "fecha": "2026:02:22 16:00:28",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 15:59:59"
@@ -311,28 +391,40 @@
         "lon": -71.315,
         "archivo": [
             {
+                "id": "1gMR-iDBOvW_qV1pvPav4dazmaekgMhXl",
                 "nombre": "IMG_6957.HEIC",
-                "fecha": "2026:02:22 12:09:51"
+                "fecha": "2026:02:22 12:09:51",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1HB4uHPrIautI4w2x2fQBB7CLN8dCo1dF",
                 "nombre": "IMG_6951.HEIC",
-                "fecha": "2026:02:22 12:07:54"
+                "fecha": "2026:02:22 12:07:54",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1StcTs0xp6iOqp7VNo0cSDXLZCgplIR0q",
                 "nombre": "IMG_6956.HEIC",
-                "fecha": "2026:02:22 12:09:48"
+                "fecha": "2026:02:22 12:09:48",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1ZVMZlTPP5R3oKX7vXR7Mg0EnSX9yfzK_",
                 "nombre": "IMG_6953.HEIC",
-                "fecha": "2026:02:22 12:08:46"
+                "fecha": "2026:02:22 12:08:46",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1vcJGazqKKDhti7LTVPTAJY2Xf529Eke_",
                 "nombre": "IMG_6954.HEIC",
-                "fecha": "2026:02:22 12:08:56"
+                "fecha": "2026:02:22 12:08:56",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1iCmP1jM9ryzxrufmQ435wsijt1lQzsdx",
                 "nombre": "IMG_6955.HEIC",
-                "fecha": "2026:02:22 12:09:07"
+                "fecha": "2026:02:22 12:09:07",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 12:07:54"
@@ -342,8 +434,10 @@
         "lon": -71.312,
         "archivo": [
             {
+                "id": "1qc55YI5G5_XDYCRVX-gRJCXp-9Z3mcHb",
                 "nombre": "IMG_7178.HEIC",
-                "fecha": "2026:02:27 18:10:51"
+                "fecha": "2026:02:27 18:10:51",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:27 18:10:51"
@@ -353,12 +447,16 @@
         "lon": -71.315,
         "archivo": [
             {
+                "id": "1VprmgBi2z0znqmEc6uRyyE9iom8TNkr7",
                 "nombre": "IMG_7204.HEIC",
-                "fecha": "2026:02:28 10:20:27"
+                "fecha": "2026:02:28 10:20:27",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1V-9rxx-0AeYGPqJ8Cf2q1hgjjYnbdonu",
                 "nombre": "IMG_8975.jpg",
-                "fecha": "2026:02:25 18:56:38"
+                "fecha": "2026:02:25 18:56:38",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 18:56:38"
@@ -368,8 +466,10 @@
         "lon": -71.313,
         "archivo": [
             {
+                "id": "1IbLIOXn1U9-19aFT8gY_CpRmGhvPs78X",
                 "nombre": "dji_fly_20260221_211036_569_1771719216355_photo.JPG",
-                "fecha": "2026:02:21 21:10:35"
+                "fecha": "2026:02:21 21:10:35",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:21 21:10:35"
@@ -379,12 +479,16 @@
         "lon": -71.315,
         "archivo": [
             {
+                "id": "1e4GrnC-uyHiO-4ppGjm4ZK0mdbR16HNp",
                 "nombre": "dji_mimo_20260225_180806_20260225180806_1772061930479_photo.JPEG",
-                "fecha": "2026:02:25 18:08:06"
+                "fecha": "2026:02:25 18:08:06",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1-VlPOeV7eaRtRg6j2PRuKTIMaWzy_n-1",
                 "nombre": "dji_mimo_20260225_183358_20260225183358_1772061930446_photo.JPEG",
-                "fecha": "2026:02:25 18:33:58"
+                "fecha": "2026:02:25 18:33:58",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 18:08:06"
@@ -394,8 +498,10 @@
         "lon": -71.318,
         "archivo": [
             {
+                "id": "1nHbpcG5nNdwfwO4mdG_fkEe_YkeSM5Qa",
                 "nombre": "IMG_6990.HEIC",
-                "fecha": "2026:02:22 22:21:08"
+                "fecha": "2026:02:22 22:21:08",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 22:21:08"
@@ -405,8 +511,10 @@
         "lon": -71.317,
         "archivo": [
             {
+                "id": "1OyqJuKuzkIwy54o_Llh_67U7fVIpnt7G",
                 "nombre": "IMG_7112.HEIC",
-                "fecha": "2026:02:25 13:15:47"
+                "fecha": "2026:02:25 13:15:47",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 13:15:47"
@@ -416,8 +524,10 @@
         "lon": -71.319,
         "archivo": [
             {
+                "id": "1AQzwpY_JXLmIQVuSh1mlhxPfMcHrh6hi",
                 "nombre": "dji_fly_20260225_104632_603_1772027399949_photo_optimized.JPG",
-                "fecha": "2026:02:25 10:46:33"
+                "fecha": "2026:02:25 10:46:33",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 10:46:33"
@@ -427,8 +537,10 @@
         "lon": -71.323,
         "archivo": [
             {
+                "id": "1NXbR-lt5K_9RY_Uw29bHzFSTtDyv4rcS",
                 "nombre": "IMG_7050.HEIC",
-                "fecha": "2026:02:25 11:04:46"
+                "fecha": "2026:02:25 11:04:46",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 11:04:46"
@@ -438,8 +550,10 @@
         "lon": -71.325,
         "archivo": [
             {
+                "id": "1DSDozk7bgvIZnX1cMRw01E5ta0CgzT8O",
                 "nombre": "dji_mimo_20260225_110054_20260225110055_1772061932293_photo.JPEG",
-                "fecha": "2026:02:25 11:00:55"
+                "fecha": "2026:02:25 11:00:55",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 11:00:55"
@@ -449,20 +563,28 @@
         "lon": -71.332,
         "archivo": [
             {
+                "id": "1jmtcAezZNNkGy8IdsFBXiaxneE6SpGGd",
                 "nombre": "dji_mimo_20260225_114734_20260225114735_1772061931180_photo.JPEG",
-                "fecha": "2026:02:25 11:47:35"
+                "fecha": "2026:02:25 11:47:35",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1_sNbqmh5_ZSrLQBB96DBDMJ6DrGZ-12S",
                 "nombre": "IMG_7058.JPG",
-                "fecha": "2026:02:25 11:32:15"
+                "fecha": "2026:02:25 11:32:15",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1XLQj-pnlrbUlrUybZHJ_56HCPeo3hcwo",
                 "nombre": "dji_fly_20260225_115712_606_1772031823551_photo_optimized.JPG",
-                "fecha": "2026:02:25 11:57:12"
+                "fecha": "2026:02:25 11:57:12",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1I0O2G2kcra5MVjD-WyRvG4tWQHJXtFRm",
                 "nombre": "IMG_7102.HEIC",
-                "fecha": "2026:02:25 11:37:29"
+                "fecha": "2026:02:25 11:37:29",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 11:32:15"
@@ -472,12 +594,16 @@
         "lon": -71.333,
         "archivo": [
             {
+                "id": "1LIXqmAMqkTLw2fB5B3Cx6krzTmpgAl2d",
                 "nombre": "dji_fly_20260225_115824_608_1772031821145_photo_optimized.JPG",
-                "fecha": "2026:02:25 11:58:23"
+                "fecha": "2026:02:25 11:58:23",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1_g8a1vjq3OzaGQoXPyt-YBUjH7vssqvX",
                 "nombre": "dji_fly_20260225_115830_609_1772031820213_photo_optimized.JPG",
-                "fecha": "2026:02:25 11:58:31"
+                "fecha": "2026:02:25 11:58:31",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:25 11:58:23"
@@ -487,8 +613,10 @@
         "lon": -70.072,
         "archivo": [
             {
+                "id": "1VSLyKi81K2_taY1a1IcfP1RrHiZ2GIKf",
                 "nombre": "IMG_6934.HEIC",
-                "fecha": "2026:02:21 15:00:18"
+                "fecha": "2026:02:21 15:00:18",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:21 15:00:18"
@@ -498,20 +626,28 @@
         "lon": -71.362,
         "archivo": [
             {
+                "id": "1YRF0uy9yZm3V4K7yAF5E_NufkyrXUBCq",
                 "nombre": "IMG_6984.HEIC",
-                "fecha": "2026:02:22 19:47:18"
+                "fecha": "2026:02:22 19:47:18",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1Uoohz7dJjA_4f9hTJsDondICPAvn6TJf",
                 "nombre": "IMG_6987.HEIC",
-                "fecha": "2026:02:22 19:49:16"
+                "fecha": "2026:02:22 19:49:16",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1qnQLohwVQ1wAyZGOmuzHrBB0IvfcDK-M",
                 "nombre": "IMG_6979.HEIC",
-                "fecha": "2026:02:22 19:45:44"
+                "fecha": "2026:02:22 19:45:44",
+                "viaje": "2026 - San Martin de los Andes"
             },
             {
+                "id": "1NKtJqTSAW9m9fWKwrIWFLb1BRyK6O6IU",
                 "nombre": "IMG_6981.HEIC",
-                "fecha": "2026:02:22 19:46:29"
+                "fecha": "2026:02:22 19:46:29",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 19:45:44"
@@ -521,8 +657,10 @@
         "lon": -71.361,
         "archivo": [
             {
+                "id": "1Mgstvc0w5L3H8U75naSl8yf5IEwAMcYu",
                 "nombre": "IMG_6988.HEIC",
-                "fecha": "2026:02:22 20:00:11"
+                "fecha": "2026:02:22 20:00:11",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:02:22 20:00:11"
@@ -532,8 +670,10 @@
         "lon": -70.915,
         "archivo": [
             {
+                "id": "1TDwNoRTeu6MyiUwJnLpd79NNgwXO2bO6",
                 "nombre": "IMG_8499.HEIC",
-                "fecha": "2025:01:15 16:58:52"
+                "fecha": "2025:01:15 16:58:52",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:15 16:58:52"
@@ -543,20 +683,28 @@
         "lon": -70.912,
         "archivo": [
             {
+                "id": "1FCTVH1A2JG_ekSWb6Ic2qeMZcHimRL2G",
                 "nombre": "IMG_8493.HEIC",
-                "fecha": "2025:01:15 14:48:08"
+                "fecha": "2025:01:15 14:48:08",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1R2sv_WyKeLpd0tdokpYyRRh1vOyq3CN5",
                 "nombre": "IMG_8495.HEIC",
-                "fecha": "2025:01:15 14:48:38"
+                "fecha": "2025:01:15 14:48:38",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Ys-bZPZH_ay9A6qr8oUvaZXOjmp4fBl5",
                 "nombre": "IMG_8498.HEIC",
-                "fecha": "2025:01:15 15:51:58"
+                "fecha": "2025:01:15 15:51:58",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1eczxwdfnVp4l43QxlFDKKQXLeyvXoED4",
                 "nombre": "IMG_8494.HEIC",
-                "fecha": "2025:01:15 14:48:22"
+                "fecha": "2025:01:15 14:48:22",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:15 14:48:08"
@@ -566,32 +714,46 @@
         "lon": -71.001,
         "archivo": [
             {
+                "id": "1cBzeXbnd90ta_Lt-cL0N_hkiUwu_yrLd",
                 "nombre": "IMG_8483.HEIC",
-                "fecha": "2025:01:15 13:18:09"
+                "fecha": "2025:01:15 13:18:09",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1l4UK24qN8YINPLkfwp1oXWdjcNhBCjWQ",
                 "nombre": "IMG_8484.HEIC",
-                "fecha": "2025:01:15 13:18:26"
+                "fecha": "2025:01:15 13:18:26",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1DCWd9eedx37XMaNlnYwTiN180M1Sv2-I",
                 "nombre": "IMG_8485.HEIC",
-                "fecha": "2025:01:15 13:18:53"
+                "fecha": "2025:01:15 13:18:53",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1fAiaW3BIv3qyfgO0rXDkmbA-O7Y525Uz",
                 "nombre": "IMG_8489.HEIC",
-                "fecha": "2025:01:15 13:21:50"
+                "fecha": "2025:01:15 13:21:50",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1QsDUEVfXn5lUeVfcoN05UhFQVaaXe5UH",
                 "nombre": "IMG_8482.HEIC",
-                "fecha": "2025:01:15 13:17:08"
+                "fecha": "2025:01:15 13:17:08",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1DaOYLpvz9yktG_i_xiVvOEJ1EQxRuIrk",
                 "nombre": "IMG_8487.HEIC",
-                "fecha": "2025:01:15 13:19:22"
+                "fecha": "2025:01:15 13:19:22",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1hW9cmGn3djp2ccKxzq5k0DxXoXT-pkzw",
                 "nombre": "IMG_8488.HEIC",
-                "fecha": "2025:01:15 13:20:10"
+                "fecha": "2025:01:15 13:20:10",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:15 13:17:08"
@@ -601,44 +763,64 @@
         "lon": -71.027,
         "archivo": [
             {
+                "id": "1R0BWipoDk-7IigVKIhsJZ3dKrFyhFx2Y",
                 "nombre": "IMG_8461.HEIC",
-                "fecha": "2025:01:15 12:57:41"
+                "fecha": "2025:01:15 12:57:41",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "19RQQpPYICwXkuSfDgqwwpISqLPLbphwB",
                 "nombre": "IMG_8478.HEIC",
-                "fecha": "2025:01:15 12:59:54"
+                "fecha": "2025:01:15 12:59:54",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1j69Fe9wVIeplUNbZyhDHVs5qgURLRHzP",
                 "nombre": "IMG_8479.HEIC",
-                "fecha": "2025:01:15 13:00:01"
+                "fecha": "2025:01:15 13:00:01",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1IpN-c9jbN10ayhb2fltWsQpGAE80SBni",
                 "nombre": "IMG_8471.HEIC",
-                "fecha": "2025:01:15 12:58:28"
+                "fecha": "2025:01:15 12:58:28",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1IF7Y0-fQYorr6etG9Q998tFxPYwyRyfo",
                 "nombre": "IMG_8481.HEIC",
-                "fecha": "2025:01:15 13:00:41"
+                "fecha": "2025:01:15 13:00:41",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1v0KjvCzVtwO_MBdzKCLcxu1TtGjjHpmd",
                 "nombre": "IMG_8472.HEIC",
-                "fecha": "2025:01:15 12:58:30"
+                "fecha": "2025:01:15 12:58:30",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Sw0VjHED0RCq4idD6rBHeNoF4Mo5s59K",
                 "nombre": "IMG_8463.HEIC",
-                "fecha": "2025:01:15 12:57:49"
+                "fecha": "2025:01:15 12:57:49",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1DnmN82DspMFN0RBp-TEAb6WVwakI9LqZ",
                 "nombre": "IMG_8468.HEIC",
-                "fecha": "2025:01:15 12:58:07"
+                "fecha": "2025:01:15 12:58:07",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1iEibSfYTbE6WRufzAXYeUWynZZBkhXmb",
                 "nombre": "IMG_8467.HEIC",
-                "fecha": "2025:01:15 12:58:06"
+                "fecha": "2025:01:15 12:58:06",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1_L7i7tbKzm4IzUMDnVxSPktXkYyVkXzR",
                 "nombre": "IMG_8474.HEIC",
-                "fecha": "2025:01:15 12:58:36"
+                "fecha": "2025:01:15 12:58:36",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:15 12:57:41"
@@ -648,16 +830,22 @@
         "lon": -71.05,
         "archivo": [
             {
+                "id": "10RQ4LMZOmZsTHaGXwrvJUc79HEQyPDPV",
                 "nombre": "IMG_8455.HEIC",
-                "fecha": "2025:01:15 12:36:23"
+                "fecha": "2025:01:15 12:36:23",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1_hNBx_VpDnY-Ez9pfPTECLSIm4Ry-1Qa",
                 "nombre": "IMG_8458.HEIC",
-                "fecha": "2025:01:15 12:37:43"
+                "fecha": "2025:01:15 12:37:43",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1eaMNnw89Gmzt9hEC3EG-o8TpNgnUsDCo",
                 "nombre": "IMG_8460.HEIC",
-                "fecha": "2025:01:15 12:37:52"
+                "fecha": "2025:01:15 12:37:52",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:15 12:36:23"
@@ -667,12 +855,16 @@
         "lon": -71.318,
         "archivo": [
             {
+                "id": "1tivew7gw3K8joCq1gpHNtDDnt3xnUW1e",
                 "nombre": "IMG_8680.HEIC",
-                "fecha": "2025:01:18 18:31:46"
+                "fecha": "2025:01:18 18:31:46",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "13_bCPBAFUYEnmsAPBCKydHokf_nZunJy",
                 "nombre": "IMG_8682.HEIC",
-                "fecha": "2025:01:18 18:32:05"
+                "fecha": "2025:01:18 18:32:05",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:18 18:31:46"
@@ -682,16 +874,22 @@
         "lon": -71.316,
         "archivo": [
             {
+                "id": "1_TKq14LC42LGO0CPspcOp8N-7qvKcwy1",
                 "nombre": "IMG_8676.HEIC",
-                "fecha": "2025:01:18 18:24:33"
+                "fecha": "2025:01:18 18:24:33",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1clu6qoKLnospqWj15MilHp99qtF2T3id",
                 "nombre": "IMG_8679.HEIC",
-                "fecha": "2025:01:18 18:25:23"
+                "fecha": "2025:01:18 18:25:23",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Lc3aVH3tOCMZ8F77go-zYs3d-Gqp7ALS",
                 "nombre": "IMG_8674.HEIC",
-                "fecha": "2025:01:18 18:24:18"
+                "fecha": "2025:01:18 18:24:18",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:18 18:24:18"
@@ -701,28 +899,40 @@
         "lon": -71.315,
         "archivo": [
             {
+                "id": "11NidQ5yrgXm5XTyEIBsEDJHkx_hnvCOI",
                 "nombre": "IMG_8664.HEIC",
-                "fecha": "2025:01:18 17:34:47"
+                "fecha": "2025:01:18 17:34:47",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1zOA4sDzrwpyHhQT6DZMJ3tSaCoe4icJm",
                 "nombre": "IMG_8667.HEIC",
-                "fecha": "2025:01:18 18:02:03"
+                "fecha": "2025:01:18 18:02:03",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1PuFU_J_-_4taAhZ6IAb88B3ypRV4ARU-",
                 "nombre": "IMG_8658.HEIC",
-                "fecha": "2025:01:18 17:13:48"
+                "fecha": "2025:01:18 17:13:48",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1cYkGaeK60KquYTv246e9Kyt6qC9hW5RP",
                 "nombre": "IMG_8663.HEIC",
-                "fecha": "2025:01:18 17:20:46"
+                "fecha": "2025:01:18 17:20:46",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1QNx2uVMr7GPaVeCpIpBYfDZGzcO0Xufw",
                 "nombre": "IMG_8659.HEIC",
-                "fecha": "2025:01:18 17:17:26"
+                "fecha": "2025:01:18 17:17:26",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1BPb9_r5RZuZV7sK3gKRjetRmR1n7zMil",
                 "nombre": "IMG_8661.HEIC",
-                "fecha": "2025:01:18 17:20:22"
+                "fecha": "2025:01:18 17:20:22",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:18 17:13:48"
@@ -732,12 +942,16 @@
         "lon": -71.049,
         "archivo": [
             {
+                "id": "1n9JRpcBiLRO3j69zJ9fM9F1vizmvkayi",
                 "nombre": "IMG_8500.HEIC",
-                "fecha": "2025:01:15 18:12:49"
+                "fecha": "2025:01:15 18:12:49",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1xiEDxNZ5d9X-sQJrhkH_z-plkNBN3pI4",
                 "nombre": "IMG_8516.HEIC",
-                "fecha": "2025:01:15 18:45:28"
+                "fecha": "2025:01:15 18:45:28",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:15 18:12:49"
@@ -747,16 +961,22 @@
         "lon": -71.123,
         "archivo": [
             {
+                "id": "1mna0zcsMeheGiDSFnaGqUFs6lZ2fhWHV",
                 "nombre": "dji_fly_20250119_111004_243_1737296131453_photo_optimized.JPG",
-                "fecha": "2025:01:19 11:10:04"
+                "fecha": "2025:01:19 11:10:04",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1xG1ksX1K2vGidje_3AVMvyKfPgM-Oefx",
                 "nombre": "IMG_8633.HEIC",
-                "fecha": "2025:01:17 14:03:07"
+                "fecha": "2025:01:17 14:03:07",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1k3UyZoHg3VPQrBPwktEOafFmkJMJYV_8",
                 "nombre": "IMG_8705.HEIC",
-                "fecha": "2025:01:19 11:46:56"
+                "fecha": "2025:01:19 11:46:56",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:17 14:03:07"
@@ -766,68 +986,100 @@
         "lon": -71.123,
         "archivo": [
             {
+                "id": "1oDBN3f-oUBvjOVC75abaZ21F4oyZRMmV",
                 "nombre": "IMG_8529.HEIC",
-                "fecha": "2025:01:16 11:25:29"
+                "fecha": "2025:01:16 11:25:29",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1idsZhLFmf7cITUd6E82aHwcJsmBHVWbV",
                 "nombre": "IMG_8525.HEIC",
-                "fecha": "2025:01:16 11:23:08"
+                "fecha": "2025:01:16 11:23:08",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "16sSjx09WCmbueIYyME52DpAojfZmsXFO",
                 "nombre": "IMG_8527.HEIC",
-                "fecha": "2025:01:16 11:23:26"
+                "fecha": "2025:01:16 11:23:26",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "15uj3BVuzikT2l65mrXtv1De2SoS5sSmR",
                 "nombre": "IMG_8544.HEIC",
-                "fecha": "2025:01:16 11:34:25"
+                "fecha": "2025:01:16 11:34:25",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "11pCn3YFhr4QcLu4yzJSsng_AliQFVgkY",
                 "nombre": "IMG_8524.HEIC",
-                "fecha": "2025:01:16 11:22:56"
+                "fecha": "2025:01:16 11:22:56",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Eh5uZIBOMYP01hTMOXpOPM0nLkaBP3Lb",
                 "nombre": "IMG_8536.HEIC",
-                "fecha": "2025:01:16 11:31:05"
+                "fecha": "2025:01:16 11:31:05",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1wQ-2ES_5etGCGc2dSo9cj35RT4uEpgUk",
                 "nombre": "IMG_8535.HEIC",
-                "fecha": "2025:01:16 11:27:32"
+                "fecha": "2025:01:16 11:27:32",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1FQBpWCOJipZr-twzTSmD4_Uu3a9mriPR",
                 "nombre": "IMG_8542.HEIC",
-                "fecha": "2025:01:16 11:34:21"
+                "fecha": "2025:01:16 11:34:21",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1MnLED1sn5IzSylaCxnULdiwe9wCIy3pe",
                 "nombre": "IMG_8531.HEIC",
-                "fecha": "2025:01:16 11:25:49"
+                "fecha": "2025:01:16 11:25:49",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1FuDd2z7PI8aNfCpbydpI7KPRrX6z6Or7",
                 "nombre": "IMG_8532.HEIC",
-                "fecha": "2025:01:16 11:26:32"
+                "fecha": "2025:01:16 11:26:32",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1W5g_TPF7sAkdUaVjkOJlKhXd5VGB9UxC",
                 "nombre": "IMG_8530.HEIC",
-                "fecha": "2025:01:16 11:25:40"
+                "fecha": "2025:01:16 11:25:40",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Id6OlQPg7H1SS2kVgkBslikhMJuR1yzz",
                 "nombre": "IMG_8541.HEIC",
-                "fecha": "2025:01:16 11:32:47"
+                "fecha": "2025:01:16 11:32:47",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "14PVMVNAO0IrrPdXbf1SAucwMjxFwTu02",
                 "nombre": "IMG_8523.HEIC",
-                "fecha": "2025:01:16 11:22:46"
+                "fecha": "2025:01:16 11:22:46",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1RYteLyP7cEwX_ghmwzjRWfF0WcAR3VRr",
                 "nombre": "IMG_8537.HEIC",
-                "fecha": "2025:01:16 11:31:18"
+                "fecha": "2025:01:16 11:31:18",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1IYHvLSUmX1zZvEOIN70tvr0p8bXu8rPg",
                 "nombre": "IMG_8522.HEIC",
-                "fecha": "2025:01:16 11:22:45"
+                "fecha": "2025:01:16 11:22:45",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1_Uc6fqabz2XUCBiSbyCn-rhqTkfzMxA9",
                 "nombre": "IMG_8539.HEIC",
-                "fecha": "2025:01:16 11:31:27"
+                "fecha": "2025:01:16 11:31:27",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:16 11:22:45"
@@ -837,8 +1089,10 @@
         "lon": -71.185,
         "archivo": [
             {
+                "id": "1ywJ8gN3HMD6IrjirO2bXHo6m2uzsbDOQ",
                 "nombre": "IMG_8449.HEIC",
-                "fecha": "2025:01:14 21:36:02"
+                "fecha": "2025:01:14 21:36:02",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:14 21:36:02"
@@ -848,12 +1102,16 @@
         "lon": -71.122,
         "archivo": [
             {
+                "id": "1JdbmBkhakL_X6t_KfZO7GPSpLF2_zKje",
                 "nombre": "IMG_8519.HEIC",
-                "fecha": "2025:01:16 11:15:20"
+                "fecha": "2025:01:16 11:15:20",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1k8ExYkW_ArjWOrkYfhPW0q4Sc2joecL5",
                 "nombre": "IMG_8520.HEIC",
-                "fecha": "2025:01:16 11:15:27"
+                "fecha": "2025:01:16 11:15:27",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:16 11:15:20"
@@ -863,8 +1121,10 @@
         "lon": -71.151,
         "archivo": [
             {
+                "id": "1aSCXmKziZUVeJBffjTNPWrjWzigQqsSU",
                 "nombre": "IMG_8437.HEIC",
-                "fecha": "2025:01:14 13:44:03"
+                "fecha": "2025:01:14 13:44:03",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:14 13:44:03"
@@ -874,64 +1134,94 @@
         "lon": -71.151,
         "archivo": [
             {
+                "id": "1Fb8k6pSp-TsrkGeqtwNdSG4SmD1FBOe9",
                 "nombre": "dji_fly_20250114_103536_172_1736861790284_photo_optimized.JPG",
-                "fecha": "2025:01:14 10:35:36"
+                "fecha": "2025:01:14 10:35:36",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1PIN3jFmANx3vNgzsSAuYW0mJVh2E6XMU",
                 "nombre": "dji_fly_20250114_103516_170_1736861738420_photo_optimized.JPG",
-                "fecha": "2025:01:14 10:35:16"
+                "fecha": "2025:01:14 10:35:16",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1xxTfPLWk84KPBmLcDPiVmZOIBpr2rEDa",
                 "nombre": "IMG_8742.HEIC",
-                "fecha": "2025:01:19 19:09:41"
+                "fecha": "2025:01:19 19:09:41",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1bGvk11DAARCvbMKeXNCN65iZ5JVA_Xl9",
                 "nombre": "IMG_8551.HEIC",
-                "fecha": "2025:01:16 15:33:40"
+                "fecha": "2025:01:16 15:33:40",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Prc-BtYOCSAedkfQEsyK0Kwz9euTUc-7",
                 "nombre": "IMG_8375.HEIC",
-                "fecha": "2025:01:14 10:11:01"
+                "fecha": "2025:01:14 10:11:01",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1G5ty9wX9CXHwQbz1AjQafYqu0PCjYDHv",
                 "nombre": "IMG_8557.HEIC",
-                "fecha": "2025:01:16 16:16:09"
+                "fecha": "2025:01:16 16:16:09",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1WkOBOugcpOHR37LciVQhQXGcxSeuMJ5I",
                 "nombre": "IMG_8744.HEIC",
-                "fecha": "2025:01:19 19:10:38"
+                "fecha": "2025:01:19 19:10:38",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1sYX2AUOOch_-DbSPYfd23h1c_HaD81-I",
                 "nombre": "IMG_8404.HEIC",
-                "fecha": "2025:01:14 12:15:56"
+                "fecha": "2025:01:14 12:15:56",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1LOkB7XiTKRFUCTXfdb2OLcNQadEh6qKR",
                 "nombre": "IMG_8548.HEIC",
-                "fecha": "2025:01:16 15:05:52"
+                "fecha": "2025:01:16 15:05:52",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1K9IwxQBcM_tMx78lPb_tfu6Enkp69uic",
                 "nombre": "IMG_8569.HEIC",
-                "fecha": "2025:01:16 16:18:57"
+                "fecha": "2025:01:16 16:18:57",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "10FAooe6xkJpAkz2IgEcdnQslu22v0DoI",
                 "nombre": "IMG_8743.HEIC",
-                "fecha": "2025:01:19 19:09:50"
+                "fecha": "2025:01:19 19:09:50",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1pV6hqePJzBpT4CFevqA_pEgHE5WMp12J",
                 "nombre": "IMG_8570.HEIC",
-                "fecha": "2025:01:16 17:05:04"
+                "fecha": "2025:01:16 17:05:04",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1a0QM7ObuLR70KsZN4LbpwU1ql1CA8gts",
                 "nombre": "IMG_8565.HEIC",
-                "fecha": "2025:01:16 16:17:53"
+                "fecha": "2025:01:16 16:17:53",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1yXPh4th_ibT4wunxS1VlW_gKUzmQpF_b",
                 "nombre": "IMG_8550.HEIC",
-                "fecha": "2025:01:16 15:18:00"
+                "fecha": "2025:01:16 15:18:00",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1Qbn6JVTbSzOBxCBge6tmxhzTT30NS7nq",
                 "nombre": "IMG_8563.HEIC",
-                "fecha": "2025:01:16 16:17:42"
+                "fecha": "2025:01:16 16:17:42",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:14 10:11:01"
@@ -941,16 +1231,22 @@
         "lon": -71.151,
         "archivo": [
             {
+                "id": "1PZIdmy2ClhZRkdJRwBGq8gbALI-WEjuS",
                 "nombre": "IMG_8577.HEIC",
-                "fecha": "2025:01:16 20:56:33"
+                "fecha": "2025:01:16 20:56:33",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "19ZmGrj8qwoPyWE92HLVJUFVIWRpX_qEt",
                 "nombre": "IMG_8575.HEIC",
-                "fecha": "2025:01:16 20:55:56"
+                "fecha": "2025:01:16 20:55:56",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1F4tkUGW2O4zGDk-iUAJXDdpKVGpyF65V",
                 "nombre": "IMG_8576.HEIC",
-                "fecha": "2025:01:16 20:56:27"
+                "fecha": "2025:01:16 20:56:27",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:16 20:55:56"
@@ -960,8 +1256,10 @@
         "lon": -71.161,
         "archivo": [
             {
+                "id": "1vndvDZiqT1xOh3INLe6BvqAJzQvyqpaU",
                 "nombre": "IMG_8554.HEIC",
-                "fecha": "2025:01:16 16:06:34"
+                "fecha": "2025:01:16 16:06:34",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:16 16:06:34"
@@ -971,8 +1269,10 @@
         "lon": -70.038,
         "archivo": [
             {
+                "id": "1E979zpNki4boJ3k853jwoin0gGfBlx6G",
                 "nombre": "IMG_8352.HEIC",
-                "fecha": "2025:01:13 14:51:03"
+                "fecha": "2025:01:13 14:51:03",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:13 14:51:03"
@@ -982,12 +1282,16 @@
         "lon": -71.176,
         "archivo": [
             {
+                "id": "1B_IaxSc1DgozObutHzBCUQS3LR25ElJ3",
                 "nombre": "IMG_8367.HEIC",
-                "fecha": "2025:01:13 21:08:49"
+                "fecha": "2025:01:13 21:08:49",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1j790D8DXMKPAoELmSQ3vlGsiORsftjfQ",
                 "nombre": "IMG_8366.HEIC",
-                "fecha": "2025:01:13 21:06:31"
+                "fecha": "2025:01:13 21:06:31",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:13 21:06:31"
@@ -997,8 +1301,10 @@
         "lon": -71.175,
         "archivo": [
             {
+                "id": "1BxNAqPnnckmphdBVJNlf4-xwliy5MGxF",
                 "nombre": "IMG_8362.HEIC",
-                "fecha": "2025:01:13 21:04:26"
+                "fecha": "2025:01:13 21:04:26",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:13 21:04:26"
@@ -1008,20 +1314,28 @@
         "lon": -71.175,
         "archivo": [
             {
+                "id": "1x2cFrT_wALg_m_E_1Hqmf-kgIedXa2NK",
                 "nombre": "IMG_8355.HEIC",
-                "fecha": "2025:01:13 20:58:39"
+                "fecha": "2025:01:13 20:58:39",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1p7UxZTJA0H9gOqFn_7RzD__bmA9qZvIt",
                 "nombre": "IMG_8356.HEIC",
-                "fecha": "2025:01:13 20:59:09"
+                "fecha": "2025:01:13 20:59:09",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "17eIGgvgNRGqOUBqoiji10GydpEZuTOrZ",
                 "nombre": "IMG_8360.HEIC",
-                "fecha": "2025:01:13 21:02:54"
+                "fecha": "2025:01:13 21:02:54",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1SzzVCJ8CMRYuaxVoGo3ab-qh_QVj8Hxo",
                 "nombre": "IMG_8357.HEIC",
-                "fecha": "2025:01:13 21:00:22"
+                "fecha": "2025:01:13 21:00:22",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:13 20:58:39"
@@ -1031,24 +1345,34 @@
         "lon": -71.175,
         "archivo": [
             {
+                "id": "1LMu_XceNJyvmmkFFdlinfK5pRtCeRbm9",
                 "nombre": "IMG_8369.HEIC",
-                "fecha": "2025:01:13 21:44:20"
+                "fecha": "2025:01:13 21:44:20",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1GiZ9r6RH4ZurQWz6VZsKAAGwl3M7Aj-U",
                 "nombre": "IMG_8545.HEIC",
-                "fecha": "2025:01:16 12:49:04"
+                "fecha": "2025:01:16 12:49:04",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1TzX4GlkfV9mZIzk5xTlVTRIjsWHDER91",
                 "nombre": "IMG_8690.HEIC",
-                "fecha": "2025:01:18 21:02:23"
+                "fecha": "2025:01:18 21:02:23",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1gkJByI7ozEFcDY4Elyy_r_VBBbtaTMn0",
                 "nombre": "IMG_8692.HEIC",
-                "fecha": "2025:01:18 21:39:41"
+                "fecha": "2025:01:18 21:39:41",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1UWv7pD7EhhSD_n40flQF_pL1bqPl5kb3",
                 "nombre": "IMG_8547.HEIC",
-                "fecha": "2025:01:16 13:22:48"
+                "fecha": "2025:01:16 13:22:48",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:13 21:44:20"
@@ -1058,12 +1382,16 @@
         "lon": -71.178,
         "archivo": [
             {
+                "id": "1armjpE5UUj-L6aF5ueFgmDy4y5Mvh69G",
                 "nombre": "IMG_8441.HEIC",
-                "fecha": "2025:01:14 15:54:04"
+                "fecha": "2025:01:14 15:54:04",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1QuNM7_nKx3aoQnIUsapWumn4mnNE8LXG",
                 "nombre": "IMG_8440.HEIC",
-                "fecha": "2025:01:14 15:53:58"
+                "fecha": "2025:01:14 15:53:58",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:14 15:53:58"
@@ -1073,12 +1401,16 @@
         "lon": -71.232,
         "archivo": [
             {
+                "id": "15NZCk-PdTz8VUN19y5h59PLaM1DNfX4v",
                 "nombre": "IMG_8689.HEIC",
-                "fecha": "2025:01:18 19:22:08"
+                "fecha": "2025:01:18 19:22:08",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1caE9CmTIBN2z_ritnwfq2ooouNxPwWgG",
                 "nombre": "IMG_8686.HEIC",
-                "fecha": "2025:01:18 19:21:36"
+                "fecha": "2025:01:18 19:21:36",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:18 19:21:36"
@@ -1088,8 +1420,10 @@
         "lon": -64.213,
         "archivo": [
             {
+                "id": "1wUnz6AXXWHwgMkRPc1FSs-5VR_ciyjpa",
                 "nombre": "IMG_7211.HEIC",
-                "fecha": "2026:03:01 14:27:51"
+                "fecha": "2026:03:01 14:27:51",
+                "viaje": "2026 - San Martin de los Andes"
             }
         ],
         "fecha_min": "2026:03:01 14:27:51"
@@ -1099,8 +1433,10 @@
         "lon": -65.957,
         "archivo": [
             {
+                "id": "1oq3nGvJxXJMJVyEJ8hWCWuobsynHFDqV",
                 "nombre": "IMG_4961.HEIC",
-                "fecha": "2025:11:09 11:52:05"
+                "fecha": "2025:11:09 11:52:05",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2025:11:09 11:52:05"
@@ -1110,8 +1446,10 @@
         "lon": -65.496,
         "archivo": [
             {
+                "id": "1hrul3lW2cG-Zd8hWcC4VRmd96eCbRQuZ",
                 "nombre": "IMG_3374.HEIC",
-                "fecha": "2025:08:23 21:17:45"
+                "fecha": "2025:08:23 21:17:45",
+                "viaje": "2025 - Moldes"
             }
         ],
         "fecha_min": "2025:08:23 21:17:45"
@@ -1121,16 +1459,22 @@
         "lon": -65.495,
         "archivo": [
             {
+                "id": "1AABZu_9dTLq6AoHuX6ifg1FUvUytqGD5",
                 "nombre": "IMG_3393.HEIC",
-                "fecha": "2025:08:24 17:34:19"
+                "fecha": "2025:08:24 17:34:19",
+                "viaje": "2025 - Moldes"
             },
             {
+                "id": "1rB_Yww-ygfd5fBEQPRxNI8iaJFImNvFI",
                 "nombre": "IMG_3369.HEIC",
-                "fecha": "2025:08:23 16:43:48"
+                "fecha": "2025:08:23 16:43:48",
+                "viaje": "2025 - Moldes"
             },
             {
+                "id": "1ghWY7DiHnEMOxDvEtRNYoOlgFa43savT",
                 "nombre": "IMG_3371.HEIC",
-                "fecha": "2025:08:23 16:47:53"
+                "fecha": "2025:08:23 16:47:53",
+                "viaje": "2025 - Moldes"
             }
         ],
         "fecha_min": "2025:08:23 16:43:48"
@@ -1140,12 +1484,16 @@
         "lon": -65.495,
         "archivo": [
             {
+                "id": "1obZoMnC8v8Dc5lmEDN8A39hJJphe0Yu5",
                 "nombre": "IMG_3375.HEIC",
-                "fecha": "2025:08:23 21:26:29"
+                "fecha": "2025:08:23 21:26:29",
+                "viaje": "2025 - Moldes"
             },
             {
+                "id": "19Zo9Fgz5OITZfSep1hoNjS8XSPIoleHT",
                 "nombre": "IMG_3380.HEIC",
-                "fecha": "2025:08:23 22:05:34"
+                "fecha": "2025:08:23 22:05:34",
+                "viaje": "2025 - Moldes"
             }
         ],
         "fecha_min": "2025:08:23 21:26:29"
@@ -1155,8 +1503,10 @@
         "lon": -65.408,
         "archivo": [
             {
+                "id": "1nu9i7WCTweLjKIfIdUr7Ptq61IQLLozU",
                 "nombre": "IMG_5638.HEIC",
-                "fecha": "2024:10:05 17:40:02"
+                "fecha": "2024:10:05 17:40:02",
+                "viaje": "2025 - Moldes"
             }
         ],
         "fecha_min": "2024:10:05 17:40:02"
@@ -1166,8 +1516,10 @@
         "lon": -65.408,
         "archivo": [
             {
+                "id": "1M6h0YxYEERMmygqoCXd3WoVnVFc9nYVH",
                 "nombre": "IMG_5674.HEIC",
-                "fecha": "2024:10:06 12:43:41"
+                "fecha": "2024:10:06 12:43:41",
+                "viaje": "2025 - Moldes"
             }
         ],
         "fecha_min": "2024:10:06 12:43:41"
@@ -1177,8 +1529,10 @@
         "lon": -65.478,
         "archivo": [
             {
+                "id": "1V-RImMgsneM-PX5D7NNY3U4xr9FFFA8V",
                 "nombre": "IMG_7576.HEIC",
-                "fecha": "2024:12:21 01:41:21"
+                "fecha": "2024:12:21 01:41:21",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2024:12:21 01:41:21"
@@ -1188,8 +1542,10 @@
         "lon": -65.619,
         "archivo": [
             {
+                "id": "1AD-xBRm0SMoiNJ5T_q_f3SpGdpeMYFkn",
                 "nombre": "IMG_2478.HEIC",
-                "fecha": "2025:07:13 19:47:26"
+                "fecha": "2025:07:13 19:47:26",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2025:07:13 19:47:26"
@@ -1199,12 +1555,16 @@
         "lon": -65.618,
         "archivo": [
             {
+                "id": "1BCNjSBYi2m2CPEMzRrGNkaRSrjWhI9I-",
                 "nombre": "dji_fly_20260217_155318_564_1771354462959_photo_optimized.JPG",
-                "fecha": "2026:02:17 15:53:18"
+                "fecha": "2026:02:17 15:53:18",
+                "viaje": "2025 - Campo Quijano"
             },
             {
+                "id": "128PPUoNo-_yt62KMGdk6NTY8N_FrnAqs",
                 "nombre": "IMG_4213.HEIC",
-                "fecha": "2025:10:04 18:15:48"
+                "fecha": "2025:10:04 18:15:48",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2025:10:04 18:15:48"
@@ -1214,8 +1574,10 @@
         "lon": -65.62,
         "archivo": [
             {
+                "id": "1NCDBIhqL5R60qhZOrQCWe32j_gcr_vO1",
                 "nombre": "dji_fly_20260217_154602_563_1771354463834_photo_optimized.JPG",
-                "fecha": "2026:02:17 15:46:02"
+                "fecha": "2026:02:17 15:46:02",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2026:02:17 15:46:02"
@@ -1225,8 +1587,10 @@
         "lon": -65.631,
         "archivo": [
             {
+                "id": "1-X0m3Z4HTVb4Cn4jxazwPb-Lt4qMRYdR",
                 "nombre": "IMG_1305.HEIC",
-                "fecha": "2025:05:10 17:19:23"
+                "fecha": "2025:05:10 17:19:23",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2025:05:10 17:19:23"
@@ -1236,8 +1600,10 @@
         "lon": -65.701,
         "archivo": [
             {
+                "id": "1HdX3F0IzMS8EgS1r2HC2DG1_AR5Zo3Ik",
                 "nombre": "IMG_6714.HEIC",
-                "fecha": "2024:11:23 11:50:28"
+                "fecha": "2024:11:23 11:50:28",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2024:11:23 11:50:28"
@@ -1247,12 +1613,16 @@
         "lon": -65.699,
         "archivo": [
             {
+                "id": "1FLMx6KX83w_7j96EIqeCPpDlqTCt6fcG",
                 "nombre": "IMG_6854.HEIC",
-                "fecha": "2026:02:17 13:16:26"
+                "fecha": "2026:02:17 13:16:26",
+                "viaje": "2025 - Campo Quijano"
             },
             {
+                "id": "17yVD2IuOi3h0dwMoRmB1Oxv9cbg05uvZ",
                 "nombre": "IMG_6853.HEIC",
-                "fecha": "2026:02:17 13:16:02"
+                "fecha": "2026:02:17 13:16:02",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2026:02:17 13:16:02"
@@ -1262,8 +1632,10 @@
         "lon": -65.695,
         "archivo": [
             {
+                "id": "1vP7uFk9MzFqkFZ7yy7hjvyg9Oq4vz3o9",
                 "nombre": "IMG_9034.HEIC",
-                "fecha": "2025:02:01 10:30:21"
+                "fecha": "2025:02:01 10:30:21",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2025:02:01 10:30:21"
@@ -1273,8 +1645,10 @@
         "lon": -65.685,
         "archivo": [
             {
+                "id": "1HcAm20exfaQuMcVDe2mIZiDiFaI81mmW",
                 "nombre": "dji_fly_20250201_114704_268_1738421259086_photo_optimized.JPG",
-                "fecha": "2025:02:01 11:47:05"
+                "fecha": "2025:02:01 11:47:05",
+                "viaje": "2025 - Campo Quijano"
             }
         ],
         "fecha_min": "2025:02:01 11:47:05"
@@ -1284,12 +1658,16 @@
         "lon": -65.479,
         "archivo": [
             {
+                "id": "17BVRCEaezXf-86151Wjwle5KhYjYJNsJ",
                 "nombre": "IMG_8348.HEIC",
-                "fecha": "2025:01:13 09:02:58"
+                "fecha": "2025:01:13 09:02:58",
+                "viaje": "2025 - Villa Pehuenia"
             },
             {
+                "id": "1rCsDoO5hj55smaub6NmdxxoR1nQyYBsE",
                 "nombre": "IMG_8347.HEIC",
-                "fecha": "2025:01:13 09:02:32"
+                "fecha": "2025:01:13 09:02:32",
+                "viaje": "2025 - Villa Pehuenia"
             }
         ],
         "fecha_min": "2025:01:13 09:02:32"
@@ -1299,8 +1677,10 @@
         "lon": -65.426,
         "archivo": [
             {
+                "id": "1xIFIWVTCp6hoou5AoHQ-_eIyZ26bZhfB",
                 "nombre": "IMG_4204.HEIC",
-                "fecha": "2025:10:03 22:55:48"
+                "fecha": "2025:10:03 22:55:48",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2025:10:03 22:55:48"
@@ -1310,8 +1690,10 @@
         "lon": -65.393,
         "archivo": [
             {
+                "id": "1LEWusw0sYOmxKMmp--iby5De0QLg_2BR",
                 "nombre": "IMG_6268.HEIC",
-                "fecha": "2026:01:10 16:35:37"
+                "fecha": "2026:01:10 16:35:37",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2026:01:10 16:35:37"
@@ -1321,8 +1703,10 @@
         "lon": -65.404,
         "archivo": [
             {
+                "id": "1NVZbTCeqTAYhjae6gSZ5m6Hu9C8hx4Cx",
                 "nombre": "IMG_6374.HEIC",
-                "fecha": "2024:11:08 22:53:51"
+                "fecha": "2024:11:08 22:53:51",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2024:11:08 22:53:51"
@@ -1332,8 +1716,10 @@
         "lon": -65.422,
         "archivo": [
             {
+                "id": "1z5xZH7XtvRamaGB3m7bsBImn-4k11iWK",
                 "nombre": "IMG_6007.HEIC",
-                "fecha": "2024:10:23 23:00:38"
+                "fecha": "2024:10:23 23:00:38",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2024:10:23 23:00:38"
@@ -1343,8 +1729,10 @@
         "lon": -65.411,
         "archivo": [
             {
+                "id": "1xrQfi7BjYnbzbDJjgF50oF6A1WvXzpwv",
                 "nombre": "IMG_5367.HEIC",
-                "fecha": "2024:09:25 00:32:02"
+                "fecha": "2024:09:25 00:32:02",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2024:09:25 00:32:02"
@@ -1354,8 +1742,10 @@
         "lon": -65.418,
         "archivo": [
             {
+                "id": "14T3pjDAjUOwGNt4pLkOjmte9t-DBkVD9",
                 "nombre": "IMG_5726.HEIC",
-                "fecha": "2024:10:08 22:03:28"
+                "fecha": "2024:10:08 22:03:28",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2024:10:08 22:03:28"
@@ -1365,8 +1755,10 @@
         "lon": -65.413,
         "archivo": [
             {
+                "id": "17cdwS1lEeUk10Xlf36E0HdN_ILKvG8Cz",
                 "nombre": "IMG_5937.HEIC",
-                "fecha": "2025:12:24 21:45:27"
+                "fecha": "2025:12:24 21:45:27",
+                "viaje": "2025 - Salta"
             }
         ],
         "fecha_min": "2025:12:24 21:45:27"
@@ -1376,8 +1768,10 @@
         "lon": -64.869,
         "archivo": [
             {
+                "id": "1CwcvdN7sdeiSCjRfyL6zgLhFBQgGWMYX",
                 "nombre": "IMG_6798.HEIC",
-                "fecha": "2026:02:15 00:40:01"
+                "fecha": "2026:02:15 00:40:01",
+                "viaje": "2026 - Carnaval Jujuy"
             }
         ],
         "fecha_min": "2026:02:15 00:40:01"
@@ -1387,8 +1781,10 @@
         "lon": -65.332,
         "archivo": [
             {
+                "id": "11s96ZR0lN092v0XY49Bb4eEnAJw-Qic3",
                 "nombre": "IMG_6816.HEIC",
-                "fecha": "2026:02:15 18:26:33"
+                "fecha": "2026:02:15 18:26:33",
+                "viaje": "2026 - Carnaval Jujuy"
             }
         ],
         "fecha_min": "2026:02:15 18:26:33"
@@ -1398,12 +1794,16 @@
         "lon": -65.329,
         "archivo": [
             {
+                "id": "1eBvot8pvdWefarYwFJfrvH60-GhChjw8",
                 "nombre": "IMG_9752.HEIC",
-                "fecha": "2025:03:02 02:11:57"
+                "fecha": "2025:03:02 02:11:57",
+                "viaje": "2025 - Carnaval Jujuy"
             },
             {
+                "id": "1ggWreFhAvc4CaAlvknGSiqgmYIL48Ytq",
                 "nombre": "IMG_9745.HEIC",
-                "fecha": "2025:03:02 01:04:58"
+                "fecha": "2025:03:02 01:04:58",
+                "viaje": "2025 - Carnaval Jujuy"
             }
         ],
         "fecha_min": "2025:03:02 01:04:58"
@@ -1413,8 +1813,10 @@
         "lon": -65.482,
         "archivo": [
             {
+                "id": "1AIeo-7z-0GnKOt238ZtpcNXfUv2MkbSu",
                 "nombre": "dji_fly_20260215_163840_545_1771184499576_photo_optimized.JPG",
-                "fecha": "2026:02:15 16:38:40"
+                "fecha": "2026:02:15 16:38:40",
+                "viaje": "2026 - Carnaval Jujuy"
             }
         ],
         "fecha_min": "2026:02:15 16:38:40"
@@ -1424,12 +1826,16 @@
         "lon": -65.49,
         "archivo": [
             {
+                "id": "1qadREEjv4IY-grpSDodXHGvZ6I_3jLTN",
                 "nombre": "IMG_8203.heic",
-                "fecha": "2026:02:14 18:24:12"
+                "fecha": "2026:02:14 18:24:12",
+                "viaje": "2026 - Carnaval Jujuy"
             },
             {
+                "id": "1qHMvZ-fen2Age_WeBZlsTpIVtC36DYJW",
                 "nombre": "IMG_6793.HEIC",
-                "fecha": "2026:02:14 18:25:37"
+                "fecha": "2026:02:14 18:25:37",
+                "viaje": "2026 - Carnaval Jujuy"
             }
         ],
         "fecha_min": "2026:02:14 18:24:12"
@@ -1439,8 +1845,10 @@
         "lon": -65.478,
         "archivo": [
             {
+                "id": "1RJ0VlUp2jZ3BINyoF9D-AfFcmqJPpXv-",
                 "nombre": "IMG_0224.HEIC",
-                "fecha": "2025:03:23 16:29:09"
+                "fecha": "2025:03:23 16:29:09",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2025:03:23 16:29:09"
@@ -1450,8 +1858,10 @@
         "lon": -65.503,
         "archivo": [
             {
+                "id": "1zRv82QAQVXf-o6sEBN-_do6JAObuFGDR",
                 "nombre": "IMG_7122.HEIC",
-                "fecha": "2024:12:07 17:16:23"
+                "fecha": "2024:12:07 17:16:23",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2024:12:07 17:16:23"
@@ -1461,8 +1871,10 @@
         "lon": -65.501,
         "archivo": [
             {
+                "id": "1soqN5pj6DgN0RtsgNVfrhpeFbg4xQodI",
                 "nombre": "IMG_7115.heic",
-                "fecha": "2024:12:07 17:11:43"
+                "fecha": "2024:12:07 17:11:43",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2024:12:07 17:11:43"
@@ -1472,12 +1884,16 @@
         "lon": -65.507,
         "archivo": [
             {
+                "id": "1NqERc45bMeEJMk6sdGMDHZGW6D6pWqay",
                 "nombre": "IMG_7163.HEIC",
-                "fecha": "2024:12:08 11:34:05"
+                "fecha": "2024:12:08 11:34:05",
+                "viaje": "2025 - Purmamarca"
             },
             {
+                "id": "1gFzLLpPkym48vOXPYYLUAM7eBUMkIpXy",
                 "nombre": "IMG_7174.HEIC",
-                "fecha": "2024:12:08 11:34:59"
+                "fecha": "2024:12:08 11:34:59",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2024:12:08 11:34:05"
@@ -1487,8 +1903,10 @@
         "lon": -65.499,
         "archivo": [
             {
+                "id": "1C2sG_7vOPuf3-vYeKnQ5O6sDBkzCUwCH",
                 "nombre": "IMG_7138.HEIC",
-                "fecha": "2024:12:07 23:00:49"
+                "fecha": "2024:12:07 23:00:49",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2024:12:07 23:00:49"
@@ -1498,8 +1916,10 @@
         "lon": -65.501,
         "archivo": [
             {
+                "id": "1terM4gCSk2D-2msZHkf-Ig9xQLLoJuCB",
                 "nombre": "IMG_7131.HEIC",
-                "fecha": "2024:12:07 17:47:25"
+                "fecha": "2024:12:07 17:47:25",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2024:12:07 17:47:25"
@@ -1509,8 +1929,10 @@
         "lon": -65.503,
         "archivo": [
             {
+                "id": "180_0LNkSSE0NEfXIsfqZFyxxsEY9sfcd",
                 "nombre": "IMG_7130.heic",
-                "fecha": "2024:12:07 17:41:41"
+                "fecha": "2024:12:07 17:41:41",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2024:12:07 17:41:41"
@@ -1520,8 +1942,10 @@
         "lon": -65.399,
         "archivo": [
             {
+                "id": "1rV6WezNx18EAgfbF4FCelEqYBZZAgF4T",
                 "nombre": "IMG_0213.HEIC",
-                "fecha": "2025:03:23 14:18:46"
+                "fecha": "2025:03:23 14:18:46",
+                "viaje": "2025 - Purmamarca"
             }
         ],
         "fecha_min": "2025:03:23 14:18:46"

@@ -159,6 +159,7 @@ def procesarCarpeta(directorio,origen):
                             fecha = exif["fecha"]
                             contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
                             lista_puntos.append({
+                                 "id":item['id'],
                                 "archivo": item['name'],
                                 "lat": lat,
                                 "lon": lon,                                
@@ -231,6 +232,7 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                                     fecha = exif["fecha"]
                                     contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
                                     lista_puntos.append({
+                                        "id":item['id'],
                                         "archivo": item['name'],
                                         "lat": lat,
                                         "lon": lon,   
@@ -242,7 +244,7 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
 # Ejemplo de ejecución
 # resultados = procesarCarpeta(folderOrigenId,'drive')
 lista_puntos = []
-resultados = procesarCarpetaRecursivo(folderOrigenId,'recursivo', 'drive')
+resultados = procesarCarpetaRecursivo(folderOrigenId,'', 'drive')
 
 with open('data/viajes.json', 'w') as f:
     json.dump(resultados, f, indent=4)

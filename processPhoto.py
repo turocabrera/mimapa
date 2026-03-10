@@ -15,8 +15,8 @@ df_agrupado = df.groupby(['lat', 'lon' ]).apply(
     lambda x: pd.Series({
         # Creamos la lista de objetos {nombre, fecha}
         'archivo': [
-            {"nombre": arc, "fecha": fec,"viaje":via} 
-            for arc, fec ,via in zip(x['archivo'], x['fecha'],x['viaje'])
+            {"id":idFile, "nombre": arc, "fecha": fec,"viaje":via} 
+            for idFile, arc, fec ,via in zip(x['id'],x['archivo'], x['fecha'],x['viaje'])
         ],
         # Mantenemos la fecha mínima para referencia del grupo si lo necesitas
         'fecha_min': x['fecha'].min()
