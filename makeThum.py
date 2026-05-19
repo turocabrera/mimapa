@@ -87,8 +87,7 @@ def processDirectory(directorioOrigen,directorioDestino,origen,destino):
                        thumbNewDrive=createThumbnails(contenidoBytesImagenDrive)                
                        saveBytesDrive(thumbNewDrive,nombreJpgDrive,directorioDestino)      
                        contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)           
-                 else:
-                       print("Debería enviarlo recursivo")
+                 else:                    
                        processDirectory(item['id'],folderDestinoId,"drive","drive")
 
     print(f"¡Miniaturas {contadorArchivosProcesados}  creadas con éxito!:")
