@@ -1,5 +1,37 @@
 [
     {
+        "id": "1_IYoEAR6eOPw3NqLTglHt3rHpNqll6pz",
+        "archivo": "IMG_8328.HEIC",
+        "lat": -23.831841666666666,
+        "lon": -64.79168055555556,
+        "viaje": "2026 - Ledesma",
+        "fecha": "2026:05:10 10:49:48"
+    },
+    {
+        "id": "1Kk03tc_PDJ9nayMb22R0E8G1aKLB27Rf",
+        "archivo": "dji_fly_20260510_133114_722_1778430679305_photo_optimized.jpg",
+        "lat": -23.777055555555556,
+        "lon": -64.82867777777777,
+        "viaje": "2026 - Ledesma",
+        "fecha": "2026:05:10 13:31:13"
+    },
+    {
+        "id": "1EQFk1Sb-nN-syVrlM_QRVwxRQlQXDE0d",
+        "archivo": "dji_fly_20260510_133410_726_1778430925467_photo_optimized.jpg",
+        "lat": -23.77883611111111,
+        "lon": -64.82935833333333,
+        "viaje": "2026 - Ledesma",
+        "fecha": "2026:05:10 13:34:11"
+    },
+    {
+        "id": "1aSCR3nIjgA60NoCtzeiBo1zE-9oZ_zCa",
+        "archivo": "dji_fly_20260510_125410_714_1778428534226_photo_optimized.jpg",
+        "lat": -23.758330555555556,
+        "lon": -64.85474722222222,
+        "viaje": "2026 - Ledesma",
+        "fecha": "2026:05:10 12:54:11"
+    },
+    {
         "id": "1NVZbTCeqTAYhjae6gSZ5m6Hu9C8hx4Cx",
         "archivo": "IMG_6374.HEIC",
         "lat": -24.789150000000003,
