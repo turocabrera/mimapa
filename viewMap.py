@@ -176,7 +176,7 @@ for index, row in df.iterrows():
     
     for foto in lista_fotos:
         # Buscamos el nombre del thumb (ej: foto1.jpg)
-        nombre_thumb = os.path.splitext(foto["nombre"])[0] + ".jpg"
+        nombre_thumb = foto['viaje']+"_"+ os.path.splitext(foto["nombre"])[0] + ".jpg"
         
         # En lugar de buscar en C:\juegos\..., buscamos en nuestro diccionario de Drive
         url_drive = fotos_drive.get(nombre_thumb)

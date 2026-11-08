@@ -52,7 +52,11 @@ def createThumbnails(imgBytesOrigen):
         return img_output.getvalue()
 
 #Recorrer el directorio y cargarlo en un directorio en particular
-def processDirectory(directorioOrigen,directorioDestino,origen,destino):
+def processDirectory(directorioOrigen,directorioDestino,directorioPadreImagen,origen,destino):
+    """
+        Metodo que se encarga de procesar, de manera recursiva, la carpeta y subcarpetas
+        que contienen las fotos.
+    """
     # crear directorio destino en caso de que no exista
     contadorArchivosProcesados=1
     if origen=="local":
@@ -73,35 +77,48 @@ def processDirectory(directorioOrigen,directorioDestino,origen,destino):
         results = service.files().list(
                 q=f"'{directorioOrigen}' in parents and trashed = false",
                 pageSize=1000,
-                fields="files(id, name, webContentLink)"        
+                fields="files(id, name, mimeType, webContentLink)"        
             ).execute()
         # print(results)    
         items = results.get('files', [])        
         for item in items:
                 #  print(item['name'])
-                 if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg')):        
-                       fileId = item['id']
-                       # Usamos el formato thumbnail que es el más compatible
-                       contenidoBytesImagenDrive=getBytesDrive(fileId)
-                       nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
-                       thumbNewDrive=createThumbnails(contenidoBytesImagenDrive)                
-                       saveBytesDrive(thumbNewDrive,nombreJpgDrive,directorioDestino)      
-                       contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)           
+                 if(item['mimeType']=='application/vnd.google-apps.folder'):
+                        #abrir archivos dentro de la carpeta      
+                        print("Carpeta:",item['name'])                  
+                        processDirectory(item['id'],folderDestinoId,item['name'],"drive","drive")
                  else:                    
-                       processDirectory(item['id'],folderDestinoId,"drive","drive")
-
+                    if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg')):        
+                        fileId = item['id']
+                        # Usamos el formato thumbnail que es el más compatible
+                        contenidoBytesImagenDrive=getBytesDrive(fileId)
+                        nombreJpgDrive = directorioPadreImagen+"_"+os.path.splitext(item['name'])[0] + ".jpg"            
+                        thumbNewDrive=createThumbnails(contenidoBytesImagenDrive)                
+                        saveBytesDrive(thumbNewDrive,nombreJpgDrive,directorioDestino)      
+                        contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)                            
+                    #    processDirectory(item['id'],folderDestinoId,"drive","drive")
     print(f"¡Miniaturas {contadorArchivosProcesados}  creadas con éxito!:")
 
 def getBytesLocal(ruta):
+    """
+        abrir archivo en filesystem
+    """
     with open(ruta, 'rb') as f:
         return f.read()
 
 def saveBytesLocal(contenido, ruta_destino):
+    """
+        guardar archivo en filesystem
+    """
     with open(ruta_destino, 'wb') as f:
         f.write(contenido)
 
 # Aquí irían los de Drive (usando la API)
 def getBytesDrive(fileId):
+    """
+        obtener un archivo conforme a un fileId 
+        en un Drive google
+    """
     try:
         request = service.files().get_media(fileId=fileId)
         return request.execute()
@@ -110,6 +127,10 @@ def getBytesDrive(fileId):
         return None
 
 def getIdFileDrive(nombreArchivo,folderId):    
+    """
+        obtener un archivo conforme a un fileId 
+        en un Drive google
+    """
     query = f"name = \"{nombreArchivo}\" and '{folderId}' in parents and trashed = false"
     resultados = service.files().list(q=query, fields="files(id, name)").execute()
     items = resultados.get('files', [])
@@ -120,6 +141,9 @@ def getIdFileDrive(nombreArchivo,folderId):
         return items[0]['id']
         
 def deleteFileDrive(nombreArchivo,folderId):
+    """
+        eliminar un archivo conforme a un nombre de archivo y un folderId en un Drive google
+    """
     idFileDrive=getIdFileDrive(nombreArchivo,folderId)
     if idFileDrive is not None:
         try:
@@ -128,6 +152,9 @@ def deleteFileDrive(nombreArchivo,folderId):
             print(f"No se pudo eliminar el archivo previo {nombreArchivo}: {e}")
 
 def saveBytesDrive(contenidoBytes, nombre, folderId):
+    """
+        guardar un archivo conforme a un fileId en un Drive google
+    """
     try:
         # eliminar archivo anterior
         deleteFileDrive(nombre,folderId)
@@ -149,6 +176,5 @@ def saveBytesDrive(contenidoBytes, nombre, folderId):
         print(f"Error al subir {nombre}: {e}")
         return None
 
-# crear_thumbnails('img/villaPehuenia/') 
-# processDirectory('img/villaPehuenia/','img/thumbnails',"local","local")
-processDirectory(folderOrigenId,folderDestinoId,"drive","drive")
+
+processDirectory(folderOrigenId,folderDestinoId,"","drive","drive")

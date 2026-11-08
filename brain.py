@@ -33,7 +33,7 @@ service = build('drive', 'v3', credentials=creds)
 # folderId = obtener_id_carpeta('thumbnails')
 folderDestinoId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
 folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
-
+                
 def obtener_exif(ruta_imagen,origen,img):
     if(origen=="local"):
         imagen = Image.open(ruta_imagen)
@@ -165,7 +165,7 @@ def procesarCarpeta(directorio,origen):
                                 "lon": lon,                                
                                 "fecha": fecha
                             })
-    print("✅ Total archivos procesados:",contadorArchivosProcesados)
+    print(f"✅ Total archivos procesados:{contadorArchivosProcesados} ")
     return lista_puntos
 
 
@@ -209,10 +209,10 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
         # print(f"ℹ️ total de archivos a procesar:{len(items)} ")
         for item in items:
                 if(item['mimeType']=='application/vnd.google-apps.folder'):
-                        #abrir archivos dentro de la carpeta                        
+                        #abrir archivos dentro de la carpeta      
+                        print("Carpeta:",item['name'])                  
                         procesarCarpetaRecursivo(item['id'],item['name'], "drive")
-                else:
-                #  print(item['name'])
+                else:                
                         if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
                                 fileId = item['id']
                                 # Usamos el formato thumbnail que es el más compatible
