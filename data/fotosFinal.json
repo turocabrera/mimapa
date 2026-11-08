@@ -63,6 +63,19 @@
         "fecha_min": "2026:02:24 12:52:15"
     },
     {
+        "lat": -40.175,
+        "lon": -71.365,
+        "archivo": [
+            {
+                "id": "1Q9oPG-vnh6momJ0mnHc4r5DjFlumtG7I",
+                "nombre": "IMG_7162.heic",
+                "fecha": "2026:02:27 11:45:19",
+                "viaje": "2026 - San Martin de los Andes"
+            }
+        ],
+        "fecha_min": "2026:02:27 11:45:19"
+    },
+    {
         "lat": -40.174,
         "lon": -71.433,
         "archivo": [
@@ -284,13 +297,19 @@
         "lon": -71.4,
         "archivo": [
             {
+                "id": "1ua6KmVUNgd9jMxtVOsxf0JBycXCIJgIO",
+                "nombre": "IMG_7004.heic",
+                "fecha": "2026:02:23 13:51:05",
+                "viaje": "2026 - San Martin de los Andes"
+            },
+            {
                 "id": "1H_T-VXODSovP-9GFnxoTBvLZtyH1SJPP",
                 "nombre": "IMG_7008.HEIC",
                 "fecha": "2026:02:23 15:33:13",
                 "viaje": "2026 - San Martin de los Andes"
             }
         ],
-        "fecha_min": "2026:02:23 15:33:13"
+        "fecha_min": "2026:02:23 13:51:05"
     },
     {
         "lat": -40.074,
@@ -1538,6 +1557,19 @@
         "fecha_min": "2024:12:21 01:41:21"
     },
     {
+        "lat": -24.905,
+        "lon": -65.601,
+        "archivo": [
+            {
+                "id": "1kkPkIeQcPvc_D6gzXTO5FnKvQM6sG_13",
+                "nombre": "dji_fly_20260531_114708_741_1780238925257_photo_optimized.JPG",
+                "fecha": "2026:05:31 11:47:08",
+                "viaje": "2026 - La Silleta"
+            }
+        ],
+        "fecha_min": "2026:05:31 11:47:08"
+    },
+    {
         "lat": -24.904,
         "lon": -65.619,
         "archivo": [
@@ -1573,6 +1605,12 @@
         "lat": -24.903,
         "lon": -65.62,
         "archivo": [
+            {
+                "id": "19miIjS4n8hPDC4OLmqoZkqaBl7ROcJ_F",
+                "nombre": "dji_fly_20260624_082704_749_1782300640562_photo_optimized.JPG",
+                "fecha": "2026:06:24 08:27:04",
+                "viaje": "2026 - Campo Quijano"
+            },
             {
                 "id": "1NCDBIhqL5R60qhZOrQCWe32j_gcr_vO1",
                 "nombre": "dji_fly_20260217_154602_563_1771354463834_photo_optimized.JPG",
@@ -1613,6 +1651,12 @@
         "lon": -65.699,
         "archivo": [
             {
+                "id": "1UWEhLIR4DgFR1xbybcsHmOnI9VbZ0wZL",
+                "nombre": "IMG_8864.HEIC",
+                "fecha": "2026:06:20 13:12:52",
+                "viaje": "2026 - Campo Quijano"
+            },
+            {
                 "id": "1FLMx6KX83w_7j96EIqeCPpDlqTCt6fcG",
                 "nombre": "IMG_6854.HEIC",
                 "fecha": "2026:02:17 13:16:26",
@@ -1626,6 +1670,32 @@
             }
         ],
         "fecha_min": "2026:02:17 13:16:02"
+    },
+    {
+        "lat": -24.876,
+        "lon": -65.591,
+        "archivo": [
+            {
+                "id": "1bPUvZd7mlbY_KXO1ZB5WLo7wTmlcZFgM",
+                "nombre": "dji_fly_20260531_105112_731_1780236105934_photo_optimized.JPG",
+                "fecha": "2026:05:31 10:51:12",
+                "viaje": "2026 - La Silleta"
+            }
+        ],
+        "fecha_min": "2026:05:31 10:51:12"
+    },
+    {
+        "lat": -24.875,
+        "lon": -65.59,
+        "archivo": [
+            {
+                "id": "1GPJtntBulRnYYJfpB4YESvVBJ1tzhAGY",
+                "nombre": "dji_fly_20260531_105352_737_1780236103679_photo_optimized.JPG",
+                "fecha": "2026:05:31 10:53:51",
+                "viaje": "2026 - La Silleta"
+            }
+        ],
+        "fecha_min": "2026:05:31 10:53:51"
     },
     {
         "lat": -24.866,
@@ -1738,6 +1808,19 @@
         "fecha_min": "2024:09:25 00:32:02"
     },
     {
+        "lat": -24.775,
+        "lon": -65.412,
+        "archivo": [
+            {
+                "id": "1hpQMPAV_kvOV4ZTmNQ4qVJa3D0P2T1oY",
+                "nombre": "IMG_8769.HEIC",
+                "fecha": "2026:06:13 21:23:21",
+                "viaje": "2026 - Salta "
+            }
+        ],
+        "fecha_min": "2026:06:13 21:23:21"
+    },
+    {
         "lat": -24.773,
         "lon": -65.418,
         "archivo": [
@@ -1845,13 +1928,19 @@
         "lon": -64.792,
         "archivo": [
             {
+                "id": "19M_cOoZkB3Juw3qX5x3T9mB7TvG3GrAB",
+                "nombre": "IMG_6133.heic",
+                "fecha": "2026:05:10 10:05:55",
+                "viaje": "2026 - Ledesma"
+            },
+            {
                 "id": "1_IYoEAR6eOPw3NqLTglHt3rHpNqll6pz",
                 "nombre": "IMG_8328.HEIC",
                 "fecha": "2026:05:10 10:49:48",
                 "viaje": "2026 - Ledesma"
             }
         ],
-        "fecha_min": "2026:05:10 10:49:48"
+        "fecha_min": "2026:05:10 10:05:55"
     },
     {
         "lat": -23.787,
@@ -1891,6 +1980,19 @@
             }
         ],
         "fecha_min": "2026:05:10 13:31:13"
+    },
+    {
+        "lat": -23.777,
+        "lon": -64.828,
+        "archivo": [
+            {
+                "id": "1nhYZc5HZVdUHSZziF96Qz0lLql0a6FgE",
+                "nombre": "IMG_6183.heic",
+                "fecha": "2026:05:10 13:31:52",
+                "viaje": "2026 - Ledesma"
+            }
+        ],
+        "fecha_min": "2026:05:10 13:31:52"
     },
     {
         "lat": -23.758,
