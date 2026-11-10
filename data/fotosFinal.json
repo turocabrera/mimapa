@@ -1544,6 +1544,19 @@
         "fecha_min": "2024:10:06 12:43:41"
     },
     {
+        "lat": -25.105,
+        "lon": -65.485,
+        "archivo": [
+            {
+                "id": "10iI6IzLYzP6Sbf_Ol3fgDCljc6-oA7Ym",
+                "nombre": "IMG_0726.HEIC",
+                "fecha": "2026:10:11 14:02:15",
+                "viaje": "2026 - Moldes"
+            }
+        ],
+        "fecha_min": "2026:10:11 14:02:15"
+    },
+    {
         "lat": -24.939,
         "lon": -65.478,
         "archivo": [
@@ -1555,6 +1568,19 @@
             }
         ],
         "fecha_min": "2024:12:21 01:41:21"
+    },
+    {
+        "lat": -24.908,
+        "lon": -65.643,
+        "archivo": [
+            {
+                "id": "1feghR3rJdc7Cjo2QaQtx_ecKBwbSz0d_",
+                "nombre": "dji_fly_20260715_190724_757_1784153276054_photo_optimized.JPG",
+                "fecha": "2026:07:15 19:07:25",
+                "viaje": "2026 - Campo Quijano"
+            }
+        ],
+        "fecha_min": "2026:07:15 19:07:25"
     },
     {
         "lat": -24.905,
@@ -1574,6 +1600,12 @@
         "lon": -65.619,
         "archivo": [
             {
+                "id": "1IxMf7lMHI4S-RDoZ5XvTQGqwl7XFo2IL",
+                "nombre": "IMG_9053.HEIC",
+                "fecha": "2026:07:03 21:47:01",
+                "viaje": "2026 - Campo Quijano"
+            },
+            {
                 "id": "1AD-xBRm0SMoiNJ5T_q_f3SpGdpeMYFkn",
                 "nombre": "IMG_2478.HEIC",
                 "fecha": "2025:07:13 19:47:26",
@@ -1586,6 +1618,18 @@
         "lat": -24.904,
         "lon": -65.618,
         "archivo": [
+            {
+                "id": "1roLyMidVlpXIak--4QLpFrcddTd2pE-r",
+                "nombre": "IMG_9217.HEIC",
+                "fecha": "2026:07:15 16:30:20",
+                "viaje": "2026 - Campo Quijano"
+            },
+            {
+                "id": "1C3DZYTkYHYSf94DmLW6SAbXIrFKommBf",
+                "nombre": "IMG_1286.HEIC",
+                "fecha": "2026:11:09 00:02:55",
+                "viaje": "2025 - Campo Quijano"
+            },
             {
                 "id": "1BCNjSBYi2m2CPEMzRrGNkaRSrjWhI9I-",
                 "nombre": "dji_fly_20260217_155318_564_1771354462959_photo_optimized.JPG",
@@ -1634,6 +1678,25 @@
         "fecha_min": "2025:05:10 17:19:23"
     },
     {
+        "lat": -24.894,
+        "lon": -65.668,
+        "archivo": [
+            {
+                "id": "1Lab0ZO_4uRXSkaqa88B4AbFcAIlzY_uD",
+                "nombre": "IMG_0446.HEIC",
+                "fecha": "2026:09:27 11:28:04",
+                "viaje": "2026 - Campo Quijano"
+            },
+            {
+                "id": "1GoI1LWgV-EXxyieJz-uIrKvFZT8KtnpF",
+                "nombre": "IMG_0448.HEIC",
+                "fecha": "2026:09:27 11:33:26",
+                "viaje": "2026 - Campo Quijano"
+            }
+        ],
+        "fecha_min": "2026:09:27 11:28:04"
+    },
+    {
         "lat": -24.89,
         "lon": -65.701,
         "archivo": [
@@ -1645,6 +1708,19 @@
             }
         ],
         "fecha_min": "2024:11:23 11:50:28"
+    },
+    {
+        "lat": -24.89,
+        "lon": -65.573,
+        "archivo": [
+            {
+                "id": "1VHWMy9ToBZN07KXKNF3GMj--5T95gbAi",
+                "nombre": "IMG_0741.HEIC",
+                "fecha": "2026:10:12 10:51:55",
+                "viaje": "2026 - Campo Quijano"
+            }
+        ],
+        "fecha_min": "2026:10:12 10:51:55"
     },
     {
         "lat": -24.88,
@@ -1743,6 +1819,25 @@
         "fecha_min": "2025:01:13 09:02:32"
     },
     {
+        "lat": -24.82,
+        "lon": -65.427,
+        "archivo": [
+            {
+                "id": "17sZAN4RMVv2BvskVJHkeWD2GFP1WzrWi",
+                "nombre": "IMG_0429.HEIC",
+                "fecha": "2026:09:25 23:36:22",
+                "viaje": "2026 - Salta "
+            },
+            {
+                "id": "1a37h1p7RZwCVjWAvkNrPEs-CNrw-_d5z",
+                "nombre": "IMG_0419.HEIC",
+                "fecha": "2026:09:25 23:31:58",
+                "viaje": "2026 - Salta "
+            }
+        ],
+        "fecha_min": "2026:09:25 23:31:58"
+    },
+    {
         "lat": -24.817,
         "lon": -65.426,
         "archivo": [
@@ -1782,6 +1877,19 @@
         "fecha_min": "2024:11:08 22:53:51"
     },
     {
+        "lat": -24.788,
+        "lon": -65.408,
+        "archivo": [
+            {
+                "id": "1Zb_B8sP54zK6staIYw6x_4eWhhrLkSyj",
+                "nombre": "IMG_0253.HEIC",
+                "fecha": "2026:09:13 17:42:55",
+                "viaje": "2026 - Salta "
+            }
+        ],
+        "fecha_min": "2026:09:13 17:42:55"
+    },
+    {
         "lat": -24.784,
         "lon": -65.422,
         "archivo": [
@@ -1799,7 +1907,7 @@
         "lon": -65.411,
         "archivo": [
             {
-                "id": "1xrQfi7BjYnbzbDJjgF50oF6A1WvXzpwv",
+                "id": "1Dvw5mkqO2_PgdqeFvbeRYuNDTfNN0EBk",
                 "nombre": "IMG_5367.HEIC",
                 "fecha": "2024:09:25 00:32:02",
                 "viaje": "2025 - Salta"
@@ -1812,7 +1920,7 @@
         "lon": -65.412,
         "archivo": [
             {
-                "id": "1hpQMPAV_kvOV4ZTmNQ4qVJa3D0P2T1oY",
+                "id": "1RxYsz34J4yh_0WpN9HJMV8Hs-EEYnvwH",
                 "nombre": "IMG_8769.HEIC",
                 "fecha": "2026:06:13 21:23:21",
                 "viaje": "2026 - Salta "

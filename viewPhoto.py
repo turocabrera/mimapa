@@ -2,10 +2,13 @@ import tkinter as tk
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from googleapiclient.http import MediaIoBaseUpload
 from PIL import Image, ImageTk
 import json
 import io
+import piexif
 
+from googleapiclient.http import MediaIoBaseDownload, MediaIoBaseUpload
 from pillow_heif import register_heif_opener
 
 register_heif_opener()
@@ -63,6 +66,11 @@ class VisorViajes:
         tk.Button(frame_nav, text="Foto >", command=self.next_foto).grid(row=0, column=2)
         tk.Button(frame_nav, text="Ubicación >>", command=self.next_punto).grid(row=0, column=3, padx=10)
 
+        self.inputDescripcion=tk.Text(self.root,height=1, width=50, font=("Arial", 12))
+        self.inputDescripcion.pack(pady=5)
+        self.boActualizarImageDescription=tk.Button(self.root,text="Actualizar",command=self.actualizarImagenDescription)
+        self.boActualizarImageDescription.pack()
+        
         self.actualizar_vista()
         self.root.mainloop()
 
@@ -137,6 +145,58 @@ class VisorViajes:
         except Exception as e:
             print(f"Error al descargar {fileId}: {e}")
             return None
+        
+    def updateDescriptionPush(self,file_id, imageDescription):
+            # 1. Descargar la imagen a memoria (RAM)
+            request = service.files().get_media(fileId=file_id)
+            fh = io.BytesIO()
+            downloader = MediaIoBaseDownload(fh, request)
+            
+            done = False
+            while not done:
+                _, done = downloader.next_chunk()
+            
+            # Cargar EXIF actual o crear uno nuevo si no tiene
+            fh.seek(0)
+            img_bytes = fh.read()
+            try:
+                exif_dict = piexif.load(img_bytes)
+            except:
+                exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "1st": {}, "thumbnail": None}
+
+            # Insertar los nuevos valores Description
+            exif_dict["0th"][piexif.ImageIFD.ImageDescription] = imageDescription.encode('utf-8')
+
+            # Convertir dict a bytes y pegarlos en la imagen
+            exif_bytes = piexif.dump(exif_dict)
+            output_buffer = io.BytesIO()
+            piexif.insert(exif_bytes, img_bytes, output_buffer)
+            output_buffer.seek(0)
+
+            # 3. ACTUALIZAR el archivo en Drive (mismo ID, nuevo contenido)
+            media = MediaIoBaseUpload(output_buffer, mimetype='image/jpeg', resumable=True)
+            updated_file = service.files().update(
+                fileId=file_id,
+                media_body=media,
+                fields='id, name'
+            ).execute()
+
+            print(f"✅ ¡Listo! Archivo '{updated_file.get('name')}' actualizadaDescripcion: {imageDescription}")
+        
+    def actualizarImagenDescription(self):
+        punto = self.puntos[self.idx_punto]
+        foto = punto['archivo'][self.idx_foto]
+        nueva_desc = self.inputDescripcion.get("1.0", "end-1c")
+        if foto['id'] and nueva_desc:
+            print(f"Actualizando ID: {foto['id']}...")
+            self.updateDescriptionPush(foto['id'], nueva_desc)
+            
+            # Opcional: Actualizar también tu JSON local para que coincida
+            foto['descripcion'] = nueva_desc 
+            with open('data/fotosFinal.json', 'w') as f:
+                json.dump(self.puntos, f, indent=4)
+        
+
 
 # Ejecución
 VisorViajes('data/fotosFinal.json')
