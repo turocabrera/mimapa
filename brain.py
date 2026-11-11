@@ -33,6 +33,8 @@ service = build('drive', 'v3', credentials=creds)
 # folderId = obtener_id_carpeta('thumbnails')
 folderDestinoId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
 folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
+#prueba otro directorio
+# folderOrigenId='1am6ryYKZn3bnw8I1eaYRIc8bfHie-8Ka'
                 
 def obtener_exif(ruta_imagen,origen,img):
     if(origen=="local"):
@@ -99,74 +101,83 @@ def getBytesDrive(fileId):
         print(f"Error al descargar {fileId}: {e}")
         return None
 
-def procesarCarpeta(directorio,origen):
-    lista_puntos = []
-    print("Origen:",origen)
-    contadorArchivosProcesados = 1
-    if origen=="local":                        
-            for archivo in os.listdir(directorio):                
-                if archivo.lower().endswith(('.heic', '.jpg', '.jpeg', '.png')):
-                    ruta_completa = os.path.join(directorio, archivo)                    
-                    exif = obtener_exif(ruta_completa,origen,None)
+# def procesarCarpeta(directorio,origen):
+#     lista_puntos = []
+#     lista_sin_puntos=[]
+#     print("Origen:",origen)
+#     contadorArchivosProcesados = 1
+#     if origen=="local":                        
+#             for archivo in os.listdir(directorio):                
+#                 if archivo.lower().endswith(('.heic', '.jpg', '.jpeg', '.png')):
+#                     ruta_completa = os.path.join(directorio, archivo)                    
+#                     exif = obtener_exif(ruta_completa,origen,None)
                     
-                    if exif and "GPSInfo" in exif:
-                        gps = exif["GPSInfo"]
-                        # Extraer Latitud y Longitud
-                        lat = convertir_a_grados(gps["GPSLatitude"])
-                        if gps["GPSLatitudeRef"] != "N": lat = -lat
+#                     if exif and "GPSInfo" in exif:
+#                         gps = exif["GPSInfo"]
+#                         # Extraer Latitud y Longitud
+#                         lat = convertir_a_grados(gps["GPSLatitude"])
+#                         if gps["GPSLatitudeRef"] != "N": lat = -lat
                         
-                        lon = convertir_a_grados(gps["GPSLongitude"])
-                        if gps["GPSLongitudeRef"] != "E": lon = -lon
+#                         lon = convertir_a_grados(gps["GPSLongitude"])
+#                         if gps["GPSLongitudeRef"] != "E": lon = -lon
                         
-                        #buscar fecha en otros campos
-                        fecha = exif["fecha"]
-                        contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)
-                        lista_puntos.append({
-                            "archivo": archivo,
-                            "lat": lat,
-                            "lon": lon,
-                            # "fecha": exif.get("DateTimeOriginal", "Desconocida")
-                            "fecha": fecha
-                        })
-    else:
-        #  drive
-        results = service.files().list(
-                q=f"'{directorio}' in parents and trashed = false",
-                pageSize=1000,
-                fields="files(id, name, webContentLink)"        
-            ).execute()
-        # print(results)    
-        items = results.get('files', [])        
-        print(f"ℹ️ total de archivos a procesar:{len(items)} ")
-        for item in items:
-                #  print(item['name'])
-                 if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
-                        fileId = item['id']
-                        # Usamos el formato thumbnail que es el más compatible
-                        contenidoBytesImagenDrive=getBytesDrive(fileId)
-                        exif = obtener_exif(None,origen,contenidoBytesImagenDrive)
-                        nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
-                        if exif and "GPSInfo" in exif:
-                            gps = exif["GPSInfo"]
-                            # Extraer Latitud y Longitud
-                            lat = convertir_a_grados(gps["GPSLatitude"])
-                            if gps["GPSLatitudeRef"] != "N": lat = -lat
+#                         #buscar fecha en otros campos
+#                         fecha = exif["fecha"]
+#                         contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)
+#                         lista_puntos.append({
+#                             "archivo": archivo,
+#                             "lat": lat,
+#                             "lon": lon,
+#                             # "fecha": exif.get("DateTimeOriginal", "Desconocida")
+#                             "fecha": fecha
+#                         })
+#     else:
+#         #  drive
+#         results = service.files().list(
+#                 q=f"'{directorio}' in parents and trashed = false",
+#                 pageSize=1000,
+#                 fields="files(id, name, webContentLink)"        
+#             ).execute()
+#         # print(results)    
+#         items = results.get('files', [])        
+#         print(f"ℹ️ total de archivos a procesar:{len(items)} ")
+#         for item in items:
+#                 #  print(item['name'])
+#                  if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
+#                         fileId = item['id']
+#                         # Usamos el formato thumbnail que es el más compatible
+#                         contenidoBytesImagenDrive=getBytesDrive(fileId)
+#                         exif = obtener_exif(None,origen,contenidoBytesImagenDrive)
+#                         nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
+#                         if exif and "GPSInfo" in exif:
+#                             gps = exif["GPSInfo"]
+#                             # Extraer Latitud y Longitud
+#                             lat = convertir_a_grados(gps["GPSLatitude"])
+#                             if gps["GPSLatitudeRef"] != "N": lat = -lat
                             
-                            lon = convertir_a_grados(gps["GPSLongitude"])
-                            if gps["GPSLongitudeRef"] != "E": lon = -lon
+#                             lon = convertir_a_grados(gps["GPSLongitude"])
+#                             if gps["GPSLongitudeRef"] != "E": lon = -lon
                             
-                            #buscar fecha en otros campos
-                            fecha = exif["fecha"]
-                            contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
-                            lista_puntos.append({
-                                 "id":item['id'],
-                                "archivo": item['name'],
-                                "lat": lat,
-                                "lon": lon,                                
-                                "fecha": fecha
-                            })
-    print(f"✅ Total archivos procesados:{contadorArchivosProcesados} ")
-    return lista_puntos
+#                             #buscar fecha en otros campos
+#                             fecha = exif["fecha"]
+#                             contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
+#                             lista_puntos.append({
+#                                  "id":item['id'],
+#                                 "archivo": item['name'],
+#                                 "lat": lat,
+#                                 "lon": lon,                                
+#                                 "fecha": fecha
+#                             })
+#                         else:
+#                              lista_sin_puntos.append({
+#                                                             "id":item['id'],
+#                                                              "archivo": item['name']                                                    
+#                                                          })
+                            
+
+#     print(f"✅ Total archivos procesados:{contadorArchivosProcesados} ")
+#     print(f"{lista_sin_puntos}")
+#     return lista_puntos
 
 
 def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
@@ -176,7 +187,7 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
     if origen=="local":                        
             for archivo in os.listdir(directorio):                
                 if archivo.lower().endswith(('.heic', '.jpg', '.jpeg', '.png')):
-                    ruta_completa = os.path.join(directorio, archivo)                    
+                    ruta_completa = os.path.join(directorio, archivo)                               
                     exif = obtener_exif(ruta_completa,origen,None)
                     
                     if exif and "GPSInfo" in exif:
@@ -198,6 +209,11 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                             # "fecha": exif.get("DateTimeOriginal", "Desconocida")
                             "fecha": fecha
                         })
+                    else:
+                            lista_sin_puntos.append({
+                                                            "id":item['id'],
+                                                             "archivo": item['name']                                                    
+                                                         })
     else:
         #  drive
         results = service.files().list(
@@ -213,13 +229,14 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                         print("Carpeta:",item['name'])                  
                         procesarCarpetaRecursivo(item['id'],item['name'], "drive")
                 else:                
-                        if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
+                        
+                        if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):                                        
                                 fileId = item['id']
                                 # Usamos el formato thumbnail que es el más compatible
                                 contenidoBytesImagenDrive=getBytesDrive(fileId)
-                                exif = obtener_exif(None,origen,contenidoBytesImagenDrive)
+                                exif = obtener_exif(None,origen,contenidoBytesImagenDrive)                                
                                 nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
-                                if exif and "GPSInfo" in exif:
+                                if exif and "GPSInfo" in exif:                        
                                     gps = exif["GPSInfo"]
                                     # Extraer Latitud y Longitud
                                     lat = convertir_a_grados(gps["GPSLatitude"])
@@ -239,13 +256,19 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                                         "viaje": directorioRaiz,                             
                                         "fecha": fecha
                                     })    
+                                else:
+                                     lista_sin_puntos.append({                                                          
+                                                            "archivo": directorio+item['name']                                                    
+                                                        })
     return lista_puntos
 
 # Ejemplo de ejecución
 # resultados = procesarCarpeta(folderOrigenId,'drive')
 lista_puntos = []
+lista_sin_puntos = []
 resultados = procesarCarpetaRecursivo(folderOrigenId,'', 'drive')
 
 with open('data/viajes.json', 'w') as f:
     json.dump(resultados, f, indent=4)
+print(f"Sin GpsInfo: {lista_sin_puntos}")
 print ("proceso finalizado")
