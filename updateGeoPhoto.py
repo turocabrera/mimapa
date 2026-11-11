@@ -33,11 +33,13 @@ service = build('drive', 'v3', credentials=creds)
 # 1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh este valor lo saco de la url de google-drive en la carpeta
 # folderId = obtener_id_carpeta('thumbnails')
 folderDestinoId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
-folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
+# folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
+folderOrigenId='1am6ryYKZn3bnw8I1eaYRIc8bfHie-8Ka'
+
                 
 
-def updateGpsPush(file_id, latitud, longitud):
-    # 1. Descargar la imagen a memoria (RAM)
+def updateGpsPush(file_id, latitud, longitud,isHeic):
+    # Descarga    
     request = service.files().get_media(fileId=file_id)
     fh = io.BytesIO()
     downloader = MediaIoBaseDownload(fh, request)
@@ -45,8 +47,12 @@ def updateGpsPush(file_id, latitud, longitud):
     done = False
     while not done:
         _, done = downloader.next_chunk()
-    
-    # 2. Preparar los metadatos EXIF
+
+    # Cargar EXIF actual o crear uno nuevo si no tiene
+    fh.seek(0)
+    img_bytes = fh.read()
+
+    # Metadatos EXIF
     def to_exif_format(val, refs):
         ref = refs[0] if val < 0 else refs[1]
         abs_val = abs(val)
@@ -58,13 +64,23 @@ def updateGpsPush(file_id, latitud, longitud):
     lat_tuple, lat_ref = to_exif_format(latitud, ("S", "N"))
     lon_tuple, lon_ref = to_exif_format(longitud, ("W", "E"))
 
-    # Cargar EXIF actual o crear uno nuevo si no tiene
-    fh.seek(0)
-    img_bytes = fh.read()
-    try:
-        exif_dict = piexif.load(img_bytes)
-    except:
-        exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+    if isHeic:
+        img = Image.open(io.BytesIO(img_bytes))
+        raw_exif = img.info.get("exif", b"")
+        try:
+            exif_dict = piexif.load(raw_exif) if raw_exif else {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+        except Exception:
+            exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+    else:
+        try:
+            exif_dict = piexif.load(img_bytes)
+        except Exception:
+            exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+
+    
+    #crea el bloque si no lo tiene
+    if "GPS" not in exif_dict:
+        exif_dict["GPS"] = {}
 
     # Insertar los nuevos valores GPS
     exif_dict["GPS"][piexif.GPSIFD.GPSLatitude] = lat_tuple
@@ -75,11 +91,19 @@ def updateGpsPush(file_id, latitud, longitud):
     # Convertir dict a bytes y pegarlos en la imagen
     exif_bytes = piexif.dump(exif_dict)
     output_buffer = io.BytesIO()
-    piexif.insert(exif_bytes, img_bytes, output_buffer)
-    output_buffer.seek(0)
+    # piexif.insert(exif_bytes, img_bytes, output_buffer)
 
-    # 3. ACTUALIZAR el archivo en Drive (mismo ID, nuevo contenido)
-    media = MediaIoBaseUpload(output_buffer, mimetype='image/jpeg', resumable=True)
+    if isHeic:        
+        img = Image.open(io.BytesIO(img_bytes))
+        img.save(output_buffer, format="HEIF", exif=exif_bytes)
+        target_mime = 'image/heic'
+    else:        
+        piexif.insert(exif_bytes, img_bytes, output_buffer)
+        target_mime = 'image/jpeg'
+
+    output_buffer.seek(0)
+    # media = MediaIoBaseUpload(output_buffer, mimetype='image/jpeg', resumable=True)
+    media = MediaIoBaseUpload(output_buffer, mimetype=target_mime, resumable=True)
     updated_file = service.files().update(
         fileId=file_id,
         media_body=media,
@@ -98,22 +122,20 @@ def convertir_a_grados(valor):
 
 def procesarArchivosUpdateGeo(directorio,origen,cadenaBuscar):
     lista_puntos = []
-    if origen=='drive':
-        print('Drive')
-         #  drive
+    if origen=='drive':        
         results = service.files().list(
                 q=f"'{directorio}' in parents and name contains '{cadenaBuscar}' and trashed = false",
                 pageSize=1000,
-                fields="files(id, name, webContentLink)"       
+                fields="files(id, name, mimeType, webContentLink)"       
             ).execute()
         # print(results)    
         items = results.get('files', [])  
-        for item in items:
-                #  print(item['name'])
+        for item in items:                
                  if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
                         fileId = item['id']
                         print(item['name'])                        
-                        updateGpsPush(fileId,-40.15151864735295, -71.3998008496004)                            
+                        isHeic=item['name'].lower().endswith('.heic')or item['mimeType']=='image/heic'
+                        updateGpsPush(fileId,-24.781245101615603, -65.40315227590362,isHeic)                            
     else:
         print('local')
     return 0
@@ -136,7 +158,8 @@ def leerCarpetaEHijos(directorio,directorioRaiz,cadenaBuscar):
                                 print(f"' Archivo: {directorioRaiz}-{item['name']} ")                                    
     return 0
 
-resultados = leerCarpetaEHijos(folderOrigenId,'','202')
+resultados = procesarArchivosUpdateGeo('1am6ryYKZn3bnw8I1eaYRIc8bfHie-8Ka','drive','IMG_3286')
+# resultados = leerCarpetaEHijos(folderOrigenId,'','202')
 # resultados = procesarArchivosUpdateGeo(folderOrigenId,'drive','dji_mimo_20260223_135804_20260223135805_1772061938838_photo')
                                     #    'dji_mimo_20260225_110054_20260225110055_1772061932293_photo')
                                     #    'dji_mimo_20260225_114734_20260225114735_1772061931180_photo')
