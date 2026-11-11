@@ -36,9 +36,75 @@ folderDestinoId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
 # folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
 folderOrigenId='1am6ryYKZn3bnw8I1eaYRIc8bfHie-8Ka'
 
-                
 
-def updateGpsPush(file_id, latitud, longitud,isHeic):
+def updateFechaPush(file_id, fecha_str, is_heic=False):
+    """
+    Inyecta la fecha en el EXIF de un archivo en Drive.
+    fecha_str debe tener el formato "YYYY:MM:DD HH:MM:SS" (ej: "2026:01:15 14:30:00")
+    """
+    # 1. Descarga desde Google Drive
+    request = service.files().get_media(fileId=file_id)
+    fh = io.BytesIO()
+    downloader = MediaIoBaseDownload(fh, request)
+    
+    done = False
+    while not done:
+        _, done = downloader.next_chunk()
+    
+    fh.seek(0)
+    img_bytes = fh.read()
+
+    # 2. Cargar EXIF existente o inicializar uno nuevo
+    if is_heic:
+        img = Image.open(io.BytesIO(img_bytes))
+        raw_exif = img.info.get("exif", b"")
+        try:
+            exif_dict = piexif.load(raw_exif) if raw_exif else {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+        except Exception:
+            exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+    else:
+        try:
+            exif_dict = piexif.load(img_bytes)
+        except Exception:
+            exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {}, "thumbnail": None}
+
+    # 3. Asignar fecha en los tags EXIF estándar
+    # 0th IFD -> DateTime (Tag 306)
+    exif_dict["0th"][piexif.ImageIFD.DateTime] = fecha_str.encode('utf-8')
+    
+    # Exif IFD -> DateTimeOriginal (Tag 36867) y DateTimeDigitized (Tag 36868)
+    if "Exif" not in exif_dict:
+        exif_dict["Exif"] = {}
+    exif_dict["Exif"][piexif.ExifIFD.DateTimeOriginal] = fecha_str.encode('utf-8')
+    exif_dict["Exif"][piexif.ExifIFD.DateTimeDigitized] = fecha_str.encode('utf-8')
+
+    # 4. Empaquetar bytes y guardar
+    exif_bytes = piexif.dump(exif_dict)
+    output_buffer = io.BytesIO()
+
+    if is_heic:
+        img.save(output_buffer, format="HEIF", exif=exif_bytes)
+        target_mime = 'image/heic'
+    else:
+        piexif.insert(exif_bytes, img_bytes, output_buffer)
+        target_mime = 'image/jpeg'
+
+    output_buffer.seek(0)
+
+    # 5. Actualizar en Google Drive
+    media = MediaIoBaseUpload(output_buffer, mimetype=target_mime, resumable=True)
+    updated_file = service.files().update(
+        fileId=file_id,
+        media_body=media,
+        fields='id, name'
+    ).execute()
+
+    print(f"✅ ¡Listo! Archivo '{updated_file.get('name')}' actualizado con fecha: {fecha_str}")            
+
+def updateGpsPush(file_id, latitud, longitud,isHeic=False):
+    """
+        Inyecta la geoLocalización en el EXIF de un archivo en Drive.        
+    """
     # Descarga    
     request = service.files().get_media(fileId=file_id)
     fh = io.BytesIO()
@@ -120,8 +186,34 @@ def convertir_a_grados(valor):
     s = float(valor[2])
     return d + (m / 60.0) + (s / 3600.0)
 
-def procesarArchivosUpdateGeo(directorio,origen,cadenaBuscar):
-    lista_puntos = []
+def procesarArchivosUpdateTime(directorio,origen,cadenaBuscar):
+    """
+    Busca un archivo en un drive y actualiza la fecha de creación del mismo
+    permite trabajar archivo heic y jpg
+    """
+    if origen=='drive':        
+        results = service.files().list(
+                q=f"'{directorio}' in parents and name contains '{cadenaBuscar}' and trashed = false",
+                pageSize=1000,
+                fields="files(id, name, mimeType, webContentLink)"       
+            ).execute()
+        # print(results)    
+        items = results.get('files', [])  
+        for item in items:                
+                 if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
+                        fileId = item['id']
+                        print(item['name'])                        
+                        isHeic=item['name'].lower().endswith('.heic')or item['mimeType']=='image/heic'
+                        updateFechaPush(fileId,'2026:05:10 12:54:11',isHeic)                            
+    else:
+        print('local')
+    return 0
+
+def procesarArchivosUpdateGeo(directorio,origen,cadenaBuscar):   
+    """
+        Metodo que busca un archivo y actualiza las coordenadas establecidas. Puede actualizar 
+        archivos heic o jpg
+    """ 
     if origen=='drive':        
         results = service.files().list(
                 q=f"'{directorio}' in parents and name contains '{cadenaBuscar}' and trashed = false",
@@ -158,8 +250,8 @@ def leerCarpetaEHijos(directorio,directorioRaiz,cadenaBuscar):
                                 print(f"' Archivo: {directorioRaiz}-{item['name']} ")                                    
     return 0
 
-resultados = procesarArchivosUpdateGeo('1am6ryYKZn3bnw8I1eaYRIc8bfHie-8Ka','drive','IMG_3286')
-# resultados = leerCarpetaEHijos(folderOrigenId,'','202')
+# resultados = procesarArchivosUpdateGeo('1ZLHpkHlhH254GsAq1_5AcZfKR2zilp7X','drive','IMG_3286')
+resultados = procesarArchivosUpdateTime('1ZLHpkHlhH254GsAq1_5AcZfKR2zilp7X','drive','IMG_6193')
 # resultados = procesarArchivosUpdateGeo(folderOrigenId,'drive','dji_mimo_20260223_135804_20260223135805_1772061938838_photo')
                                     #    'dji_mimo_20260225_110054_20260225110055_1772061932293_photo')
                                     #    'dji_mimo_20260225_114734_20260225114735_1772061931180_photo')
