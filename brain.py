@@ -29,14 +29,19 @@ if creds and creds.expired and creds.refresh_token:
 service = build('drive', 'v3', credentials=creds)
 
 # service = apiConnectGoogle.obtener_servicio()
-# 1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh este valor lo saco de la url de google-drive en la carpeta
+
 # folderId = obtener_id_carpeta('thumbnails')
 folderDestinoId= '1zjWfDZ_tyx5nA7ghmRziOFobPG7BadAh'
+# principal raiz
 folderOrigenId='1IdVes6eq_fxRwaEqOfBlvoqxKJ2BnCDs'
 #prueba otro directorio
-# folderOrigenId='1am6ryYKZn3bnw8I1eaYRIc8bfHie-8Ka'
+# folderOrigenId='1ZLHpkHlhH254GsAq1_5AcZfKR2zilp7X'
                 
 def obtener_exif(ruta_imagen,origen,img):
+    """
+    Metodo para obtener información GPS desde un archivo imagen que se obtiene
+    se busca el tag: GPSInfo y la fecha del archivo en: tagId: 36867 o 0x8769
+    """
     if(origen=="local"):
         imagen = Image.open(ruta_imagen)
         exif_data = imagen.getexif()
@@ -85,8 +90,10 @@ def obtener_exif(ruta_imagen,origen,img):
 
     return info_exif
 
-def convertir_a_grados(valor):
-    # Los datos GPS vienen en formato (grados, minutos, segundos)
+def convertirAGrados(valor):
+    """
+       Convierte a Grados Los datos GPS vienen en formato (grados, minutos, segundos)
+    """    
     d = float(valor[0])
     m = float(valor[1])
     s = float(valor[2])
@@ -101,88 +108,11 @@ def getBytesDrive(fileId):
         print(f"Error al descargar {fileId}: {e}")
         return None
 
-# def procesarCarpeta(directorio,origen):
-#     lista_puntos = []
-#     lista_sin_puntos=[]
-#     print("Origen:",origen)
-#     contadorArchivosProcesados = 1
-#     if origen=="local":                        
-#             for archivo in os.listdir(directorio):                
-#                 if archivo.lower().endswith(('.heic', '.jpg', '.jpeg', '.png')):
-#                     ruta_completa = os.path.join(directorio, archivo)                    
-#                     exif = obtener_exif(ruta_completa,origen,None)
-                    
-#                     if exif and "GPSInfo" in exif:
-#                         gps = exif["GPSInfo"]
-#                         # Extraer Latitud y Longitud
-#                         lat = convertir_a_grados(gps["GPSLatitude"])
-#                         if gps["GPSLatitudeRef"] != "N": lat = -lat
-                        
-#                         lon = convertir_a_grados(gps["GPSLongitude"])
-#                         if gps["GPSLongitudeRef"] != "E": lon = -lon
-                        
-#                         #buscar fecha en otros campos
-#                         fecha = exif["fecha"]
-#                         contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)
-#                         lista_puntos.append({
-#                             "archivo": archivo,
-#                             "lat": lat,
-#                             "lon": lon,
-#                             # "fecha": exif.get("DateTimeOriginal", "Desconocida")
-#                             "fecha": fecha
-#                         })
-#     else:
-#         #  drive
-#         results = service.files().list(
-#                 q=f"'{directorio}' in parents and trashed = false",
-#                 pageSize=1000,
-#                 fields="files(id, name, webContentLink)"        
-#             ).execute()
-#         # print(results)    
-#         items = results.get('files', [])        
-#         print(f"ℹ️ total de archivos a procesar:{len(items)} ")
-#         for item in items:
-#                 #  print(item['name'])
-#                  if item['name'].lower().endswith(('.heic', '.jpg', '.jpeg' , '.png')):        
-#                         fileId = item['id']
-#                         # Usamos el formato thumbnail que es el más compatible
-#                         contenidoBytesImagenDrive=getBytesDrive(fileId)
-#                         exif = obtener_exif(None,origen,contenidoBytesImagenDrive)
-#                         nombreJpgDrive = os.path.splitext(item['name'])[0] + ".jpg"            
-#                         if exif and "GPSInfo" in exif:
-#                             gps = exif["GPSInfo"]
-#                             # Extraer Latitud y Longitud
-#                             lat = convertir_a_grados(gps["GPSLatitude"])
-#                             if gps["GPSLatitudeRef"] != "N": lat = -lat
-                            
-#                             lon = convertir_a_grados(gps["GPSLongitude"])
-#                             if gps["GPSLongitudeRef"] != "E": lon = -lon
-                            
-#                             #buscar fecha en otros campos
-#                             fecha = exif["fecha"]
-#                             contadorArchivosProcesados=utilFramework.incrementarNumeroContadorProcesamiento(contadorArchivosProcesados)               
-#                             lista_puntos.append({
-#                                  "id":item['id'],
-#                                 "archivo": item['name'],
-#                                 "lat": lat,
-#                                 "lon": lon,                                
-#                                 "fecha": fecha
-#                             })
-#                         else:
-#                              lista_sin_puntos.append({
-#                                                             "id":item['id'],
-#                                                              "archivo": item['name']                                                    
-#                                                          })
-                            
-
-#     print(f"✅ Total archivos procesados:{contadorArchivosProcesados} ")
-#     print(f"{lista_sin_puntos}")
-#     return lista_puntos
-
-
-def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
-    
-    # print("Origen:",origen)
+def procesarCarpetaRecursivo(directorio,directorioRaiz,origen,tipo='viajePersonal'):   
+    """
+    Metodo para recorrer recursivamente una carpeta hasta llegar a las imagenes y 
+    leer su información y generar un json con la misma.
+    """
     contadorArchivosProcesados = 1
     if origen=="local":                        
             for archivo in os.listdir(directorio):                
@@ -193,10 +123,10 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                     if exif and "GPSInfo" in exif:
                         gps = exif["GPSInfo"]
                         # Extraer Latitud y Longitud
-                        lat = convertir_a_grados(gps["GPSLatitude"])
+                        lat = convertirAGrados(gps["GPSLatitude"])
                         if gps["GPSLatitudeRef"] != "N": lat = -lat
                         
-                        lon = convertir_a_grados(gps["GPSLongitude"])
+                        lon = convertirAGrados(gps["GPSLongitude"])
                         if gps["GPSLongitudeRef"] != "E": lon = -lon
                         
                         #buscar fecha en otros campos
@@ -239,10 +169,10 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                                 if exif and "GPSInfo" in exif:                        
                                     gps = exif["GPSInfo"]
                                     # Extraer Latitud y Longitud
-                                    lat = convertir_a_grados(gps["GPSLatitude"])
+                                    lat = convertirAGrados(gps["GPSLatitude"])
                                     if gps["GPSLatitudeRef"] != "N": lat = -lat
                                     
-                                    lon = convertir_a_grados(gps["GPSLongitude"])
+                                    lon = convertirAGrados(gps["GPSLongitude"])
                                     if gps["GPSLongitudeRef"] != "E": lon = -lon
                                     
                                     #buscar fecha en otros campos
@@ -254,6 +184,7 @@ def procesarCarpetaRecursivo(directorio,directorioRaiz,origen):
                                         "lat": lat,
                                         "lon": lon,   
                                         "viaje": directorioRaiz,                             
+                                        "tipo": tipo,
                                         "fecha": fecha
                                     })    
                                 else:
@@ -270,5 +201,5 @@ resultados = procesarCarpetaRecursivo(folderOrigenId,'', 'drive')
 
 with open('data/viajes.json', 'w') as f:
     json.dump(resultados, f, indent=4)
-print(f"Sin GpsInfo: {lista_sin_puntos}")
+print(f" Sin GpsInfo: {lista_sin_puntos}")
 print ("proceso finalizado")
